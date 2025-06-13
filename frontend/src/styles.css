@@ -1,0 +1,82 @@
+/* styles.css */
+
+/* Genel arka plan */
+body {
+  background-color: #2e2e2e; /* Koyu gri */
+  color: #e3e3e3;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* Üst Navbar (Fortigate benzeri yeşil) */
+.navbar.bg-dark {
+  background-color: #3a5f40 !important; /* Yeşil ton */
+  border-bottom: 2px solid #326338;
+}
+
+/* Navbar içindeki marka (NetGate) yazısı */
+.navbar-brand {
+  font-weight: 600;
+  color: #f8f8f8 !important;
+}
+
+.navbar-brand:hover {
+  color: #fff !important;
+}
+
+/* Soldaki menü (sidebar) */
+.sidebar {
+  background-color: #27342c; /* Daha koyu yeşil/gri */
+  min-height: calc(100vh - 70px);
+  color: #cfcfcf;
+}
+
+.sidebar .nav-link {
+  color: #cfcfcf;
+}
+.sidebar .nav-link:hover {
+  background-color: #354836;
+  color: #fff;
+}
+
+/* Sayfa başlıkları */
+h2, h3, h4, h5, .card-header {
+  color: #f8f8f8;
+}
+
+/* Kart genel ayar */
+.card {
+  background-color: #3d3d3d;
+  border: none;
+  margin-bottom: 16px;
+  border-radius: 5px;
+}
+
+.card-header {
+  background-color: #303030;
+  border-bottom: 1px solid #444;
+}
+
+/* Buton örneği */
+.btn-primary {
+  background-color: #4c8c4a;
+  border-color: #4c8c4a;
+}
+.btn-primary:hover {
+  background-color: #5da75b;
+  border-color: #5da75b;
+}
+
+/* Placeholder donut chart stili */
+.donut-chart {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background: conic-gradient(#2e7d32 0% 60%, #c8e6c9 60% 100%);
+  /* #2e7d32 = yeşil, #c8e6c9 = açık yeşil */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+}
