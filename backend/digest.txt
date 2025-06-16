@@ -1,0 +1,2254 @@
+Directory structure:
+└── backend/
+    ├── requirements.txt
+    └── app/
+        ├── __init__.py
+        ├── config.py
+        ├── database.py
+        ├── dependencies.py
+        ├── dns_proxy.py
+        ├── dns_proxy_manager.py
+        ├── firewall_driver.py
+        ├── firewall_os.py
+        ├── linux_firewall.py
+        ├── log_watchers.py
+        ├── main.py
+        ├── middleware.py
+        ├── models.py
+        ├── schemas.py
+        ├── win_firewall.py
+        ├── __pycache__/
+        └── routers/
+            ├── auth.py
+            ├── backup.py
+            ├── dns.py
+            ├── firewall.py
+            ├── firewall_groups.py
+            ├── layer7_inspect.py
+            ├── logs.py
+            ├── nat.py
+            ├── network.py
+            ├── routes.py
+            ├── status.py
+            └── __pycache__/
+
+================================================
+File: requirements.txt
+================================================
+anyio==4.9.0
+bcrypt==4.0.1
+certifi==2025.4.26
+charset-normalizer==3.4.2
+click==8.2.0
+colorama==0.4.6
+dnspython==2.7.0
+ecdsa==0.19.1
+exceptiongroup==1.3.0
+fastapi==0.95.0
+h11==0.14.0
+httpcore==0.17.3
+httpx==0.24.0
+idna==3.10
+iniconfig==2.1.0
+motor==3.7.1
+packaging==25.0
+passlib==1.7.4
+pluggy==1.6.0
+psutil==5.9.5
+pyasn1==0.4.8
+pydantic==1.10.7
+PyJWT==2.6.0
+pymongo==4.13.0
+pytest==7.3.1
+pytest-asyncio==0.21.0
+python-dotenv==1.0.0
+python-jose==3.3.0
+requests==2.31.0
+rsa==4.9.1
+six==1.17.0
+sniffio==1.3.1
+starlette==0.26.1
+tomli==2.2.1
+typing_extensions==4.13.2
+urllib3==2.4.0
+uvicorn==0.22.0
+
+
+================================================
+File: app/__init__.py
+================================================
+
+
+
+================================================
+File: app/config.py
+================================================
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class Settings:
+    PROJECT_NAME: str = "KOBI Firewall"
+    JWT_SECRET: str = os.getenv("JWT_SECRET", "degistir-bunu")
+    JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+
+    MONGODB_URL: str = os.getenv("MONGODB_URL", "mongodb://localhost:27017")
+    DATABASE_NAME: str = "kobi_firewall_db"
+
+settings = Settings()
+
+
+
+================================================
+File: app/database.py
+================================================
+from motor.motor_asyncio import AsyncIOMotorClient
+from app.config import settings
+
+client = AsyncIOMotorClient(settings.MONGODB_URL)
+db = client[settings.DATABASE_NAME]
+
+
+
+================================================
+File: app/dependencies.py
+================================================
+from fastapi import Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer
+from jose import jwt, JWTError
+from app.config import settings
+from app.database import db
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+    )
+    try:
+        payload = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
+        username = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+        user = await db["users"].find_one({"username": username})
+        if not user:
+            raise credentials_exception
+        return user
+    except JWTError:
+        raise credentials_exception
+
+def require_admin(user=Depends(get_current_user)):
+    if user["role"] != "admin":
+        raise HTTPException(status_code=403, detail="Admin privileges required")
+    return user
+
+
+
+================================================
+File: app/dns_proxy.py
+================================================
+import asyncio
+import socket
+import struct
+from datetime import datetime
+from typing import Set, Dict
+import dns.message
+import dns.query
+import dns.resolver
+import dns.rcode
+
+class DNSProxyServer:
+    """Seçici DNS engelleme için proxy sunucusu"""
+    
+    def __init__(self, listen_ip='0.0.0.0', listen_port=53):
+        self.listen_ip = listen_ip
+        self.listen_port = listen_port
+        self.blocked_domains: Set[str] = set()
+        self.upstream_dns = ['8.8.8.8', '8.8.4.4']  # Google DNS
+        self.allowed_clients: Set[str] = set()  # İzin verilen IP'ler
+        self.running = False
+        self.transport = None
+        
+    def update_blocked_domains(self, domains: Set[str]):
+        """Engellenen domain listesini güncelle"""
+        self.blocked_domains = domains
+        print(f"Blocked domains updated: {len(domains)} domains")
+        
+    def add_allowed_client(self, ip: str):
+        """İzin verilen client IP'si ekle (sizin PC'niz)"""
+        self.allowed_clients.add(ip)
+        print(f"Added allowed client: {ip}")
+        
+    def is_domain_blocked(self, domain: str, client_ip: str) -> bool:
+        """Domain'in client için engellenip engellenmediğini kontrol et"""
+        # Eğer client izin verilenler listesindeyse (sizin PC'niz), engelleme
+        if client_ip in self.allowed_clients:
+            return False
+            
+        # Diğer clientler için (arkadaşınızın PC'si) kontrol et
+        domain_lower = domain.lower().rstrip('.')
+        
+        # Tam eşleşme kontrolü
+        if domain_lower in self.blocked_domains:
+            return True
+            
+        # Subdomain kontrolü
+        parts = domain_lower.split('.')
+        for i in range(len(parts)):
+            parent = '.'.join(parts[i:])
+            if parent in self.blocked_domains:
+                return True
+                
+        return False
+        
+    async def handle_dns_query(self, data: bytes, addr):
+        """DNS sorgusunu işle"""
+        client_ip = addr[0]
+        
+        try:
+            # DNS mesajını parse et
+            query = dns.message.from_wire(data)
+            
+            # Sorguyu logla
+            for question in query.question:
+                domain = str(question.name)
+                print(f"DNS query from {client_ip}: {domain}")
+                
+                # Domain engellenmiş mi kontrol et
+                if self.is_domain_blocked(domain, client_ip):
+                    print(f"BLOCKED: {domain} for {client_ip}")
+                    # Engelleme cevabı gönder (NXDOMAIN)
+                    response = dns.message.make_response(query)
+                    response.set_rcode(dns.rcode.NXDOMAIN)
+                    return response.to_wire()
+            
+            # Engellenmediyse, upstream DNS'e yönlendir
+            response_data = await self.forward_to_upstream(data)
+            return response_data
+            
+        except Exception as e:
+            print(f"Error handling DNS query: {e}")
+            return None
+            
+    async def forward_to_upstream(self, query_data: bytes) -> bytes:
+        """Sorguyu upstream DNS sunucusuna yönlendir"""
+        for dns_server in self.upstream_dns:
+            try:
+                # UDP üzerinden upstream DNS'e gönder
+                response = await asyncio.wait_for(
+                    self._udp_query(query_data, dns_server, 53),
+                    timeout=2.0
+                )
+                return response
+            except asyncio.TimeoutError:
+                continue
+            except Exception as e:
+                print(f"Error forwarding to {dns_server}: {e}")
+                continue
+        return None
+        
+    async def _udp_query(self, data: bytes, server: str, port: int) -> bytes:
+        """UDP DNS sorgusu gönder"""
+        loop = asyncio.get_event_loop()
+        
+        # Socket oluştur
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.setblocking(False)
+        
+        try:
+            # Sorguyu gönder
+            await loop.sock_sendto(sock, data, (server, port))
+            
+            # Cevabı bekle
+            response_data, _ = await loop.sock_recvfrom(sock, 512)
+            return response_data
+        finally:
+            sock.close()
+            
+    async def start_server(self):
+        """DNS proxy sunucusunu başlat"""
+        print(f"Starting DNS proxy on {self.listen_ip}:{self.listen_port}")
+        
+        # UDP sunucu oluştur
+        loop = asyncio.get_event_loop()
+        transport, protocol = await loop.create_datagram_endpoint(
+            lambda: DNSProtocol(self),
+            local_addr=(self.listen_ip, self.listen_port)
+        )
+        
+        self.running = True
+        self.transport = transport
+        
+        print("DNS proxy server started")
+        
+    def stop_server(self):
+        """Sunucuyu durdur"""
+        self.running = False
+        if self.transport:
+            self.transport.close()
+            self.transport = None
+        print("DNS proxy server stopped")
+            
+
+class DNSProtocol(asyncio.DatagramProtocol):
+    """DNS UDP protokol handler"""
+    
+    def __init__(self, server: DNSProxyServer):
+        self.server = server
+        self.transport = None
+        
+    def connection_made(self, transport):
+        self.transport = transport
+        
+    def datagram_received(self, data, addr):
+        """DNS paketi alındığında"""
+        asyncio.create_task(self._handle_query(data, addr))
+        
+    async def _handle_query(self, data, addr):
+        """Sorguyu işle ve cevapla"""
+        response = await self.server.handle_dns_query(data, addr)
+        if response and self.transport:
+            self.transport.sendto(response, addr)
+
+
+================================================
+File: app/dns_proxy_manager.py
+================================================
+import asyncio
+import platform
+import subprocess
+import socket
+from typing import Optional, Set
+from app.dns_proxy import DNSProxyServer
+
+class DNSProxyManager:
+    """DNS Proxy sunucusunu yöneten sınıf"""
+    
+    def __init__(self):
+        self.proxy_server: Optional[DNSProxyServer] = None
+        self.server_task: Optional[asyncio.Task] = None
+        self._running = False
+        
+    def get_local_ip(self) -> str:
+        """Lokal IP adresini al"""
+        try:
+            # Dış bir adrese bağlanmaya çalış (gerçekten bağlanmaz)
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(("8.8.8.8", 80))
+            local_ip = s.getsockname()[0]
+            s.close()
+            return local_ip
+        except:
+            return "127.0.0.1"
+            
+    async def start_proxy(self, blocked_domains: Set[str], port: int = 53):
+        """DNS proxy sunucusunu başlat"""
+        if self._running:
+            print("DNS proxy already running")
+            return
+            
+        # Proxy sunucusu oluştur
+        self.proxy_server = DNSProxyServer(listen_ip='0.0.0.0', listen_port=port)
+        
+        # Kendi IP'mizi allowed listesine ekle
+        local_ip = self.get_local_ip()
+        self.proxy_server.add_allowed_client(local_ip)
+        self.proxy_server.add_allowed_client('127.0.0.1')
+        self.proxy_server.add_allowed_client('::1')  # IPv6 localhost
+        
+        # Engellenen domainleri ayarla
+        self.proxy_server.update_blocked_domains(blocked_domains)
+        
+        # Sunucuyu başlat
+        try:
+            await self.proxy_server.start_server()
+            self._running = True
+        except Exception as e:
+            print(f"Failed to start DNS proxy: {e}")
+            raise
+        
+    def stop_proxy(self):
+        """DNS proxy sunucusunu durdur"""
+        if self.proxy_server:
+            self.proxy_server.stop_server()
+            self.proxy_server = None
+            
+        if self.server_task:
+            self.server_task.cancel()
+            
+        self._running = False
+            
+    def update_blocked_domains(self, domains: Set[str]):
+        """Engellenen domain listesini güncelle"""
+        if self.proxy_server:
+            self.proxy_server.update_blocked_domains(domains)
+            
+    def is_running(self) -> bool:
+        """Proxy'nin çalışıp çalışmadığını kontrol et"""
+        return self._running
+            
+    def configure_windows_dns(self, interface_name: str) -> bool:
+        """Windows'ta belirli bir interface için DNS ayarla"""
+        if platform.system().lower() != "windows":
+            return False
+            
+        local_ip = self.get_local_ip()
+        
+        try:
+            # DNS'i bizim proxy'ye yönlendir
+            cmd = [
+                "netsh", "interface", "ip", "set", "dns",
+                f"name={interface_name}",
+                "static", local_ip, "primary"
+            ]
+            
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            if result.returncode != 0:
+                print(f"DNS configuration failed: {result.stderr}")
+                return False
+                
+            # İkincil DNS olarak Google DNS ekle (fallback)
+            cmd2 = [
+                "netsh", "interface", "ip", "add", "dns",
+                f"name={interface_name}",
+                "8.8.8.8", "index=2"
+            ]
+            subprocess.run(cmd2, capture_output=True, text=True)
+            
+            # DNS önbelleğini temizle
+            subprocess.run(["ipconfig", "/flushdns"], capture_output=True, text=True)
+            
+            print(f"DNS configured for {interface_name}: {local_ip}")
+            return True
+            
+        except Exception as e:
+            print(f"Error configuring DNS: {e}")
+            return False
+        
+    def restore_windows_dns(self, interface_name: str) -> bool:
+        """DNS ayarlarını eski haline getir"""
+        if platform.system().lower() != "windows":
+            return False
+            
+        try:
+            cmd = [
+                "netsh", "interface", "ip", "set", "dns",
+                f"name={interface_name}",
+                "dhcp"
+            ]
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            
+            # DNS önbelleğini temizle
+            subprocess.run(["ipconfig", "/flushdns"], capture_output=True, text=True)
+            
+            print(f"DNS restored to DHCP for {interface_name}")
+            return result.returncode == 0
+            
+        except Exception as e:
+            print(f"Error restoring DNS: {e}")
+            return False
+        
+        
+# Global proxy manager instance
+dns_proxy_manager = DNSProxyManager()
+
+
+================================================
+File: app/firewall_driver.py
+================================================
+class FirewallDriver:
+    """
+    Ortak (base) bir firewall sürücü sınıfı.
+    Windows veya Linux alt sınıflar bunu miras alarak
+    add_rule, remove_rule, update_rule metodlarını uygular.
+    """
+    def add_rule(self, rule):
+        raise NotImplementedError
+
+    def remove_rule(self, rule_name):
+        raise NotImplementedError
+
+    def update_rule(self, old_rule, new_rule):
+        raise NotImplementedError
+
+
+
+================================================
+File: app/firewall_os.py
+================================================
+import platform
+from app.linux_firewall import LinuxFirewall
+from app.win_firewall import WinFirewall
+
+def remove_firewall_rule_os(rule_name: str):
+    sysname = platform.system().lower()
+    if sysname.startswith("win"):
+        fw = WinFirewall()
+        fw.remove_rule(rule_name)
+    else:
+        fw = LinuxFirewall()
+        fw.remove_rule(rule_name)
+
+def add_firewall_rule_os(rule):
+    sysname = platform.system().lower()
+    if sysname.startswith("win"):
+        fw = WinFirewall()
+    else:
+        fw = LinuxFirewall()
+    fw.add_rule(rule)
+
+def update_firewall_rule_os(old_rule, new_rule):
+    sysname = platform.system().lower()
+    if sysname.startswith("win"):
+        fw = WinFirewall()
+    else:
+        fw = LinuxFirewall()
+    fw.update_rule(old_rule, new_rule)
+
+
+
+================================================
+File: app/linux_firewall.py
+================================================
+import subprocess
+from fastapi import HTTPException
+from app.firewall_driver import FirewallDriver
+
+day_mapping = ["MO","TU","WE","TH","FR","SA","SU"]
+
+def build_time_params(rule):
+    time_params = []
+    if rule.get("schedule_start") and rule.get("schedule_end"):
+        start_str = rule["schedule_start"]
+        end_str = rule["schedule_end"]
+        time_params = ["-m", "time", "--timestart", start_str, "--timestop", end_str]
+
+        if rule.get("days_of_week"):
+            valid_days = []
+            for d in rule["days_of_week"]:
+                if 0 <= d <= 6:
+                    valid_days.append(day_mapping[d])
+            if valid_days:
+                day_str = ",".join(valid_days)
+                time_params += ["--days", day_str]
+    return time_params
+
+class LinuxFirewall(FirewallDriver):
+    def add_rule(self, rule):
+        chain = "INPUT" if rule["direction"].upper() == "IN" else "OUTPUT"
+        if rule["action"].upper() == "ALLOW":
+            target = "ACCEPT"
+            log_prefix = None
+        else:
+            target = "DROP"
+            log_prefix = "FWDROP: "
+
+        proto = rule.get("protocol","tcp").lower()
+        src_ip = "0.0.0.0/0"
+        if rule.get("source_ips"):
+            src_ip = rule["source_ips"][0]
+
+        # 1) LOG kuralı (DENY ise)
+        if log_prefix:
+            log_cmd = [
+                "iptables", "-A", chain,
+                "-p", proto,
+                "-s", src_ip
+            ]
+            if rule.get("port"):
+                if chain == "INPUT":
+                    log_cmd += ["--dport", str(rule["port"])]
+                else:
+                    log_cmd += ["--sport", str(rule["port"])]
+            log_cmd += build_time_params(rule)
+            log_cmd += [
+                "-m", "comment", "--comment", rule["rule_name"],
+                "-j", "LOG", "--log-prefix", log_prefix
+            ]
+            res_log = subprocess.run(log_cmd, capture_output=True, text=True)
+            if res_log.returncode != 0:
+                raise HTTPException(400, f"Linux firewall add rule LOG error: {res_log.stderr.strip()}")
+
+        # 2) Asıl kural
+        ip_cmd = [
+            "iptables", "-A", chain,
+            "-p", proto,
+            "-s", src_ip
+        ]
+        if rule.get("port"):
+            if chain == "INPUT":
+                ip_cmd += ["--dport", str(rule["port"])]
+            else:
+                ip_cmd += ["--sport", str(rule["port"])]
+
+        ip_cmd += build_time_params(rule)
+        ip_cmd += [
+            "-m", "comment", "--comment", rule["rule_name"],
+            "-j", target
+        ]
+
+        res = subprocess.run(ip_cmd, capture_output=True, text=True)
+        if res.returncode != 0:
+            raise HTTPException(400, f"Linux firewall add rule error: {res.stderr.strip()}")
+
+    def remove_rule(self, rule_name):
+        # iptables -D ... vs. (henüz tam uygulanmadı)
+        pass
+
+    def update_rule(self, old_rule, new_rule):
+        self.remove_rule(old_rule["rule_name"])
+        self.add_rule(new_rule)
+
+
+
+================================================
+File: app/log_watchers.py
+================================================
+import asyncio
+import re
+import platform
+import subprocess
+from datetime import datetime, timedelta
+
+from app.database import db
+
+FWDROP_REGEX = re.compile(r"FWDROP:")
+
+async def iptables_log_watcher():
+    """
+    Basit bir syslog (tail -F) takibi yaparak 'FWDROP:' prefixli satırları
+    blocked_packets koleksiyonuna ekler. Sadece Linux örneği.
+    """
+    if not platform.system().lower().startswith("linux"):
+        return
+
+    cmd = ["tail", "-F", "/var/log/syslog"]
+    process = await asyncio.create_subprocess_exec(
+        *cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
+    )
+
+    while True:
+        line = await process.stdout.readline()
+        if not line:
+            await asyncio.sleep(0.1)
+            continue
+
+        if "FWDROP:" in line:
+            doc = {
+                "timestamp": datetime.utcnow(),
+                "raw_log_line": line.strip()
+            }
+            await db["blocked_packets"].insert_one(doc)
+
+            await check_blocked_alarm()
+
+async def check_blocked_alarm():
+    """
+    Basit alarm kontrolü: Son 5 dk içinde 50'den fazla DROP varsa 'ALERT' log ekler.
+    """
+    now = datetime.utcnow()
+    cutoff = now - timedelta(minutes=5)
+    count_last_5min = await db["blocked_packets"].count_documents({"timestamp": {"$gte": cutoff}})
+
+    if count_last_5min > 50:
+        alarm_doc = {
+            "timestamp": now,
+            "level": "ALERT",
+            "message": f"Son 5 dakika içinde {count_last_5min} DROP tespit edildi!"
+        }
+        await db["logs"].insert_one(alarm_doc)
+
+
+async def advanced_log_analysis_task():
+    """
+    Her 5 dakikada bir, 'logs' tablosunda çok fazla DENY (firewall_rules) varsa alert üretir.
+    Ör: son 10 dakikada 100'den fazla DENY log kaydı -> 'alerts' koleksiyonuna ekle
+    """
+    while True:
+        now = datetime.utcnow()
+        cutoff = now - timedelta(minutes=10)
+
+        query = {
+            "timestamp": {"$gte": cutoff},
+            "level": "INFO",
+            "message": {"$regex": "DENY|DROP"}
+        }
+        count_deny = await db["logs"].count_documents(query)
+
+        if count_deny > 100:
+            alert_doc = {
+                "timestamp": now,
+                "level": "ALERT",
+                "message": f"Son 10 dk içinde {count_deny} adet DENY log kaydı tespit edildi!"
+            }
+            await db["alerts"].insert_one(alert_doc)
+
+        await asyncio.sleep(300)  # 5 dk
+
+async def start_log_watchers():
+    asyncio.create_task(iptables_log_watcher())
+    asyncio.create_task(advanced_log_analysis_task())
+
+
+
+================================================
+File: app/main.py
+================================================
+import asyncio
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.config import settings
+from app.middleware import log_requests
+
+# Router importları
+from app.routers.auth import auth_router
+from app.routers.logs import logs_router
+from app.routers.status import status_router
+from app.routers.network import network_router
+from app.routers.nat import nat_router
+from app.routers.firewall import firewall_router
+from app.routers.backup import backup_router
+from app.routers.routes import route_router
+from app.routers.firewall_groups import firewall_groups_router
+from app.routers.dns import dns_router
+
+from app.log_watchers import iptables_log_watcher
+
+app = FastAPI(title=settings.PROJECT_NAME)
+
+origins = ["http://localhost:3000", "http://127.0.0.1:3000"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.middleware("http")
+async def custom_logging_middleware(request, call_next):
+    return await log_requests(request, call_next)
+
+# Tüm router'ları ekle
+app.include_router(auth_router)
+app.include_router(logs_router)
+app.include_router(status_router)
+app.include_router(network_router)
+app.include_router(nat_router)
+app.include_router(firewall_router)
+app.include_router(backup_router)
+app.include_router(route_router)
+app.include_router(firewall_groups_router)
+app.include_router(dns_router)
+
+@app.get("/")
+def read_root():
+    return {"message": "KOBI Firewall API running..."}
+
+@app.on_event("startup")
+async def start_log_watchers():
+    asyncio.create_task(iptables_log_watcher())
+
+
+
+================================================
+File: app/middleware.py
+================================================
+import time
+from starlette.requests import Request
+from starlette.responses import Response
+from app.database import db
+from datetime import datetime
+
+async def log_requests(request: Request, call_next):
+    start_time = time.time()
+    response: Response = await call_next(request)
+    process_time = time.time() - start_time
+
+    log_doc = {
+        "timestamp": datetime.utcnow(),
+        "method": request.method,
+        "path": request.url.path,
+        "query_string": request.url.query,
+        "status_code": response.status_code,
+        "process_time_ms": int(process_time * 1000),
+        "source_ip": request.client.host,
+        "level": "INFO",
+        "message": f"Request to {request.url.path}"
+    }
+
+    await db["logs"].insert_one(log_doc)
+    return response
+
+
+
+================================================
+File: app/models.py
+================================================
+from pydantic import BaseModel, Field
+from typing import Optional
+import datetime
+
+class UserDB(BaseModel):
+    id: str = Field(..., alias="_id")
+    username: str
+    hashed_password: str
+    role: str
+    created_at: datetime.datetime
+
+class FirewallRuleDB(BaseModel):
+    id: str = Field(..., alias="_id")
+    rule_name: str
+    source_ip: str
+    action: str
+    created_at: datetime.datetime
+
+class LogEntryDB(BaseModel):
+    id: str = Field(..., alias="_id")
+    timestamp: datetime.datetime
+    level: str
+    message: str
+    source_ip: Optional[str] = None
+
+
+
+================================================
+File: app/schemas.py
+================================================
+from pydantic import BaseModel
+from typing import Optional
+
+class UserCreate(BaseModel):
+    username: str
+    password: str
+
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class FirewallRuleCreate(BaseModel):
+    rule_name: str
+    source_ip: str
+    action: str  # "ALLOW" / "DENY"
+
+class FirewallRuleOut(BaseModel):
+    id: str
+    rule_name: str
+    source_ip: str
+    action: str
+
+
+
+================================================
+File: app/win_firewall.py
+================================================
+# File: app/win_firewall.py
+
+import subprocess
+from fastapi import HTTPException
+from app.firewall_driver import FirewallDriver
+
+class WinFirewall(FirewallDriver):
+    def add_rule(self, rule):
+        """
+        Windows PowerShell kullanarak firewall kuralı ekler.
+        Birden fazla port veya ANY protokol desteğini ekledik.
+        """
+
+        # Action: ALLOW veya DENY -> PS karşılığı "Allow" veya "Block"
+        ps_action = "Allow" if rule.get("action", "").upper() == "ALLOW" else "Block"
+
+        # Yön: IN / OUT -> PS karşılığı "Inbound" / "Outbound"
+        direction_map = {"IN": "Inbound", "OUT": "Outbound"}
+        ps_dir = direction_map.get(rule.get("direction", "").upper(), "Inbound")
+
+        # Kural ismi
+        rule_name = rule.get("rule_name", "UnnamedRule")
+
+        # Komutu oluştur
+        cmd = f"New-NetFirewallRule -Name '{rule_name}' -DisplayName '{rule_name}'"
+        cmd += f" -Direction {ps_dir} -Action {ps_action}"
+
+        # Protokol: TCP / UDP / ANY
+        # -Protocol ANY, Windows'ta çalışır (bazı versiyonlarda ANY verince “All” sayılır).
+        protocol = rule.get("protocol", "ANY").upper()
+        if protocol != "ANY":
+            cmd += f" -Protocol {protocol}"
+        else:
+            # ANY seçilince -Protocol ANY diyebiliriz.
+            cmd += " -Protocol ANY"
+
+        # Port bilgisi (birden fazla port girilmiş olabilir, örn: "80,443")
+        # AMA "ANY" protokol seçildiyse, Windows'ta port parametresi genelde geçersizdir.
+        port_str = rule.get("port")
+        if port_str and protocol != "ANY":
+            # Kullanıcı virgülle ayırmış olabilir (ör: "80,443").
+            # Aradaki boşlukları silelim:
+            port_str = str(port_str).replace(" ", "")
+            if ps_dir == "Inbound":
+                cmd += f" -LocalPort {port_str}"
+            else:
+                cmd += f" -RemotePort {port_str}"
+            # Eğer range girilecekse ("80-90") da bu şekilde geçerli olur.
+
+        # Source IP adres(ler)i (ör: ["10.36.130.28"])
+        source_ips = rule.get("source_ips", [])
+        if source_ips:
+            # virgülle birleştirelim
+            ip_list = ",".join(source_ips)
+            cmd += f" -RemoteAddress {ip_list}"
+
+        # Profile: "Any" / "Domain" / "Private" / "Public"
+        # eğer "Any" girilmişse parametre eklemeye gerek yok diyebiliriz. (Ama biz yine de ekleyebiliriz)
+        profile_val = rule.get("profile", "Any")
+        if profile_val.lower() != "any":
+            # ilk harfi büyük geri kalanı küçük
+            cmd += f" -Profile {profile_val.capitalize()}"
+
+        # Açıklama varsa
+        description = rule.get("description")
+        if description:
+            cmd += f" -Description '{description}'"
+
+        # PowerShell komutunu çalıştıralım
+        ps_cmd = ["powershell", "-Command", cmd]
+        res = subprocess.run(ps_cmd, capture_output=True, text=True)
+
+        if res.returncode != 0:
+            # Windows firewall komutundan gelen stderr'i kullanıcıya gösteriyoruz
+            error_msg = res.stderr.strip()
+            raise HTTPException(400, f"Windows firewall add rule error: {error_msg}")
+
+        # Kural eklendikten sonra "enabled": false ise devre dışı bırakalım
+        if rule.get("enabled", True) is False:
+            dc_cmd = [
+                "powershell",
+                "-Command",
+                f"Disable-NetFirewallRule -Name '{rule_name}'"
+            ]
+            subprocess.run(dc_cmd, capture_output=True, text=True)
+
+    def remove_rule(self, rule_name):
+        """
+        Kuralı isme göre siler.
+        """
+        ps_cmd = ["powershell", "-Command", f"Remove-NetFirewallRule -Name '{rule_name}'"]
+        subprocess.run(ps_cmd, capture_output=True, text=True)
+
+    def update_rule(self, old_rule, new_rule):
+        """
+        Önce eski kuralı silip sonra yenisini ekliyoruz.
+        """
+        self.remove_rule(old_rule.get("rule_name", ""))
+        self.add_rule(new_rule)
+
+
+
+
+================================================
+File: app/routers/auth.py
+================================================
+from fastapi import APIRouter, HTTPException, status, Depends
+from datetime import datetime, timedelta
+from passlib.hash import bcrypt
+from jose import jwt
+from ..config import settings
+from ..database import db
+from ..schemas import UserCreate, UserLogin, Token
+from ..dependencies import get_current_user
+
+auth_router = APIRouter(prefix="/auth", tags=["auth"])
+
+@auth_router.post("/register")
+async def register_user(user_in: UserCreate):
+    existing = await db["users"].find_one({"username": user_in.username})
+    if existing:
+        raise HTTPException(status_code=400, detail="Username already taken")
+
+    hashed_pass = bcrypt.hash(user_in.password)
+    new_user = {
+        "username": user_in.username,
+        "hashed_password": hashed_pass,
+        "role": "admin",
+        "created_at": datetime.utcnow()
+    }
+    result = await db["users"].insert_one(new_user)
+    return {"message": "User created", "user_id": str(result.inserted_id)}
+
+@auth_router.post("/login", response_model=Token)
+async def login_user(user_in: UserLogin):
+    user = await db["users"].find_one({"username": user_in.username})
+    if not user or not bcrypt.verify(user_in.password, user["hashed_password"]):
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+
+    expire = datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    payload = {"sub": user["username"], "exp": expire}
+    token = jwt.encode(payload, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
+    return {"access_token": token, "token_type": "bearer"}
+
+@auth_router.get("/me")
+async def get_me(current_user=Depends(get_current_user)):
+    return {
+        "username": current_user["username"],
+        "role": current_user["role"],
+        "created_at": current_user["created_at"]
+    }
+
+
+
+================================================
+File: app/routers/backup.py
+================================================
+from fastapi import APIRouter, Depends
+from ..dependencies import require_admin
+from ..database import db
+
+backup_router = APIRouter(prefix="/backup", tags=["backup"])
+
+@backup_router.get("/export")
+async def export_config(admin=Depends(require_admin)):
+    data = {}
+    data["interfaces"] = await db["interfaces"].find({}).to_list(None)
+    data["firewall_rules"] = await db["firewall_rules"].find({}).to_list(None)
+    data["routes"] = await db["routes"].find({}).to_list(None)
+    return data
+
+@backup_router.post("/import")
+async def import_config(config_data: dict, admin=Depends(require_admin)):
+    await db["interfaces"].delete_many({})
+    await db["firewall_rules"].delete_many({})
+    await db["routes"].delete_many({})
+
+    if "interfaces" in config_data:
+        await db["interfaces"].insert_many(config_data["interfaces"])
+    if "firewall_rules" in config_data:
+        await db["firewall_rules"].insert_many(config_data["firewall_rules"])
+    if "routes" in config_data:
+        await db["routes"].insert_many(config_data["routes"])
+
+    return {"message": "Config imported successfully (OS sync not implemented)."}
+
+
+
+================================================
+File: app/routers/dns.py
+================================================
+# File: app/routers/dns.py
+import asyncio
+import platform
+import subprocess
+import requests
+from datetime import datetime
+from typing import Optional, Set
+
+from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel
+
+from app.dependencies import require_admin
+from app.database import db
+from app.dns_proxy_manager import dns_proxy_manager
+
+dns_router = APIRouter(prefix="/dns", tags=["dns"])
+
+class DomainBlock(BaseModel):
+    domain: str
+    note: Optional[str] = None
+    use_wildcard: bool = True
+
+class AdblockList(BaseModel):
+    url: str
+
+class DNSProxyConfig(BaseModel):
+    enabled: bool
+    lan_interface: str
+    port: int = 53
+
+@dns_router.get("/domains")
+async def list_blocked_domains(admin=Depends(require_admin)):
+    cursor = db["blocked_domains"].find({})
+    result = []
+    async for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        result.append(doc)
+    return result
+
+@dns_router.post("/domains")
+async def add_blocked_domain(domain_in: DomainBlock, admin=Depends(require_admin)):
+    domain_lower = domain_in.domain.strip().lower()
+    
+    # Domain formatını kontrol et
+    if not domain_lower or '/' in domain_lower or ':' in domain_lower:
+        raise HTTPException(400, detail="Geçersiz domain formatı. Örnek: youtube.com")
+    
+    # www. prefix'ini kaldır
+    if domain_lower.startswith('www.'):
+        domain_lower = domain_lower[4:]
+    
+    existing = await db["blocked_domains"].find_one({"domain": domain_lower})
+    if existing:
+        raise HTTPException(400, detail="Bu domain zaten engelli.")
+
+    doc = {
+        "domain": domain_lower,
+        "note": domain_in.note or "",
+        "use_wildcard": domain_in.use_wildcard,
+        "created_at": datetime.utcnow()
+    }
+    await db["blocked_domains"].insert_one(doc)
+    
+    # DNS proxy'yi güncelle
+    await update_dns_proxy()
+    
+    return {"message": f"Domain engellendi: {domain_lower}"}
+
+@dns_router.delete("/domains/{domain}")
+async def remove_blocked_domain(domain: str, admin=Depends(require_admin)):
+    domain_lower = domain.strip().lower()
+    result = await db["blocked_domains"].delete_one({"domain": domain_lower})
+    if result.deleted_count == 0:
+        raise HTTPException(404, detail="Bu domain kayıtlı değil.")
+    
+    # DNS proxy'yi güncelle
+    await update_dns_proxy()
+    
+    return {"message": f"Domain silindi: {domain_lower}"}
+
+@dns_router.post("/adblocklist")
+async def import_adblock_list(data: AdblockList, admin=Depends(require_admin)):
+    """Adblock listesinden toplu domain ekleme"""
+    try:
+        resp = requests.get(data.url, timeout=10)
+        if resp.status_code != 200:
+            raise HTTPException(400, detail=f"Liste indirilemedi: HTTP {resp.status_code}")
+        
+        lines = resp.text.splitlines()
+        count_added = 0
+        
+        for line in lines:
+            line = line.strip().lower()
+            if not line or line.startswith("#"):
+                continue
+            
+            # Farklı format desteği
+            domain = None
+            if line.startswith("0.0.0.0 "):
+                domain = line.replace("0.0.0.0 ", "").strip()
+            elif line.startswith("127.0.0.1 "):
+                domain = line.replace("127.0.0.1 ", "").strip()
+            elif "||" in line and "^" in line:  # Adblock format
+                domain = line.replace("||", "").replace("^", "").strip()
+            else:
+                parts = line.split()
+                if len(parts) > 0:
+                    domain = parts[-1]
+            
+            # Domain temizleme
+            if domain:
+                domain = domain.strip()
+                if domain.startswith('www.'):
+                    domain = domain[4:]
+                    
+            if domain and '.' in domain and not domain.startswith('.'):
+                existing = await db["blocked_domains"].find_one({"domain": domain})
+                if not existing:
+                    doc = {
+                        "domain": domain,
+                        "use_wildcard": True,
+                        "note": "Adblock imported",
+                        "created_at": datetime.utcnow()
+                    }
+                    await db["blocked_domains"].insert_one(doc)
+                    count_added += 1
+
+        # DNS proxy'yi güncelle
+        await update_dns_proxy()
+        
+        return {"message": f"Adblock listesi indirildi. {count_added} domain eklendi."}
+    except Exception as e:
+        raise HTTPException(500, detail=f"Liste indirme hatası: {str(e)}")
+
+@dns_router.post("/proxy/start")
+async def start_dns_proxy(config: DNSProxyConfig, admin=Depends(require_admin)):
+    """DNS Proxy'yi başlat"""
+    try:
+        # Config'i kaydet
+        await db["dns_proxy_config"].update_one(
+            {"_id": "main"},
+            {"$set": {
+                "enabled": config.enabled,
+                "lan_interface": config.lan_interface,
+                "port": config.port,
+                "updated_at": datetime.utcnow()
+            }},
+            upsert=True
+        )
+        
+        if not config.enabled:
+            # Proxy'yi durdur
+            dns_proxy_manager.stop_proxy()
+            # DNS ayarlarını eski haline getir
+            dns_proxy_manager.restore_windows_dns(config.lan_interface)
+            return {"message": "DNS Proxy durduruldu ve DNS ayarları eski haline getirildi"}
+        
+        # Engellenen domainleri al
+        domains = await get_blocked_domains()
+        
+        # Proxy'yi başlat
+        await dns_proxy_manager.start_proxy(domains, config.port)
+        
+        # LAN interface'inde DNS'i ayarla
+        success = dns_proxy_manager.configure_windows_dns(config.lan_interface)
+        if not success:
+            dns_proxy_manager.stop_proxy()
+            raise HTTPException(500, detail="DNS ayarları yapılandırılamadı")
+        
+        return {"message": f"DNS Proxy port {config.port}'de başlatıldı ve {config.lan_interface} için DNS ayarlandı"}
+        
+    except Exception as e:
+        raise HTTPException(500, detail=f"DNS Proxy başlatma hatası: {str(e)}")
+
+@dns_router.get("/proxy/status")
+async def get_proxy_status(admin=Depends(require_admin)):
+    """DNS Proxy durumunu kontrol et"""
+    try:
+        # Config'i al
+        config = await db["dns_proxy_config"].find_one({"_id": "main"})
+        
+        # Engelli domain sayısı
+        blocked_count = await db["blocked_domains"].count_documents({})
+        
+        # NAT durumu
+        nat_doc = await db["nat_config"].find_one({"_id": "main"})
+        nat_enabled = nat_doc.get("enabled", False) if nat_doc else False
+        
+        return {
+            "proxy_running": dns_proxy_manager.is_running(),
+            "proxy_enabled": config.get("enabled", False) if config else False,
+            "lan_interface": config.get("lan_interface", "") if config else "",
+            "proxy_port": config.get("port", 53) if config else 53,
+            "blocked_domains_count": blocked_count,
+            "nat_enabled": nat_enabled,
+            "local_ip": dns_proxy_manager.get_local_ip()
+        }
+    except Exception as e:
+        raise HTTPException(500, detail=str(e))
+
+@dns_router.post("/apply-changes")
+async def apply_dns_changes(admin=Depends(require_admin)):
+    """DNS değişikliklerini uygula"""
+    try:
+        await update_dns_proxy()
+        
+        # DNS önbelleğini temizle
+        if platform.system().lower() == "windows":
+            subprocess.run(["ipconfig", "/flushdns"], capture_output=True, text=True)
+        
+        return {"message": "DNS değişiklikleri uygulandı ve DNS önbelleği temizlendi."}
+    except Exception as e:
+        raise HTTPException(500, detail=f"Uygulama hatası: {str(e)}")
+
+async def get_blocked_domains() -> Set[str]:
+    """MongoDB'den engelli domainleri çek"""
+    domains = set()
+    cursor = db["blocked_domains"].find({})
+    async for doc in cursor:
+        domains.add(doc["domain"])
+    return domains
+
+async def update_dns_proxy():
+    """DNS proxy'deki domain listesini güncelle"""
+    if dns_proxy_manager.is_running():
+        domains = await get_blocked_domains()
+        dns_proxy_manager.update_blocked_domains(domains)
+    
+# Uygulama başladığında DNS proxy'yi kontrol et
+@dns_router.on_event("startup")
+async def check_dns_proxy():
+    """Uygulama başladığında proxy durumunu kontrol et"""
+    config = await db["dns_proxy_config"].find_one({"_id": "main"})
+    if config and config.get("enabled"):
+        try:
+            domains = await get_blocked_domains()
+            port = config.get("port", 53)
+            await dns_proxy_manager.start_proxy(domains, port)
+            print(f"DNS Proxy auto-started on port {port}")
+        except Exception as e:
+            print(f"Failed to auto-start DNS proxy: {e}")
+
+
+================================================
+File: app/routers/firewall.py
+================================================
+# File: app/routers/firewall.py
+
+from fastapi import APIRouter, Depends, HTTPException
+from bson import ObjectId
+from datetime import datetime
+from app.database import db
+from app.dependencies import require_admin
+from app.firewall_os import add_firewall_rule_os, remove_firewall_rule_os, update_firewall_rule_os
+
+firewall_router = APIRouter(prefix="/firewall", tags=["firewall"])
+
+
+@firewall_router.get("/rules")
+async def list_rules(admin=Depends(require_admin)):
+    cursor = db["firewall_rules"].find({})
+    results = []
+    async for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        results.append(doc)
+    return results
+
+
+@firewall_router.post("/rules")
+async def create_rule(rule_in: dict, admin=Depends(require_admin)):
+    """
+    Yeni kural ekleme.
+    rule_in => {
+      "rule_name": str,
+      "source_ips": [...],
+      "port": int,
+      "protocol": "TCP"/"UDP",
+      "action": "ALLOW"/"DENY",
+      "direction": "IN"/"OUT",
+      "profile": "Any"/"Private"/"Public",
+      "description": str,
+      "enabled": bool,
+      ...
+    }
+    """
+    try:
+        add_firewall_rule_os(rule_in)  # Windows -> WinFirewall, Linux -> LinuxFirewall
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    doc = rule_in
+    doc["created_at"] = datetime.utcnow()
+    result = await db["firewall_rules"].insert_one(doc)
+    doc["_id"] = str(result.inserted_id)
+    return {"message": "Kural eklendi", "data": doc}
+
+
+@firewall_router.put("/rules/{rule_id}")
+async def update_rule(rule_id: str, rule_in: dict, admin=Depends(require_admin)):
+    try:
+        obj_id = ObjectId(rule_id)
+    except:
+        raise HTTPException(400, "Geçersiz rule_id")
+
+    old_doc = await db["firewall_rules"].find_one({"_id": obj_id})
+    if not old_doc:
+        raise HTTPException(404, "Kural bulunamadı")
+
+    try:
+        update_firewall_rule_os(old_doc, rule_in)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    rule_in["updated_at"] = datetime.utcnow()
+    await db["firewall_rules"].update_one({"_id": obj_id}, {"$set": rule_in})
+
+    return {"message": "Kural güncellendi"}
+
+
+@firewall_router.delete("/rules/{rule_id}")
+async def delete_rule(rule_id: str, admin=Depends(require_admin)):
+    try:
+        obj_id = ObjectId(rule_id)
+    except:
+        raise HTTPException(400, "Geçersiz rule_id")
+
+    old_doc = await db["firewall_rules"].find_one({"_id": obj_id})
+    if not old_doc:
+        raise HTTPException(404, "Kural yok")
+
+    remove_firewall_rule_os(old_doc["rule_name"])
+    await db["firewall_rules"].delete_one({"_id": obj_id})
+
+    return {"message": "Kural silindi."}
+
+
+
+================================================
+File: app/routers/firewall_groups.py
+================================================
+import platform
+import subprocess
+from datetime import datetime
+from bson import ObjectId
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
+from typing import Optional
+
+from app.database import db
+from app.dependencies import require_admin
+from app.routers.firewall import remove_firewall_rule_os, add_firewall_rule_os
+
+firewall_groups_router = APIRouter(
+    prefix="/firewall/groups",
+    tags=["firewall-groups"]
+)
+
+class FirewallGroupModel(BaseModel):
+    group_name: str
+    description: Optional[str] = None
+
+@firewall_groups_router.get("/")
+async def list_groups(admin=Depends(require_admin)):
+    cursor = db["firewall_groups"].find({})
+    groups = []
+    async for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        groups.append(doc)
+    return groups
+
+@firewall_groups_router.post("/")
+async def create_group(data: FirewallGroupModel, admin=Depends(require_admin)):
+    group_doc = {
+        "group_name": data.group_name,
+        "description": data.description or "",
+        "created_at": datetime.utcnow()
+    }
+    result = await db["firewall_groups"].insert_one(group_doc)
+    return {"message": "Grup oluşturuldu", "group_id": str(result.inserted_id)}
+
+@firewall_groups_router.delete("/{group_id}")
+async def delete_group(group_id: str, admin=Depends(require_admin)):
+    try:
+        obj_id = ObjectId(group_id)
+    except:
+        raise HTTPException(400, "Geçersiz group_id (ObjectId değil)")
+
+    group_doc = await db["firewall_groups"].find_one({"_id": obj_id})
+    if not group_doc:
+        raise HTTPException(404, "Grup bulunamadı")
+
+    await db["firewall_groups"].delete_one({"_id": obj_id})
+    return {"message": f"Grup '{group_doc['group_name']}' silindi."}
+
+@firewall_groups_router.patch("/{group_id}/enable")
+async def enable_disable_group(group_id: str, enable: bool, admin=Depends(require_admin)):
+    try:
+        obj_id = ObjectId(group_id)
+    except:
+        raise HTTPException(400, "Geçersiz group_id (ObjectId değil)")
+
+    group_doc = await db["firewall_groups"].find_one({"_id": obj_id})
+    if not group_doc:
+        raise HTTPException(404, "Grup kaydı yok")
+
+    cursor = db["firewall_rules"].find({"group_id": group_id})
+    rules_in_group = []
+    async for rule_doc in cursor:
+        rules_in_group.append(rule_doc)
+
+    for rdoc in rules_in_group:
+        remove_firewall_rule_os(rdoc["rule_name"])
+
+        await db["firewall_rules"].update_one(
+            {"_id": rdoc["_id"]},
+            {"$set": {"enabled": enable}}
+        )
+
+        if enable:
+            tmp_rule = {
+                "rule_name": rdoc["rule_name"],
+                "source_ips": rdoc.get("source_ips", []),
+                "port": rdoc.get("port"),
+                "protocol": rdoc.get("protocol", "TCP"),
+                "action": rdoc.get("action", "ALLOW"),
+                "direction": rdoc.get("direction", "IN"),
+                "profile": rdoc.get("profile", "Any"),
+                "description": rdoc.get("description", ""),
+                "enabled": True
+            }
+            add_firewall_rule_os(tmp_rule)
+
+    msg = "Grup kuralları etkinleştirildi." if enable else "Grup kuralları pasifleştirildi."
+    return {"message": msg}
+
+@firewall_groups_router.get("/{group_id}/rules")
+async def list_group_rules(group_id: str, admin=Depends(require_admin)):
+    try:
+        obj_id = ObjectId(group_id)
+    except:
+        raise HTTPException(400, "Geçersiz group_id")
+
+    group_doc = await db["firewall_groups"].find_one({"_id": obj_id})
+    if not group_doc:
+        raise HTTPException(404, "Grup bulunamadı.")
+
+    cursor = db["firewall_rules"].find({"group_id": group_id})
+    arr = []
+    async for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        arr.append(doc)
+    return arr
+
+
+
+================================================
+File: app/routers/layer7_inspect.py
+================================================
+import threading
+from scapy.all import sniff, TCP
+
+def packet_callback(pkt):
+    if pkt.haslayer(TCP):
+        payload = bytes(pkt[TCP].payload)
+        # Örnek: HTTP flood tespiti, SSH brute force vs.
+        # Uygun bulursak DB'ye log, firewall rule ekleme vs.
+
+def start_sniffer():
+    sniff(filter="tcp", prn=packet_callback, store=0)
+
+def start_layer7_inspect():
+    t = threading.Thread(target=start_sniffer, daemon=True)
+    t.start()
+
+
+
+================================================
+File: app/routers/logs.py
+================================================
+from fastapi import APIRouter, Depends
+from ..dependencies import require_admin
+from ..database import db
+
+logs_router = APIRouter(prefix="/logs", tags=["logs"])
+
+@logs_router.get("/")
+async def list_logs(level: str = None, ip: str = None, admin=Depends(require_admin)):
+    query = {}
+    if level:
+        query["level"] = level
+    if ip:
+        query["source_ip"] = ip
+
+    cursor = db["logs"].find(query)
+    logs = []
+    async for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        logs.append(doc)
+    return logs
+
+@logs_router.get("/blocked")
+async def list_blocked_packets(admin=Depends(require_admin)):
+    cursor = db["blocked_packets"].find({}).sort("timestamp", -1)
+    packets = []
+    async for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        packets.append(doc)
+    return packets
+
+@logs_router.get("/alerts")
+async def list_alerts(admin=Depends(require_admin)):
+    cursor = db["alerts"].find({}).sort("timestamp", -1)
+    alerts = []
+    async for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        alerts.append(doc)
+    return alerts
+
+
+
+================================================
+File: app/routers/nat.py
+================================================
+import subprocess
+import platform
+from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel
+from typing import Optional
+from app.dependencies import require_admin
+from app.database import db
+
+nat_router = APIRouter(prefix="/nat", tags=["nat"])
+
+class NatConfig(BaseModel):
+    enabled: bool
+    wan: Optional[str] = None  # WAN interface ismi (internet aldığı)
+    lan: Optional[str] = None  # LAN interface ismi (ICS paylaştırılacak ağ)
+
+@nat_router.get("")
+async def get_nat_config(admin=Depends(require_admin)):
+    """
+    NAT (ICS) ayarlarını DB'den okur.
+    Örnek dönüş:
+    {
+      "enabled": false,
+      "wan": "",
+      "lan": ""
+    }
+    """
+    doc = await db["nat_config"].find_one({"_id": "main"})
+    if not doc:
+        return {"enabled": False, "wan": "", "lan": ""}
+    return {
+        "enabled": doc.get("enabled", False),
+        "wan": doc.get("wan", ""),
+        "lan": doc.get("lan", "")
+    }
+
+@nat_router.patch("")
+async def update_nat_config(cfg: NatConfig, admin=Depends(require_admin)):
+    """
+    NAT ICS ayarlarını günceller (yalnızca Windows'ta).
+    1) DB'ye kaydeder
+    2) Mevcut tüm ICS paylaşımını disable eder
+    3) enabled=True ise WAN->Internet, LAN->Home ICS aktif etmeye çalışır
+    """
+    # 1) Windows değilse hata
+    if platform.system().lower() != "windows":
+        raise HTTPException(
+            status_code=400,
+            detail="NAT ICS sadece Windows ortamında uygulanır."
+        )
+
+    # 2) WAN ve LAN farklı olmalı
+    if cfg.enabled and cfg.wan == cfg.lan:
+        raise HTTPException(
+            status_code=400,
+            detail="WAN ve LAN aynı arayüz olamaz. Lütfen farklı arayüzler seçin."
+        )
+
+    # 3) DB'ye kaydet
+    await db["nat_config"].update_one(
+        {"_id": "main"},
+        {
+            "$set": {
+                "enabled": cfg.enabled,
+                "wan": cfg.wan or "",
+                "lan": cfg.lan or ""
+            }
+        },
+        upsert=True
+    )
+
+    # 4) ICS devre dışı
+    try:
+        _disable_ics_powershell()  # Önce PowerShell ICS kapatma dene
+    except ICSCmdletNotFound:
+        # Eğer cmdlet yoksa netsh/servis fallback
+        _disable_ics_netsh()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    # 5) ICS etkinleştirme (cfg.enabled=True ise)
+    if cfg.enabled:
+        try:
+            _enable_ics(cfg.wan, cfg.lan)  # PowerShell ICS
+        except ICSCmdletNotFound:
+            # Tekrar fallback netsh ICS
+            try:
+                _enable_ics_netsh(cfg.wan, cfg.lan)
+            except Exception as e2:
+                raise HTTPException(status_code=500, detail=str(e2))
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+
+    return {"message": "ICS NAT yapılandırması güncellendi."}
+
+# ------------------------------------------------
+# Yardımcı sınıf ve fonksiyonlar
+# ------------------------------------------------
+
+class ICSCmdletNotFound(Exception):
+    """
+    PowerShell ICS cmdlet'lerinin (Get-NetConnectionSharing / Enable-NetConnectionSharing)
+    bulunmadığını belirten özel exception.
+    """
+
+def _disable_ics_powershell():
+    """
+    PowerShell ICS cmdlet'leriyle ICS paylaşımını kapatır.
+    Eğer 'Get-NetConnectionSharing' / 'Disable-NetConnectionSharing' yoksa ICSCmdletNotFound fırlatır.
+    """
+    ps_script = r"""
+    try {
+      Get-NetConnectionSharing | ForEach-Object {
+        Disable-NetConnectionSharing -ConnectionName $_.ConnectionName
+      }
+    }
+    catch {
+      throw $_
+    }
+    """
+    cmd = ["powershell", "-Command", ps_script]
+    res = subprocess.run(cmd, capture_output=True, text=True)
+    # stderr'i None gelirse boş string verelim:
+    stderr_text = res.stderr or ""
+
+    if res.returncode != 0:
+        if "CommandNotFoundException" in stderr_text:
+            # Bu, ICS cmdletlerinin bulunmadığına işaret
+            raise ICSCmdletNotFound("PowerShell ICS cmdlet'leri bulunamadı.")
+        else:
+            # Diğer hata
+            raise RuntimeError(stderr_text.strip())
+
+def _disable_ics_netsh():
+    """
+    Netsh ile ICS kapatma.
+    Windows ICS servisi 'SharedAccess' adıyla bilinir.
+    Aşağıdaki komutlar sırasıyla:
+      - "sc config SharedAccess start= disabled"
+      - "net stop SharedAccess"
+    ile servisi durdurup devre dışı bırakmaya çalışır.
+    """
+    cmds = [
+        ["sc", "config", "SharedAccess", "start=", "disabled"],
+        ["net", "stop", "SharedAccess"]
+    ]
+    for c in cmds:
+        proc = subprocess.run(c, capture_output=True, text=True)
+        stderr_text = proc.stderr or ""
+        # Hata çıkarsa, loglama yapmak isteyebilirsiniz.
+        # Ama burada "already stopped" vb. durumlar normal sayılabilir.
+
+def _enable_ics(wan_iface: str, lan_iface: str):
+    """
+    PowerShell ICS cmdlet'leriyle WAN->Internet, LAN->Home paylaşımı.
+    1) WAN arayüzünü "Internet" modunda paylaşma
+    2) LAN arayüzünü "Home" modunda paylaşma
+    """
+    # 1) WAN -> Internet
+    ps_script_wan = f"""
+    try {{
+      Enable-NetConnectionSharing -ConnectionName '{wan_iface}' -SharingMode Internet
+    }}
+    catch {{
+      throw $_
+    }}
+    """
+    cmd_wan = ["powershell", "-Command", ps_script_wan]
+    res_wan = subprocess.run(cmd_wan, capture_output=True, text=True)
+    stderr_wan = res_wan.stderr or ""
+    if res_wan.returncode != 0:
+        if "CommandNotFoundException" in stderr_wan:
+            # ICS cmdleti yok
+            raise ICSCmdletNotFound("Enable-NetConnectionSharing bulunamadı.")
+        else:
+            raise RuntimeError(stderr_wan.strip())
+
+    # 2) LAN -> Home
+    ps_script_lan = f"""
+    try {{
+      Enable-NetConnectionSharing -ConnectionName '{lan_iface}' -SharingMode Home
+    }}
+    catch {{
+      throw $_
+    }}
+    """
+    cmd_lan = ["powershell", "-Command", ps_script_lan]
+    res_lan = subprocess.run(cmd_lan, capture_output=True, text=True)
+    stderr_lan = res_lan.stderr or ""
+    if res_lan.returncode != 0:
+        if "CommandNotFoundException" in stderr_lan:
+            raise ICSCmdletNotFound("Enable-NetConnectionSharing yok.")
+        else:
+            raise RuntimeError(stderr_lan.strip())
+
+def _enable_ics_netsh(wan_iface: str, lan_iface: str):
+    """
+    Netsh fallback (basit ICS):
+      1) SharedAccess servisini 'auto' yap
+      2) 'net start SharedAccess' ile servisi başlat
+      3) netsh ICS parametreleri ile tam paylaştırma (bazı sürümlerde kısıtlı)
+    """
+    # 1) 'SharedAccess' servisini otomatik ve start
+    cmds = [
+        ["sc", "config", "SharedAccess", "start=", "auto"],
+        ["net", "start", "SharedAccess"]
+    ]
+    for c in cmds:
+        p = subprocess.run(c, capture_output=True, text=True)
+        stderr_text = p.stderr or ""
+        if p.returncode != 0:
+            # "already running" vb. olabilir, normal sayabiliriz
+            # ama gene de hata fırlatalım ki log görülsün
+            if "already been started" in stderr_text.lower():
+                # bu hata normal
+                continue
+            raise RuntimeError(f"Command '{' '.join(c)}' failed: {stderr_text.strip()}")
+
+    # 2) ICS'yi netsh parametreleriyle tam ayarlamak zordur.
+    # Burada opsiyonel ek ayarlar yazabilirsiniz.
+    #
+    # Örneğin:
+    # netsh routing ip install
+    # netsh routing ip nat install
+    # netsh routing ip nat add interface "WAN" full
+    # netsh routing ip nat add interface "LAN" private
+    #
+    # Fakat ICS devreye girdiğinde bu NAT ayarları conflict yaratabilir.
+    # Deneysel olarak ekleyebilirsiniz.
+    # Yine de ICS devredeyken 'routing ip nat' komutları her zaman çalışmayabiliyor.
+
+
+
+================================================
+File: app/routers/network.py
+================================================
+# File: app/routers/network.py
+import subprocess
+import platform
+import ctypes
+from datetime import datetime, timezone
+from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel
+from typing import Optional
+
+from app.dependencies import require_admin
+from app.database import db
+
+network_router = APIRouter(prefix="/network", tags=["network"])
+
+# ----------------------------- MODELS --------------------------------- #
+class InterfaceConfig(BaseModel):
+    interface_name: str
+    ip_mode: str = "static"          # "static" | "dhcp"
+    ip_address: Optional[str] = None
+    subnet_mask: Optional[str] = None
+    gateway: Optional[str] = None
+    dns_primary: Optional[str] = None
+    dns_secondary: Optional[str] = None
+    admin_enabled: bool = True
+    mtu: Optional[int] = None
+    vlan_id: Optional[int] = None
+# ---------------------------------------------------------------------- #
+
+# ----------------------------- HELPERS -------------------------------- #
+def is_windows_admin() -> bool:
+    if platform.system().lower() != "windows":
+        return True            # Linux’ta sudo ile çalıştırıldığı varsay.
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin() != 0
+    except Exception:          # noqa: S110
+        return False
+
+def run(cmd: list[str]) -> subprocess.CompletedProcess:         # küçük yardımcı
+    return subprocess.run(cmd, capture_output=True, text=True)
+
+def get_interface_admin_state(name: str) -> str:
+    """
+    netsh ile arayüzün Enabled/Disabled bilgisini getirir.
+    "" dönerse bilinmiyor.
+    """
+    res = run(["netsh", "interface", "show", "interface", f"name={name}"])
+    if res.returncode != 0:
+        return ""
+    for line in res.stdout.splitlines():
+        parts = line.split(None, 3)
+        # Expected format: Admin  State  Type  Interface Name
+        if len(parts) == 4 and parts[3].strip() == name:
+            return parts[0].strip()       # Enabled | Disabled
+    return ""
+
+def parse_netsh_error(stderr_text: str) -> str:
+    msg_lower = (stderr_text or "").lower()
+    if "access is denied" in msg_lower:
+        return "Yönetici izni gerekli (Run as Administrator)."
+    if "not found" in msg_lower or "no matching interface" in msg_lower:
+        return "Arayüz ismi bulunamadı ('netsh interface show interface' ile kontrol edin)."
+    if "media disconnected" in msg_lower:
+        return "Arayüz bağlantısız (kablo/Wi-Fi kapalı?)."
+    if "object is already in use" in msg_lower or "duplicate" in msg_lower:
+        return "IP adresi başka bir cihazda kullanımda (IP çakışması)."
+    if "dhcp" in msg_lower and "fail" in msg_lower:
+        return "DHCP sunucusuna ulaşılamadı veya zaman aşımı."
+    if msg_lower.strip() == "":
+        # netsh bazen stderr’i boş, exit code’u 1 döndürür
+        return "Netsh komutu başarısız; ayrıntı yok – büyük olasılıkla Yönetici izni gerekir."
+    return stderr_text.strip()
+# ---------------------------------------------------------------------- #
+
+# ============================= ENDPOINTS ============================== #
+@network_router.get("/interfaces")
+async def list_interfaces(admin=Depends(require_admin)):
+    docs = await db["interfaces"].find({}).to_list(None)
+    for d in docs:
+        d["_id"] = str(d["_id"])
+
+    if platform.system().lower().startswith("win"):
+        res = run(["netsh", "interface", "show", "interface"])
+        lines = res.stdout.splitlines()
+        for doc in docs:
+            doc["link_state"] = "unknown"
+            doc["admin_state"] = "unknown"
+            for line in lines:
+                parts = line.split(None, 3)
+                if len(parts) == 4 and parts[3] == doc["interface_name"]:
+                    doc["admin_state"] = parts[0]
+                    doc["link_state"] = parts[1]
+                    break
+    else:
+        for d in docs:
+            d["link_state"] = "unknown"
+            d["admin_state"] = "unknown"
+
+    return docs
+
+
+@network_router.post("/interfaces")
+async def create_interface(config: InterfaceConfig, admin=Depends(require_admin)):
+    if platform.system().lower() != "windows":
+        raise HTTPException(400, "Bu endpoint yalnızca Windows altında kullanılabilir.")
+
+    if not is_windows_admin():
+        raise HTTPException(
+            400,
+            "Bu işlemi yapmak için uygulamayı **Yönetici (Run as Administrator)** olarak çalıştırın."
+        )
+
+    try:
+        # -------- 1) admin up/down (yalnızca gerekliyse) -------- #
+        current_state = get_interface_admin_state(config.interface_name)
+        desired_state = "Enabled" if config.admin_enabled else "Disabled"
+        if current_state and current_state.lower() == desired_state.lower():
+            pass  # zaten istenen durumda, netsh çağırmaya gerek yok
+        else:
+            adm_cmd = [
+                "netsh", "interface", "set", "interface",
+                f"name={config.interface_name}",
+                f"admin={'enabled' if config.admin_enabled else 'disabled'}"
+            ]
+            res_adm = run(adm_cmd)
+            if res_adm.returncode != 0:
+                raise HTTPException(400, f"Admin up/down hatası: {parse_netsh_error(res_adm.stderr)}")
+
+        # -------- 2) IP MODE -------- #
+        if config.ip_mode.lower() == "dhcp":
+            res_ip = run([
+                "netsh", "interface", "ip", "set", "address",
+                f"name={config.interface_name}", "source=dhcp"
+            ])
+            if res_ip.returncode != 0:
+                raise HTTPException(400, f"DHCP hatası: {parse_netsh_error(res_ip.stderr)}")
+
+            res_dns = run([
+                "netsh", "interface", "ip", "set", "dns",
+                f"name={config.interface_name}", "source=dhcp"
+            ])
+            if res_dns.returncode != 0:
+                raise HTTPException(400, f"DHCP-DNS hatası: {parse_netsh_error(res_dns.stderr)}")
+
+        else:  # STATIC
+            if not config.ip_address or not config.subnet_mask:
+                raise HTTPException(400, "Statik modda IP ve Subnet zorunludur.")
+
+            res_static = run([
+                "netsh", "interface", "ip", "set", "address",
+                f"name={config.interface_name}", "static",
+                config.ip_address, config.subnet_mask,
+                config.gateway if config.gateway else "none"
+            ])
+            if res_static.returncode != 0:
+                raise HTTPException(400, f"IP ayarı hatası: {parse_netsh_error(res_static.stderr)}")
+
+            # DNS birincil / ikincil
+            if config.dns_primary:
+                res_dns1 = run([
+                    "netsh", "interface", "ip", "set", "dns",
+                    f"name={config.interface_name}", "static", config.dns_primary
+                ])
+                if res_dns1.returncode != 0:
+                    raise HTTPException(400, f"DNS-1 hatası: {parse_netsh_error(res_dns1.stderr)}")
+
+            if config.dns_secondary:
+                res_dns2 = run([
+                    "netsh", "interface", "ip", "add", "dns",
+                    f"name={config.interface_name}", config.dns_secondary, "index=2"
+                ])
+                if res_dns2.returncode != 0:
+                    raise HTTPException(400, f"DNS-2 hatası: {parse_netsh_error(res_dns2.stderr)}")
+
+        # -------- 3) MTU -------- #
+        if config.mtu:
+            res_mtu = run([
+                "netsh", "interface", "ipv4", "set", "subinterface",
+                config.interface_name, f"mtu={config.mtu}", "store=persistent"
+            ])
+            if res_mtu.returncode != 0:
+                raise HTTPException(400, f"MTU hatası: {parse_netsh_error(res_mtu.stderr)}")
+
+        # -------- 4) DB kayıt / response -------- #
+        doc = {
+            "interface_name": config.interface_name,
+            "ip_mode": config.ip_mode.lower(),
+            "ip_address": config.ip_address,
+            "subnet_mask": config.subnet_mask,
+            "gateway": config.gateway,
+            "dns_primary": config.dns_primary,
+            "dns_secondary": config.dns_secondary,
+            "admin_enabled": config.admin_enabled,
+            "mtu": config.mtu,
+            "vlan_id": config.vlan_id,
+            "updated_at": datetime.now(timezone.utc).isoformat()
+        }
+        await db["interfaces"].update_one(
+            {"interface_name": config.interface_name},
+            {"$set": doc},
+            upsert=True
+        )
+        return {"message": "Interface kaydedildi", "data": doc}
+
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(500, str(exc)) from exc
+
+
+@network_router.put("/interfaces/{iface_name}")
+async def update_interface(iface_name: str, config: InterfaceConfig, admin=Depends(require_admin)):
+    # PUT endpoint mantığı POST ile neredeyse aynı; tekrar yazmamak için
+    # küçük farklarla aynı fonksiyonu kullanmak da mümkündü.
+    return await create_interface(config, admin)   # noqa: WPS331
+
+
+@network_router.delete("/interfaces/{iface_name}")
+async def delete_interface(iface_name: str, admin=Depends(require_admin)):
+    doc = await db["interfaces"].find_one({"interface_name": iface_name})
+    if not doc:
+        raise HTTPException(404, "Arayüz kaydı bulunamadı")
+
+    await db["interfaces"].delete_one({"interface_name": iface_name})
+    return {"message": f"{iface_name} arayüzü DB kaydından silindi."}
+
+
+
+================================================
+File: app/routers/routes.py
+================================================
+# File: app/routers/routes.py
+# Path: app/routers/routes.py
+
+import subprocess
+import platform
+import re
+import asyncio
+from datetime import datetime, timezone
+from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel, Field
+from typing import Optional
+
+from ..dependencies import require_admin
+from ..database import db
+
+route_router = APIRouter(prefix="/routes", tags=["routes"])
+
+# =========== MODEL / SCHEMA ===========
+class RouteConfig(BaseModel):
+    destination: str
+    mask: str
+    gateway: str
+    metric: int = Field(1, ge=1, le=9999)
+    enabled: bool = True
+    interface_name: Optional[str] = None  # Windows "Ethernet", Linux "eth0" vb.
+    mode: str = "static"  # "dhcp" veya "static"
+    failover: bool = False  # opsiyonel
+
+# Basit IP kontrolü (regex)
+ip_pattern = re.compile(r"^((25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(25[0-5]|2[0-4]\d|[01]?\d?\d)$")
+
+def is_valid_ip(ip: str) -> bool:
+    return bool(ip_pattern.match(ip))
+
+def validate_route_fields(route: RouteConfig):
+    if not is_valid_ip(route.destination):
+        raise HTTPException(400, detail="Hedef IP formatı geçersiz.")
+    if not is_valid_ip(route.mask):
+        raise HTTPException(400, detail="Subnet Mask formatı geçersiz.")
+    if not is_valid_ip(route.gateway):
+        raise HTTPException(400, detail="Gateway IP formatı geçersiz.")
+
+def parse_netsh_error(stderr_text: str) -> str:
+    text_lower = stderr_text.lower()
+    if "already in use" in text_lower or "duplicate" in text_lower:
+        return "IP çakışması veya rota çakışması tespit edildi."
+    if "dhcp" in text_lower and "fail" in text_lower:
+        return "DHCP sunucusuna ulaşılamadı (DHCP config hatası)."
+    return stderr_text.strip()
+
+async def failover_watchdog_task():
+    """
+    Asenkron failover senaryosu (opsiyonel).
+    failover=true, enabled=true olan rotalara gateway ping atar,
+    yanıt yoksa remove_route ile siler.
+    """
+    while True:
+        cursor = db["routes"].find({"failover": True, "enabled": True})
+        async for rt in cursor:
+            gw_ip = rt.get("gateway")
+            if not gw_ip:
+                continue
+            # Ping
+            if platform.system().lower().startswith("win"):
+                cmd_ping = ["ping", "-n", "1", "-w", "200", gw_ip]
+            else:
+                cmd_ping = ["ping", "-c", "1", "-W", "1", gw_ip]
+
+            result = subprocess.run(cmd_ping, capture_output=True, text=True)
+            if result.returncode != 0:
+                try:
+                    remove_route(rt)
+                    print(f"[Failover] Gateway yanıt vermiyor, rota silindi: {rt['_id']}")
+                except Exception as exc:
+                    print(f"[Failover] remove_route hatası: {exc}")
+
+        await asyncio.sleep(10)  # 10 saniyede bir kontrol
+
+@route_router.on_event("startup")
+async def start_failover_watchdog():
+    asyncio.create_task(failover_watchdog_task())
+
+@route_router.get("/")
+async def list_routes(admin=Depends(require_admin)):
+    routes_list = []
+    cursor = db["routes"].find({})
+    async for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        routes_list.append(doc)
+    return routes_list
+
+@route_router.post("/")
+async def create_route(route_in: RouteConfig, admin=Depends(require_admin)):
+    validate_route_fields(route_in)
+    add_route_os(route_in)
+
+    doc = route_in.dict()
+    doc["created_at"] = datetime.now(timezone.utc).isoformat()
+    result = await db["routes"].insert_one(doc)
+    doc["_id"] = str(result.inserted_id)
+    return {"message": "Rota eklendi", "data": doc}
+
+@route_router.delete("/{route_id}")
+async def delete_route(route_id: str, admin=Depends(require_admin)):
+    old_doc = await db["routes"].find_one({"_id": route_id})
+    if not old_doc:
+        raise HTTPException(404, "Rota bulunamadı")
+
+    remove_route(old_doc)
+    await db["routes"].delete_one({"_id": route_id})
+    return {"message": "Rota silindi"}
+
+@route_router.put("/{route_id}")
+async def update_route(route_id: str, route_in: RouteConfig, admin=Depends(require_admin)):
+    old_doc = await db["routes"].find_one({"_id": route_id})
+    if not old_doc:
+        raise HTTPException(404, "Rota bulunamadı")
+
+    # Eskiyi sil
+    remove_route(old_doc)
+    # Yeni ekle
+    validate_route_fields(route_in)
+    add_route_os(route_in)
+
+    updated_doc = route_in.dict()
+    updated_doc["updated_at"] = datetime.now(timezone.utc).isoformat()
+    await db["routes"].update_one({"_id": route_id}, {"$set": updated_doc})
+    return {"message": "Rota güncellendi", "data": updated_doc}
+
+def mask_to_cidr(mask_str: str) -> int:
+    return sum(bin(int(octet)).count("1") for octet in mask_str.split("."))
+
+def remove_route(rt_doc):
+    if not rt_doc.get("destination") or not rt_doc.get("mask"):
+        return
+    sysname = platform.system().lower()
+    if sysname.startswith("win"):
+        cmd = [
+            "netsh","interface","ipv4","delete","route",
+            rt_doc["destination"], rt_doc["mask"]
+        ]
+        if rt_doc.get("interface_name"):
+            cmd.append(rt_doc["interface_name"])
+        subprocess.run(cmd, capture_output=True, text=True)
+    else:
+        cidr = mask_to_cidr(rt_doc["mask"])
+        ip_cmd = [
+            "ip","route","del",
+            f"{rt_doc['destination']}/{cidr}",
+            "via", rt_doc["gateway"]
+        ]
+        if rt_doc.get("interface_name"):
+            ip_cmd.extend(["dev", rt_doc["interface_name"]])
+        subprocess.run(ip_cmd, capture_output=True, text=True)
+
+def add_route_os(route_in: RouteConfig):
+    if route_in.mode.lower() == "dhcp":
+        # Gelecekte DHCP route vs.
+        raise HTTPException(501, "DHCP route henüz implemente edilmedi.")
+
+    sysname = platform.system().lower()
+    if sysname.startswith("win"):
+        netsh_cmd = [
+            "netsh","interface","ipv4","add","route",
+            route_in.destination, route_in.mask
+        ]
+        if route_in.interface_name:
+            netsh_cmd.append(route_in.interface_name)
+        netsh_cmd.extend([
+            route_in.gateway,
+            f"metric={route_in.metric}",
+            "store=persistent"
+        ])
+        res = subprocess.run(netsh_cmd, capture_output=True, text=True)
+        if res.returncode != 0:
+            raise HTTPException(
+                400,
+                detail=f"Windows route ekleme hatası: {parse_netsh_error(res.stderr)}"
+            )
+    else:
+        cidr = mask_to_cidr(route_in.mask)
+        ip_cmd = [
+            "ip","route","add",
+            f"{route_in.destination}/{cidr}",
+            "via", route_in.gateway,
+            "metric", str(route_in.metric)
+        ]
+        if route_in.interface_name:
+            ip_cmd.extend(["dev", route_in.interface_name])
+        res = subprocess.run(ip_cmd, capture_output=True, text=True)
+        if res.returncode != 0:
+            raise HTTPException(
+                400,
+                detail=f"Linux route ekleme hatası: {res.stderr.strip()}"
+            )
+
+
+
+================================================
+File: app/routers/status.py
+================================================
+import psutil
+import time
+from fastapi import APIRouter, Depends
+from ..dependencies import get_current_user
+
+status_router = APIRouter(prefix="/status", tags=["status"])
+
+@status_router.get("/dashboard")
+async def dashboard_info(user=Depends(get_current_user)):
+    cpu_percent = psutil.cpu_percent(interval=0.1)
+    mem = psutil.virtual_memory()
+    uptime = time.time() - psutil.boot_time()
+    return {
+        "cpu_percent": cpu_percent,
+        "memory_percent": mem.percent,
+        "uptime_seconds": int(uptime)
+    }
+
+
+
