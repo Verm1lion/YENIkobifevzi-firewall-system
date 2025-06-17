@@ -1,6 +1,4 @@
 # File: app/routers/routes.py
-# Path: app/routers/routes.py
-
 import subprocess
 import platform
 import re
@@ -9,11 +7,12 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel, Field
 from typing import Optional
-
+from bson import ObjectId
 from ..dependencies import require_admin
-from ..database import db
+from ..database import get_database
 
-route_router = APIRouter(prefix="/routes", tags=["routes"])
+routes_router = APIRouter()  # prefix kaldırıldı, main.py'de tanımlanacak
+
 
 # =========== MODEL / SCHEMA ===========
 class RouteConfig(BaseModel):
@@ -26,11 +25,14 @@ class RouteConfig(BaseModel):
     mode: str = "static"  # "dhcp" veya "static"
     failover: bool = False  # opsiyonel
 
+
 # Basit IP kontrolü (regex)
 ip_pattern = re.compile(r"^((25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(25[0-5]|2[0-4]\d|[01]?\d?\d)$")
 
+
 def is_valid_ip(ip: str) -> bool:
     return bool(ip_pattern.match(ip))
+
 
 def validate_route_fields(route: RouteConfig):
     if not is_valid_ip(route.destination):
@@ -40,6 +42,7 @@ def validate_route_fields(route: RouteConfig):
     if not is_valid_ip(route.gateway):
         raise HTTPException(400, detail="Gateway IP formatı geçersiz.")
 
+
 def parse_netsh_error(stderr_text: str) -> str:
     text_lower = stderr_text.lower()
     if "already in use" in text_lower or "duplicate" in text_lower:
@@ -48,6 +51,7 @@ def parse_netsh_error(stderr_text: str) -> str:
         return "DHCP sunucusuna ulaşılamadı (DHCP config hatası)."
     return stderr_text.strip()
 
+
 async def failover_watchdog_task():
     """
     Asenkron failover senaryosu (opsiyonel).
@@ -55,64 +59,80 @@ async def failover_watchdog_task():
     yanıt yoksa remove_route ile siler.
     """
     while True:
-        cursor = db["routes"].find({"failover": True, "enabled": True})
-        async for rt in cursor:
-            gw_ip = rt.get("gateway")
-            if not gw_ip:
-                continue
-            # Ping
-            if platform.system().lower().startswith("win"):
-                cmd_ping = ["ping", "-n", "1", "-w", "200", gw_ip]
-            else:
-                cmd_ping = ["ping", "-c", "1", "-W", "1", gw_ip]
-
-            result = subprocess.run(cmd_ping, capture_output=True, text=True)
-            if result.returncode != 0:
-                try:
-                    remove_route(rt)
-                    print(f"[Failover] Gateway yanıt vermiyor, rota silindi: {rt['_id']}")
-                except Exception as exc:
-                    print(f"[Failover] remove_route hatası: {exc}")
-
+        try:
+            db = get_database()
+            cursor = db.routes.find({"failover": True, "enabled": True})
+            async for rt in cursor:
+                gw_ip = rt.get("gateway")
+                if not gw_ip:
+                    continue
+                # Ping
+                if platform.system().lower().startswith("win"):
+                    cmd_ping = ["ping", "-n", "1", "-w", "200", gw_ip]
+                else:
+                    cmd_ping = ["ping", "-c", "1", "-W", "1", gw_ip]
+                result = subprocess.run(cmd_ping, capture_output=True, text=True)
+                if result.returncode != 0:
+                    try:
+                        remove_route(rt)
+                        print(f"[Failover] Gateway yanıt vermiyor, rota silindi: {rt['_id']}")
+                    except Exception as exc:
+                        print(f"[Failover] remove_route hatası: {exc}")
+        except Exception as e:
+            print(f"[Failover] Watchdog error: {e}")
         await asyncio.sleep(10)  # 10 saniyede bir kontrol
 
-@route_router.on_event("startup")
+
+@routes_router.on_event("startup")
 async def start_failover_watchdog():
     asyncio.create_task(failover_watchdog_task())
 
-@route_router.get("/")
-async def list_routes(admin=Depends(require_admin)):
+
+@routes_router.get("/")
+async def list_routes(admin=Depends(require_admin), db=Depends(get_database)):
     routes_list = []
-    cursor = db["routes"].find({})
+    cursor = db.routes.find({})
     async for doc in cursor:
         doc["_id"] = str(doc["_id"])
         routes_list.append(doc)
     return routes_list
 
-@route_router.post("/")
-async def create_route(route_in: RouteConfig, admin=Depends(require_admin)):
+
+@routes_router.post("/")
+async def create_route(route_in: RouteConfig, admin=Depends(require_admin), db=Depends(get_database)):
     validate_route_fields(route_in)
     add_route_os(route_in)
-
     doc = route_in.dict()
     doc["created_at"] = datetime.now(timezone.utc).isoformat()
-    result = await db["routes"].insert_one(doc)
+    result = await db.routes.insert_one(doc)
     doc["_id"] = str(result.inserted_id)
     return {"message": "Rota eklendi", "data": doc}
 
-@route_router.delete("/{route_id}")
-async def delete_route(route_id: str, admin=Depends(require_admin)):
-    old_doc = await db["routes"].find_one({"_id": route_id})
+
+@routes_router.delete("/{route_id}")
+async def delete_route(route_id: str, admin=Depends(require_admin), db=Depends(get_database)):
+    try:
+        obj_id = ObjectId(route_id)
+    except:
+        raise HTTPException(400, "Geçersiz route ID")
+
+    old_doc = await db.routes.find_one({"_id": obj_id})
     if not old_doc:
         raise HTTPException(404, "Rota bulunamadı")
 
     remove_route(old_doc)
-    await db["routes"].delete_one({"_id": route_id})
+    await db.routes.delete_one({"_id": obj_id})
     return {"message": "Rota silindi"}
 
-@route_router.put("/{route_id}")
-async def update_route(route_id: str, route_in: RouteConfig, admin=Depends(require_admin)):
-    old_doc = await db["routes"].find_one({"_id": route_id})
+
+@routes_router.put("/{route_id}")
+async def update_route(route_id: str, route_in: RouteConfig, admin=Depends(require_admin), db=Depends(get_database)):
+    try:
+        obj_id = ObjectId(route_id)
+    except:
+        raise HTTPException(400, "Geçersiz route ID")
+
+    old_doc = await db.routes.find_one({"_id": obj_id})
     if not old_doc:
         raise HTTPException(404, "Rota bulunamadı")
 
@@ -121,14 +141,15 @@ async def update_route(route_id: str, route_in: RouteConfig, admin=Depends(requi
     # Yeni ekle
     validate_route_fields(route_in)
     add_route_os(route_in)
-
     updated_doc = route_in.dict()
     updated_doc["updated_at"] = datetime.now(timezone.utc).isoformat()
-    await db["routes"].update_one({"_id": route_id}, {"$set": updated_doc})
+    await db.routes.update_one({"_id": obj_id}, {"$set": updated_doc})
     return {"message": "Rota güncellendi", "data": updated_doc}
+
 
 def mask_to_cidr(mask_str: str) -> int:
     return sum(bin(int(octet)).count("1") for octet in mask_str.split("."))
+
 
 def remove_route(rt_doc):
     if not rt_doc.get("destination") or not rt_doc.get("mask"):
@@ -136,7 +157,7 @@ def remove_route(rt_doc):
     sysname = platform.system().lower()
     if sysname.startswith("win"):
         cmd = [
-            "netsh","interface","ipv4","delete","route",
+            "netsh", "interface", "ipv4", "delete", "route",
             rt_doc["destination"], rt_doc["mask"]
         ]
         if rt_doc.get("interface_name"):
@@ -145,7 +166,7 @@ def remove_route(rt_doc):
     else:
         cidr = mask_to_cidr(rt_doc["mask"])
         ip_cmd = [
-            "ip","route","del",
+            "ip", "route", "del",
             f"{rt_doc['destination']}/{cidr}",
             "via", rt_doc["gateway"]
         ]
@@ -153,15 +174,15 @@ def remove_route(rt_doc):
             ip_cmd.extend(["dev", rt_doc["interface_name"]])
         subprocess.run(ip_cmd, capture_output=True, text=True)
 
+
 def add_route_os(route_in: RouteConfig):
     if route_in.mode.lower() == "dhcp":
         # Gelecekte DHCP route vs.
         raise HTTPException(501, "DHCP route henüz implemente edilmedi.")
-
     sysname = platform.system().lower()
     if sysname.startswith("win"):
         netsh_cmd = [
-            "netsh","interface","ipv4","add","route",
+            "netsh", "interface", "ipv4", "add", "route",
             route_in.destination, route_in.mask
         ]
         if route_in.interface_name:
@@ -180,7 +201,7 @@ def add_route_os(route_in: RouteConfig):
     else:
         cidr = mask_to_cidr(route_in.mask)
         ip_cmd = [
-            "ip","route","add",
+            "ip", "route", "add",
             f"{route_in.destination}/{cidr}",
             "via", route_in.gateway,
             "metric", str(route_in.metric)

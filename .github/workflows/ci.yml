@@ -1,0 +1,282 @@
+name: CI/CD Pipeline
+
+# Ne zaman çalışacak?
+on:
+  push:
+    branches: [ main, develop ]  # main veya develop branch'e push
+  pull_request:
+    branches: [ main ]           # main'e pull request
+
+# Çevre değişkenleri
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18'
+
+jobs:
+  # Backend Testleri
+  backend-test:
+    runs-on: ubuntu-latest
+
+    # Test için MongoDB servisi
+    services:
+      mongodb:
+        image: mongo:7.0
+        env:
+          MONGO_INITDB_ROOT_USERNAME: admin
+          MONGO_INITDB_ROOT_PASSWORD: password123
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand(\"ping\")'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    # Kodu indir
+    - uses: actions/checkout@v4
+
+    # Python kur
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    # Python bağımlılıklarını cache'le
+    - name: Cache Python dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    # Bağımlılıkları yükle
+    - name: Install dependencies
+      working-directory: ./backend
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Kod kalitesi kontrolü
+    - name: Lint with flake8
+      working-directory: ./backend
+      run: |
+        flake8 app --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 app --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics
+
+    # Kod formatı kontrolü
+    - name: Format check with black
+      working-directory: ./backend
+      run: |
+        black --check app
+
+    # Import sıralama kontrolü
+    - name: Import sorting check with isort
+      working-directory: ./backend
+      run: |
+        isort --check-only app
+
+    # Tip kontrolü
+    - name: Type checking with mypy
+      working-directory: ./backend
+      run: |
+        mypy app --ignore-missing-imports
+
+    # Testleri çalıştır
+    - name: Run tests
+      working-directory: ./backend
+      env:
+        MONGODB_URL: mongodb://admin:password123@localhost:27017/test_db?authSource=admin
+        JWT_SECRET: test-secret-key
+        ENVIRONMENT: testing
+      run: |
+        pytest tests/ -v --cov=app --cov-report=xml
+
+    # Test kapsamını raporla
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./backend/coverage.xml
+        flags: backend
+        name: backend-coverage
+
+  # Frontend Testleri
+  frontend-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Kodu indir
+    - uses: actions/checkout@v4
+
+    # Node.js kur
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        cache-dependency-path: './frontend/package-lock.json'
+
+    # Bağımlılıkları yükle
+    - name: Install dependencies
+      working-directory: ./frontend
+      run: npm ci
+
+    # ESLint kontrolü
+    - name: Lint with ESLint
+      working-directory: ./frontend
+      run: npm run lint
+
+    # Prettier format kontrolü
+    - name: Format check with Prettier
+      working-directory: ./frontend
+      run: npm run format:check
+
+    # TypeScript kontrolü
+    - name: Type checking
+      working-directory: ./frontend
+      run: npm run type-check
+
+    # Testleri çalıştır
+    - name: Run tests
+      working-directory: ./frontend
+      run: npm run test:coverage
+
+    # Test kapsamını raporla
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./frontend/coverage/lcov.info
+        flags: frontend
+        name: frontend-coverage
+
+    # Uygulamayı build et
+    - name: Build application
+      working-directory: ./frontend
+      run: npm run build
+
+    # Build dosyalarını yükle
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: frontend-build
+        path: ./frontend/dist
+
+  # Güvenlik Taraması
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Trivy güvenlik taraması
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+
+    # Güvenlik raporunu GitHub'a yükle
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      if: always()
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+    # Snyk güvenlik taraması
+    - name: Run Snyk to check for vulnerabilities
+      uses: snyk/actions/node@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --severity-threshold=high
+
+  # Docker İmaj Build
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: [backend-test, frontend-test]  # Testler başarılı olduktan sonra
+    if: github.event_name == 'push'       # Sadece push'larda
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Docker Buildx kur
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    # Docker Hub'a login
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    # İmaj metadata'sını çıkar
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: |
+          kobifirewall/backend
+          kobifirewall/frontend
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=sha,prefix={{branch}}-
+          type=raw,value=latest,enable={{is_default_branch}}
+
+    # Backend imajını build ve push et
+    - name: Build and push backend image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./backend
+        platforms: linux/amd64,linux/arm64  # Çoklu platform
+        push: true
+        tags: kobifirewall/backend:${{ github.sha }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha  # GitHub Actions cache
+        cache-to: type=gha,mode=max
+
+    # Frontend imajını build ve push et
+    - name: Build and push frontend image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./frontend
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: kobifirewall/frontend:${{ github.sha }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+  # Staging Ortamına Deploy
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: [docker-build]
+    if: github.ref == 'refs/heads/develop'  # develop branch'i
+    environment: staging
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Deploy to staging
+      run: |
+        echo "Staging ortamına deploy ediliyor..."
+        # Deployment scriptleri buraya
+
+  # Production Ortamına Deploy
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: [docker-build]
+    if: github.ref == 'refs/heads/main'  # main branch'i
+    environment: production
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Deploy to production
+      run: |
+        echo "Production ortamına deploy ediliyor..."
+        # Deployment scriptleri buraya

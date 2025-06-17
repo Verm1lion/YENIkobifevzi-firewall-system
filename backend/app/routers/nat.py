@@ -3,18 +3,20 @@ import platform
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Optional
-from app.dependencies import require_admin
-from app.database import db
+from ..dependencies import require_admin
+from ..database import get_database
 
-nat_router = APIRouter(prefix="/nat", tags=["nat"])
+nat_router = APIRouter()  # prefix kaldırıldı
+
 
 class NatConfig(BaseModel):
     enabled: bool
     wan: Optional[str] = None  # WAN interface ismi (internet aldığı)
     lan: Optional[str] = None  # LAN interface ismi (ICS paylaştırılacak ağ)
 
+
 @nat_router.get("")
-async def get_nat_config(admin=Depends(require_admin)):
+async def get_nat_config(admin=Depends(require_admin), db=Depends(get_database)):
     """
     NAT (ICS) ayarlarını DB'den okur.
     Örnek dönüş:
@@ -24,7 +26,7 @@ async def get_nat_config(admin=Depends(require_admin)):
       "lan": ""
     }
     """
-    doc = await db["nat_config"].find_one({"_id": "main"})
+    doc = await db.nat_config.find_one({"_id": "main"})
     if not doc:
         return {"enabled": False, "wan": "", "lan": ""}
     return {
@@ -33,8 +35,9 @@ async def get_nat_config(admin=Depends(require_admin)):
         "lan": doc.get("lan", "")
     }
 
+
 @nat_router.patch("")
-async def update_nat_config(cfg: NatConfig, admin=Depends(require_admin)):
+async def update_nat_config(cfg: NatConfig, admin=Depends(require_admin), db=Depends(get_database)):
     """
     NAT ICS ayarlarını günceller (yalnızca Windows'ta).
     1) DB'ye kaydeder
@@ -56,7 +59,7 @@ async def update_nat_config(cfg: NatConfig, admin=Depends(require_admin)):
         )
 
     # 3) DB'ye kaydet
-    await db["nat_config"].update_one(
+    await db.nat_config.update_one(
         {"_id": "main"},
         {
             "$set": {
@@ -92,15 +95,17 @@ async def update_nat_config(cfg: NatConfig, admin=Depends(require_admin)):
 
     return {"message": "ICS NAT yapılandırması güncellendi."}
 
+
 # ------------------------------------------------
 # Yardımcı sınıf ve fonksiyonlar
 # ------------------------------------------------
-
 class ICSCmdletNotFound(Exception):
     """
     PowerShell ICS cmdlet'lerinin (Get-NetConnectionSharing / Enable-NetConnectionSharing)
     bulunmadığını belirten özel exception.
     """
+    pass
+
 
 def _disable_ics_powershell():
     """
@@ -130,6 +135,7 @@ def _disable_ics_powershell():
             # Diğer hata
             raise RuntimeError(stderr_text.strip())
 
+
 def _disable_ics_netsh():
     """
     Netsh ile ICS kapatma.
@@ -149,6 +155,7 @@ def _disable_ics_netsh():
         # Hata çıkarsa, loglama yapmak isteyebilirsiniz.
         # Ama burada "already stopped" vb. durumlar normal sayılabilir.
 
+
 def _enable_ics(wan_iface: str, lan_iface: str):
     """
     PowerShell ICS cmdlet'leriyle WAN->Internet, LAN->Home paylaşımı.
@@ -167,6 +174,7 @@ def _enable_ics(wan_iface: str, lan_iface: str):
     cmd_wan = ["powershell", "-Command", ps_script_wan]
     res_wan = subprocess.run(cmd_wan, capture_output=True, text=True)
     stderr_wan = res_wan.stderr or ""
+
     if res_wan.returncode != 0:
         if "CommandNotFoundException" in stderr_wan:
             # ICS cmdleti yok
@@ -186,11 +194,13 @@ def _enable_ics(wan_iface: str, lan_iface: str):
     cmd_lan = ["powershell", "-Command", ps_script_lan]
     res_lan = subprocess.run(cmd_lan, capture_output=True, text=True)
     stderr_lan = res_lan.stderr or ""
+
     if res_lan.returncode != 0:
         if "CommandNotFoundException" in stderr_lan:
             raise ICSCmdletNotFound("Enable-NetConnectionSharing yok.")
         else:
             raise RuntimeError(stderr_lan.strip())
+
 
 def _enable_ics_netsh(wan_iface: str, lan_iface: str):
     """

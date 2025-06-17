@@ -1,75 +1,98 @@
-// File: src/pages/LoginPage.jsx
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
+import { useNavigate, Navigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
-function LoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  // useNavigate, login başarılı olduğunda /dashboard’a yönlendirmek için
-  const navigate = useNavigate();
+const LoginPage = () => {
+  const [username, setUsername] = useState('admin')
+  const [password, setPassword] = useState('admin123')
+  const [isLoading, setIsLoading] = useState(false)
+  const { login, isAuthenticated } = useAuth()
+  const navigate = useNavigate()
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsLoading(true)
+
+    console.log('Login form submitted:', { username })
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/auth/login", {
-        username,
-        password
-      });
-
-      // Eğer login başarılı oldu ve access_token geldiyse:
-      if (res.data.access_token) {
-        // 1) Token'ı localStorage’e yaz
-        localStorage.setItem("token", res.data.access_token);
-        // 2) /dashboard sayfasına yönlendir
-        navigate("/dashboard");
-      } else {
-        alert("Sunucu geçerli bir token döndürmedi. Lütfen kontrol edin.");
-      }
-    } catch (err) {
-      console.error("Login error:", err);
-      alert("Giriş hatası: " + (err.response?.data?.detail || err.message));
+      await login({ username, password })
+      toast.success('Login successful!')
+      navigate('/dashboard')
+    } catch (error) {
+      console.error('Login failed:', error)
+      const errorMessage = error.response?.data?.detail ||
+                          error.response?.data?.message ||
+                          error.message ||
+                          'Login failed'
+      toast.error(errorMessage)
+    } finally {
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
-    <div
-      className="d-flex justify-content-center align-items-center vh-100"
-      style={{ backgroundColor: "#f3f4f6" }}
-    >
-      <div className="card shadow" style={{ width: "420px" }}>
-        <div className="card-header text-center bg-primary text-white">
-          <h4 className="mb-0">NetGate Firewall Login</h4>
+    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+      <div className="max-w-md w-full card">
+        <div className="card-header text-center">
+          <h2 className="text-2xl font-bold">KOBI Firewall</h2>
+          <p className="text-gray-600">Please sign in to continue</p>
         </div>
         <div className="card-body">
-          <form onSubmit={handleLogin}>
-            <div className="mb-3">
-              <label className="form-label">Kullanıcı Adı</label>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="form-label">Username</label>
               <input
                 type="text"
                 className="form-control"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
+                autoComplete="username"
               />
             </div>
-            <div className="mb-3">
-              <label className="form-label">Parola</label>
+            <div className="mb-4">
+              <label className="form-label">Password</label>
               <input
                 type="password"
                 className="form-control"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
+                autoComplete="current-password"
               />
             </div>
-            <button type="submit" className="btn btn-primary w-100">
-              Giriş
+            <div className="mb-4">
+              <div className="text-sm text-gray-600">
+                <p>Default credentials:</p>
+                <p><strong>Username:</strong> admin</p>
+                <p><strong>Password:</strong> admin123</p>
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-full"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <span className="flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  Signing in...
+                </span>
+              ) : (
+                'Sign In'
+              )}
             </button>
           </form>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default LoginPage;
+export default LoginPage
