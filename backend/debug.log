@@ -1,0 +1,135 @@
+2025-06-18 00:31:28,000 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-18 00:31:28,001 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-18 00:31:28,002 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-18 00:31:28,006 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-18 00:33:52,286 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-18 00:33:52,286 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-18 00:33:52,286 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-18 00:33:52,302 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-18 00:35:49,333 - app.main - INFO - [OK] Settings imported successfully
+2025-06-18 00:35:49,749 - app.main - INFO - [OK] Database lifespan imported successfully
+2025-06-18 00:35:49,785 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-18 00:35:49,785 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-18 00:35:49,786 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-18 00:35:49,792 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-18 00:35:49,894 - app.main - INFO - [OK] Auth router imported successfully
+2025-06-18 00:35:49,926 - app.main - INFO - [OK] Firewall router imported successfully
+2025-06-18 00:35:49,939 - app.main - INFO - [OK] Logs router imported successfully
+2025-06-18 00:35:49,957 - app.main - INFO - [OK] System router imported successfully
+2025-06-18 00:35:49,957 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-18 00:35:49,959 - app.main - INFO - [OK] Rate limiter initialized
+2025-06-18 00:35:49,960 - app.main - INFO - [OK] Rate limiting enabled
+2025-06-18 00:35:49,960 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001']
+2025-06-18 00:35:49,960 - app.main - INFO - [OK] GZip middleware added
+2025-06-18 00:35:49,972 - app.main - INFO - [OK] Auth router included
+2025-06-18 00:35:49,992 - app.main - INFO - [OK] Firewall router included
+2025-06-18 00:35:50,001 - app.main - INFO - [OK] Logs router included
+2025-06-18 00:35:50,006 - app.main - INFO - [OK] System router included
+2025-06-18 00:36:10,758 - app.main - INFO - [OK] Settings imported successfully
+2025-06-18 00:36:11,144 - app.main - INFO - [OK] Database lifespan imported successfully
+2025-06-18 00:36:11,168 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-18 00:36:11,168 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-18 00:36:11,169 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-18 00:36:11,175 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-18 00:36:11,262 - app.main - INFO - [OK] Auth router imported successfully
+2025-06-18 00:36:11,290 - app.main - INFO - [OK] Firewall router imported successfully
+2025-06-18 00:36:11,302 - app.main - INFO - [OK] Logs router imported successfully
+2025-06-18 00:36:11,321 - app.main - INFO - [OK] System router imported successfully
+2025-06-18 00:36:11,321 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-18 00:36:11,324 - app.main - INFO - [OK] Rate limiter initialized
+2025-06-18 00:36:11,324 - app.main - INFO - [OK] Rate limiting enabled
+2025-06-18 00:36:11,324 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001']
+2025-06-18 00:36:11,324 - app.main - INFO - [OK] GZip middleware added
+2025-06-18 00:36:11,337 - app.main - INFO - [OK] Auth router included
+2025-06-18 00:36:11,358 - app.main - INFO - [OK] Firewall router included
+2025-06-18 00:36:11,369 - app.main - INFO - [OK] Logs router included
+2025-06-18 00:36:11,373 - app.main - INFO - [OK] System router included
+2025-06-18 00:39:04,632 - app.main - INFO - [OK] Settings imported successfully
+2025-06-18 00:39:04,964 - app.main - INFO - [OK] Database lifespan imported successfully
+2025-06-18 00:39:04,987 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-18 00:39:04,987 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-18 00:39:04,987 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-18 00:39:04,991 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-18 00:39:05,083 - app.main - INFO - [OK] Auth router imported successfully
+2025-06-18 00:39:05,110 - app.main - INFO - [OK] Firewall router imported successfully
+2025-06-18 00:39:05,122 - app.main - INFO - [OK] Logs router imported successfully
+2025-06-18 00:39:05,138 - app.main - INFO - [OK] System router imported successfully
+2025-06-18 00:39:05,139 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-18 00:39:05,140 - app.main - INFO - [OK] Rate limiter initialized
+2025-06-18 00:39:05,141 - app.main - INFO - [OK] Rate limiting enabled
+2025-06-18 00:39:05,141 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001']
+2025-06-18 00:39:05,141 - app.main - INFO - [OK] GZip middleware added
+2025-06-18 00:39:05,153 - app.main - INFO - [OK] Auth router included
+2025-06-18 00:39:05,168 - app.main - INFO - [OK] Firewall router included
+2025-06-18 00:39:05,178 - app.main - INFO - [OK] Logs router included
+2025-06-18 00:39:05,182 - app.main - INFO - [OK] System router included
+2025-06-18 00:52:22,180 - app.main - INFO - [OK] Settings imported successfully
+2025-06-18 00:52:22,599 - app.main - INFO - [OK] Database lifespan imported successfully
+2025-06-18 00:52:22,632 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-18 00:52:22,633 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-18 00:52:22,633 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-18 00:52:22,638 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-18 00:52:22,738 - app.main - INFO - [OK] Auth router imported successfully
+2025-06-18 00:52:22,766 - app.main - INFO - [OK] Firewall router imported successfully
+2025-06-18 00:52:22,783 - app.main - INFO - [OK] Logs router imported successfully
+2025-06-18 00:52:22,805 - app.main - INFO - [OK] System router imported successfully
+2025-06-18 00:52:22,805 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-18 00:52:22,806 - app.main - INFO - [OK] Rate limiter initialized
+2025-06-18 00:52:22,807 - app.main - INFO - [OK] Rate limiting enabled
+2025-06-18 00:52:22,808 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001']
+2025-06-18 00:52:22,808 - app.main - INFO - [OK] GZip middleware added
+2025-06-18 00:52:22,821 - app.main - INFO - [OK] Auth router included
+2025-06-18 00:52:22,839 - app.main - INFO - [OK] Firewall router included
+2025-06-18 00:52:22,850 - app.main - INFO - [OK] Logs router included
+2025-06-18 00:52:22,853 - app.main - INFO - [OK] System router included
+2025-06-18 00:56:49,831 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-18 00:56:49,831 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001']
+2025-06-18 00:56:50,265 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-18 00:56:50,265 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-18 00:56:50,266 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-18 00:56:50,272 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-18 00:56:50,368 - app.main - INFO - [OK] Auth router imported
+2025-06-18 00:56:50,395 - app.main - INFO - [OK] Firewall router imported
+2025-06-18 00:56:50,409 - app.main - INFO - [OK] Logs router imported
+2025-06-18 00:56:50,427 - app.main - INFO - [OK] System router imported
+2025-06-18 00:56:50,445 - app.main - INFO - [OK] Auth router included
+2025-06-18 00:56:50,464 - app.main - INFO - [OK] Firewall router included
+2025-06-18 00:56:50,477 - app.main - INFO - [OK] Logs router included
+2025-06-18 00:56:50,481 - app.main - INFO - [OK] System router included
+2025-06-18 00:56:50,483 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-18 00:56:50,518 - app.main - INFO - [OK] Database connected
+2025-06-18 00:59:06,508 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-18 00:59:08,095 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-18 00:59:08,095 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001']
+2025-06-18 00:59:08,620 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-18 00:59:08,620 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-18 00:59:08,620 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-18 00:59:08,628 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-18 00:59:08,737 - app.main - INFO - [OK] Auth router imported
+2025-06-18 00:59:08,765 - app.main - INFO - [OK] Firewall router imported
+2025-06-18 00:59:08,782 - app.main - INFO - [OK] Logs router imported
+2025-06-18 00:59:08,801 - app.main - INFO - [OK] System router imported
+2025-06-18 00:59:08,817 - app.main - INFO - [OK] Auth router included
+2025-06-18 00:59:08,855 - app.main - INFO - [OK] Firewall router included
+2025-06-18 00:59:08,874 - app.main - INFO - [OK] Logs router included
+2025-06-18 00:59:08,880 - app.main - INFO - [OK] System router included
+2025-06-18 00:59:08,881 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-18 00:59:08,903 - app.main - INFO - [OK] Database connected
+2025-06-18 00:59:12,135 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-18 00:59:13,564 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-18 00:59:13,565 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001']
+2025-06-18 00:59:14,039 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-18 00:59:14,040 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-18 00:59:14,040 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-18 00:59:14,046 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-18 00:59:14,175 - app.main - INFO - [OK] Auth router imported
+2025-06-18 00:59:14,207 - app.main - INFO - [OK] Firewall router imported
+2025-06-18 00:59:14,223 - app.main - INFO - [OK] Logs router imported
+2025-06-18 00:59:14,242 - app.main - INFO - [OK] System router imported
+2025-06-18 00:59:14,254 - app.main - INFO - [OK] Auth router included
+2025-06-18 00:59:14,273 - app.main - INFO - [OK] Firewall router included
+2025-06-18 00:59:14,283 - app.main - INFO - [OK] Logs router included
+2025-06-18 00:59:14,287 - app.main - INFO - [OK] System router included
+2025-06-18 00:59:14,288 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-18 00:59:14,321 - app.main - INFO - [OK] Database connected
+2025-06-18 00:59:18,091 - app.main - INFO - [PROC] Shutting down KOBI Firewall...

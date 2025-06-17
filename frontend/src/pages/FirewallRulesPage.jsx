@@ -1,481 +1,473 @@
-// File: src/pages/FirewallRulesPage.jsx
+import React, { useState, useMemo } from 'react'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import { Helmet } from 'react-helmet-async'
+import toast from 'react-hot-toast'
+import {
+  FiPlus,
+  FiEdit,
+  FiTrash2,
+  FiPlay,
+  FiPause,
+  FiSearch,
+  FiRefreshCw,
+  FiShield,
+  FiCheck,
+  FiX,
+} from 'react-icons/fi'
+import apiService from '../services/api'
+import LoadingSpinner from '../components/LoadingSpinner'
 
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+// Validation schema
+const ruleSchema = yup.object().shape({
+  rule_name: yup.string().required('Rule name is required').min(3, 'Rule name must be at least 3 characters'),
+  description: yup.string().max(500, 'Description must be less than 500 characters'),
+  action: yup.string().required('Action is required').oneOf(['ALLOW', 'DENY', 'DROP', 'REJECT']),
+  direction: yup.string().required('Direction is required').oneOf(['IN', 'OUT', 'BOTH']),
+  protocol: yup.string().required('Protocol is required').oneOf(['TCP', 'UDP', 'ICMP', 'ANY']),
+  priority: yup.number().min(1, 'Priority must be at least 1').max(1000, 'Priority must be at most 1000'),
+})
 
-function FirewallRulesPage() {
-  const [rules, setRules] = useState([]);
-  const [groups, setGroups] = useState([]);
+const FirewallRulesPage = () => {
+  const queryClient = useQueryClient()
 
-  const [showForm, setShowForm] = useState(false);
-  const [isEditMode, setIsEditMode] = useState(false);
+  // State
+  const [showModal, setShowModal] = useState(false)
+  const [editingRule, setEditingRule] = useState(null)
+  const [selectedRules, setSelectedRules] = useState([])
+  const [filters, setFilters] = useState({
+    search: '',
+    enabled: null,
+    action: '',
+  })
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize] = useState(25)
 
-  // Form alanları
-  const [ruleId, setRuleId] = useState(null);
-  const [ruleName, setRuleName] = useState("");
-  const [sourceIps, setSourceIps] = useState("");
-  const [port, setPort] = useState("");
-  const [protocol, setProtocol] = useState("TCP"); // TCP/UDP/ANY
-  const [action, setAction] = useState("ALLOW");
-  const [direction, setDirection] = useState("OUT");
-  const [profile, setProfile] = useState("Any");
-  const [description, setDescription] = useState("");
-  const [enabled, setEnabled] = useState(true);
-  const [priority, setPriority] = useState(100);
-
-  const [scheduleStart, setScheduleStart] = useState("");
-  const [scheduleEnd, setScheduleEnd] = useState("");
-  const [daysOfWeek, setDaysOfWeek] = useState([]);
-
-  const [groupId, setGroupId] = useState("");
-
-  useEffect(() => {
-    fetchRules();
-    fetchGroups();
-  }, []);
-
-  const fetchRules = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await axios.get("http://127.0.0.1:8000/firewall/rules", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setRules(res.data);
-    } catch (err) {
-      alert("Kural listesi alınamadı: " + err.message);
+  // Form
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm({
+    resolver: yupResolver(ruleSchema),
+    defaultValues: {
+      enabled: true,
+      priority: 100,
+      action: 'ALLOW',
+      direction: 'IN',
+      protocol: 'TCP',
     }
-  };
+  })
 
-  const fetchGroups = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await axios.get("http://127.0.0.1:8000/firewall/groups", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setGroups(res.data);
-    } catch (err) {
-      console.error("Grup listesi alınamadı:", err);
+  // Queries
+  const {
+    data: rulesData,
+    isLoading: rulesLoading,
+    error: rulesError,
+    refetch: refetchRules
+  } = useQuery({
+    queryKey: ['firewallRules', currentPage, pageSize, filters],
+    queryFn: () => apiService.getFirewallRules({
+      page: currentPage,
+      per_page: pageSize,
+      ...filters
+    }),
+    keepPreviousData: true,
+  })
+
+  const { data: firewallStats } = useQuery({
+    queryKey: ['firewallStats'],
+    queryFn: apiService.getFirewallStats,
+    refetchInterval: 30000,
+  })
+
+  // Mutations
+  const createRuleMutation = useMutation({
+    mutationFn: apiService.createFirewallRule,
+    onSuccess: () => {
+      toast.success('Firewall rule created successfully')
+      queryClient.invalidateQueries(['firewallRules'])
+      queryClient.invalidateQueries(['firewallStats'])
+      setShowModal(false)
+      reset()
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.message || 'Failed to create firewall rule')
     }
-  };
+  })
 
-  const clearForm = () => {
-    setRuleId(null);
-    setRuleName("");
-    setSourceIps("");
-    setPort("");
-    setProtocol("TCP");
-    setAction("ALLOW");
-    setDirection("OUT");
-    setProfile("Any");
-    setDescription("");
-    setEnabled(true);
-    setPriority(100);
-    setScheduleStart("");
-    setScheduleEnd("");
-    setDaysOfWeek([]);
-    setGroupId("");
-  };
-
-  const handleNewRule = () => {
-    clearForm();
-    setIsEditMode(false);
-    setShowForm(true);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token");
-
-    // Kaynak IP(ler) virgülle ayrılabilir: "10.36.130.28, 192.168.1.5"
-    const ipsArr = sourceIps
-      .split(",")
-      .map((i) => i.trim())
-      .filter((i) => i);
-
-    const body = {
-      rule_name: ruleName,
-      source_ips: ipsArr,       // array
-      port: port,               // "80,443" girilmişse string
-      protocol: protocol,       // "TCP"/"UDP"/"ANY"
-      action: action,
-      direction: direction,     // "IN"/"OUT"
-      profile: profile,         // "Any"/"Domain"/"Private"/"Public"
-      description: description,
-      enabled: enabled,
-      priority: Number(priority),
-      schedule_start: scheduleStart || null,
-      schedule_end: scheduleEnd || null,
-      days_of_week: daysOfWeek.map(d => parseInt(d, 10)),
-      group_id: groupId || null
-    };
-
-    try {
-      if (!isEditMode) {
-        // POST -> kural ekle
-        const res = await axios.post("http://127.0.0.1:8000/firewall/rules", body, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        alert(res.data.message);
-      } else {
-        // PUT -> güncelle
-        const url = `http://127.0.0.1:8000/firewall/rules/${ruleId}`;
-        const res = await axios.put(url, body, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        alert(res.data.message);
-      }
-      setShowForm(false);
-      fetchRules();
-    } catch (err) {
-      alert("Kural kaydedilemedi: " + (err.response?.data?.detail || err.message));
+  const updateRuleMutation = useMutation({
+    mutationFn: ({ ruleId, data }) => apiService.updateFirewallRule(ruleId, data),
+    onSuccess: () => {
+      toast.success('Firewall rule updated successfully')
+      queryClient.invalidateQueries(['firewallRules'])
+      queryClient.invalidateQueries(['firewallStats'])
+      setShowModal(false)
+      setEditingRule(null)
+      reset()
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.message || 'Failed to update firewall rule')
     }
-  };
+  })
 
-  const handleEdit = (r) => {
-    setIsEditMode(true);
-    setShowForm(true);
-    setRuleId(r._id);
-    setRuleName(r.rule_name || "");
-    setSourceIps(r.source_ips?.join(", ") || "");
-    setPort(r.port || "");
-    setProtocol(r.protocol || "TCP");
-    setAction(r.action || "ALLOW");
-    setDirection(r.direction || "OUT");
-    setProfile(r.profile || "Any");
-    setDescription(r.description || "");
-    setEnabled(r.enabled !== false);
-    setPriority(r.priority || 100);
-    setScheduleStart(r.schedule_start || "");
-    setScheduleEnd(r.schedule_end || "");
-    setDaysOfWeek(r.days_of_week || []);
-    setGroupId(r.group_id || "");
-  };
-
-  const handleDelete = async (r) => {
-    if (!window.confirm(`'${r.rule_name}' kuralını silmek istediğinize emin misiniz?`)) return;
-    try {
-      const token = localStorage.getItem("token");
-      const url = `http://127.0.0.1:8000/firewall/rules/${r._id}`;
-      const res = await axios.delete(url, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      alert(res.data.message);
-      fetchRules();
-    } catch (err) {
-      alert("Silme hatası: " + (err.response?.data?.detail || err.message));
+  const deleteRuleMutation = useMutation({
+    mutationFn: apiService.deleteFirewallRule,
+    onSuccess: () => {
+      toast.success('Firewall rule deleted successfully')
+      queryClient.invalidateQueries(['firewallRules'])
+      queryClient.invalidateQueries(['firewallStats'])
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.message || 'Failed to delete firewall rule')
     }
-  };
+  })
 
-  const onDragEnd = (result) => {
-    if (!result.destination) return;
-    const { source, destination } = result;
-    const arr = Array.from(rules);
-    const [removed] = arr.splice(source.index, 1);
-    arr.splice(destination.index, 0, removed);
-    setRules(arr);
-    // Priority güncellemesi istersen backend'e de iletebilirsin.
-  };
+  // Event handlers
+  const handleCreateRule = () => {
+    setEditingRule(null)
+    reset()
+    setShowModal(true)
+  }
 
-  // Haftanın günleri tıklandığında
-  const handleDayCheck = (idx) => {
-    if (daysOfWeek.includes(idx)) {
-      setDaysOfWeek(daysOfWeek.filter((d) => d !== idx));
+  const handleEditRule = (rule) => {
+    setEditingRule(rule)
+    reset(rule)
+    setShowModal(true)
+  }
+
+  const handleDeleteRule = async (rule) => {
+    if (window.confirm(`Are you sure you want to delete rule "${rule.rule_name}"?`)) {
+      deleteRuleMutation.mutate(rule.id)
+    }
+  }
+
+  const onSubmit = (data) => {
+    if (editingRule) {
+      updateRuleMutation.mutate({
+        ruleId: editingRule.id,
+        data
+      })
     } else {
-      setDaysOfWeek([...daysOfWeek, idx]);
+      createRuleMutation.mutate(data)
     }
-  };
+  }
 
-  const getGroupName = (gid) => {
-    if (!gid) return "-";
-    const g = groups.find((item) => item._id === gid);
-    return g ? g.group_name : "(Silinmiş Grup)";
-  };
+  const getActionVariant = (action) => {
+    switch (action) {
+      case 'ALLOW': return 'text-green-600'
+      case 'DENY': return 'text-red-600'
+      case 'DROP': return 'text-yellow-600'
+      case 'REJECT': return 'text-red-600'
+      default: return 'text-gray-600'
+    }
+  }
+
+  if (rulesError) {
+    return (
+      <div className="p-6">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+          <strong className="font-bold">Error:</strong>
+          <span className="block sm:inline"> Failed to load firewall rules</span>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div>
-      <h2 className="dashboard-title">Firewall Kuralları (Zamanlama Destekli)</h2>
-
-      <button className="btn btn-success mb-3" onClick={handleNewRule}>
-        Yeni Kural Ekle
-      </button>
-
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="firewall-rules-list">
-          {(provided) => (
-            <table
-              className="table table-striped"
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-            >
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Kural Adı</th>
-                  <th>Grup</th>
-                  <th>Action</th>
-                  <th>Protocol</th>
-                  <th>Port</th>
-                  <th>Source IP</th>
-                  <th>Direction</th>
-                  <th>Zamanlama</th>
-                  <th>Enabled</th>
-                  <th>İşlem</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rules.map((r, index) => {
-                  const gName = getGroupName(r.group_id);
-                  const ipList = r.source_ips?.join(", ") || "-";
-
-                  let scheduleInfo = "-";
-                  if (r.schedule_start && r.schedule_end) {
-                    if (r.days_of_week && r.days_of_week.length > 0) {
-                      const dayLabels = ["Pzt","Sal","Çar","Per","Cum","Cmt","Paz"];
-                      const dayStr = r.days_of_week.map(d => dayLabels[d] || "?").join(",");
-                      scheduleInfo = `${r.schedule_start}-${r.schedule_end} (${dayStr})`;
-                    } else {
-                      scheduleInfo = `${r.schedule_start}-${r.schedule_end}`;
-                    }
-                  }
-
-                  return (
-                    <Draggable key={r._id} draggableId={r._id} index={index}>
-                      {(prov) => (
-                        <tr
-                          ref={prov.innerRef}
-                          {...prov.draggableProps}
-                          {...prov.dragHandleProps}
-                        >
-                          <td>{index + 1}</td>
-                          <td>{r.rule_name}</td>
-                          <td>{gName}</td>
-                          <td>{r.action}</td>
-                          <td>{r.protocol}</td>
-                          <td>{r.port || "-"}</td>
-                          <td>{ipList}</td>
-                          <td>{r.direction}</td>
-                          <td>{scheduleInfo}</td>
-                          <td>{r.enabled ? "Evet" : "Hayır"}</td>
-                          <td>
-                            <button
-                              className="btn btn-sm btn-primary me-2"
-                              onClick={() => handleEdit(r)}
-                            >
-                              Düzenle
-                            </button>
-                            <button
-                              className="btn btn-sm btn-danger"
-                              onClick={() => handleDelete(r)}
-                            >
-                              Sil
-                            </button>
-                          </td>
-                        </tr>
-                      )}
-                    </Draggable>
-                  );
-                })}
-                {provided.placeholder}
-              </tbody>
-            </table>
-          )}
-        </Droppable>
-      </DragDropContext>
-
-      {showForm && (
-        <div className="card mt-3">
-          <div className="card-header">
-            {isEditMode ? "Kuralı Düzenle" : "Yeni Kural Ekle"}
+    <>
+      <Helmet>
+        <title>Firewall Rules - KOBI Firewall</title>
+      </Helmet>
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="md:flex md:items-center md:justify-between">
+          <div className="flex-1">
+            <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+              Firewall Rules
+            </h1>
+            <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+              <div className="mt-2 flex items-center text-sm text-gray-500">
+                <FiShield className="flex-shrink-0 mr-1.5 h-5 w-5" />
+                {firewallStats?.total_rules || 0} Total Rules
+              </div>
+              <div className="mt-2 flex items-center text-sm text-gray-500">
+                <FiCheck className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" />
+                {firewallStats?.enabled_rules || 0} Active Rules
+              </div>
+            </div>
           </div>
-          <div className="card-body">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label>Kural Adı</label>
-                <input
-                  className="form-control"
-                  required
-                  value={ruleName}
-                  onChange={(e) => setRuleName(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-3">
-                <label>Kaynak IP(ler) (virgülle ayır)</label>
-                <input
-                  className="form-control"
-                  value={sourceIps}
-                  onChange={(e) => setSourceIps(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-3">
-                <label>Port (virgülle ayır: örn 80,443)</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={port}
-                  onChange={(e) => setPort(e.target.value)}
-                  placeholder="80,443"
-                />
-              </div>
-
-              <div className="mb-3">
-                <label>Protocol</label>
-                <select
-                  className="form-select"
-                  value={protocol}
-                  onChange={(e) => setProtocol(e.target.value)}
-                >
-                  <option value="TCP">TCP</option>
-                  <option value="UDP">UDP</option>
-                  <option value="ANY">ANY</option>
-                </select>
-              </div>
-
-              <div className="mb-3">
-                <label>Action</label>
-                <select
-                  className="form-select"
-                  value={action}
-                  onChange={(e) => setAction(e.target.value)}
-                >
-                  <option value="ALLOW">ALLOW</option>
-                  <option value="DENY">DENY</option>
-                </select>
-              </div>
-
-              <div className="mb-3">
-                <label>Direction</label>
-                <select
-                  className="form-select"
-                  value={direction}
-                  onChange={(e) => setDirection(e.target.value)}
-                >
-                  <option value="IN">IN</option>
-                  <option value="OUT">OUT</option>
-                </select>
-              </div>
-
-              <div className="mb-3">
-                <label>Profile</label>
-                <select
-                  className="form-select"
-                  value={profile}
-                  onChange={(e) => setProfile(e.target.value)}
-                >
-                  <option value="Any">Any</option>
-                  <option value="Domain">Domain</option>
-                  <option value="Private">Private</option>
-                  <option value="Public">Public</option>
-                </select>
-              </div>
-
-              <div className="mb-3">
-                <label>Açıklama (opsiyonel)</label>
-                <input
-                  className="form-control"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-3 form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="chkEnabled"
-                  checked={enabled}
-                  onChange={(e) => setEnabled(e.target.checked)}
-                />
-                <label htmlFor="chkEnabled" className="form-check-label">
-                  Kural Etkin
-                </label>
-              </div>
-
-              <div className="mb-3">
-                <label>Öncelik (Priority)</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  value={priority}
-                  onChange={(e) => setPriority(e.target.value)}
-                />
-              </div>
-
-              {/* Zaman planlama */}
-              <div className="mb-3">
-                <label>Zaman Başlangıcı (HH:MM)</label>
-                <input
-                  type="time"
-                  className="form-control"
-                  value={scheduleStart}
-                  onChange={(e) => setScheduleStart(e.target.value)}
-                />
-              </div>
-              <div className="mb-3">
-                <label>Zaman Sonu (HH:MM)</label>
-                <input
-                  type="time"
-                  className="form-control"
-                  value={scheduleEnd}
-                  onChange={(e) => setScheduleEnd(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-3">
-                <label>Haftanın Günleri</label>
-                <div>
-                  {["Pzt","Sal","Çar","Per","Cum","Cmt","Paz"].map((lbl, idx) => (
-                    <div key={idx} className="form-check form-check-inline">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id={`chkDay${idx}`}
-                        checked={daysOfWeek.includes(idx)}
-                        onChange={() => handleDayCheck(idx)}
-                      />
-                      <label className="form-check-label" htmlFor={`chkDay${idx}`}>
-                        {lbl}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Grup seçimi */}
-              <div className="mb-3">
-                <label>Grup (opsiyonel)</label>
-                <select
-                  className="form-select"
-                  value={groupId}
-                  onChange={(e) => setGroupId(e.target.value)}
-                >
-                  <option value="">(Seçiniz)</option>
-                  {groups.map((g) => (
-                    <option key={g._id} value={g._id}>
-                      {g.group_name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <button type="submit" className="btn btn-primary">
-                {isEditMode ? "Güncelle" : "Ekle"}
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary ms-2"
-                onClick={() => setShowForm(false)}
-              >
-                Vazgeç
-              </button>
-            </form>
+          <div className="mt-4 flex md:mt-0 md:ml-4 space-x-2">
+            <button
+              onClick={handleCreateRule}
+              className="btn btn-primary"
+            >
+              <FiPlus className="mr-2 h-4 w-4" />
+              Add Rule
+            </button>
           </div>
         </div>
-      )}
-    </div>
-  );
+
+        {/* Filters */}
+        <div className="card">
+          <div className="card-body">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Search rules..."
+                  className="form-control"
+                  value={filters.search}
+                  onChange={(e) => setFilters({ ...filters, search: e.target.value })}
+                />
+              </div>
+              <div>
+                <select
+                  className="form-control"
+                  value={filters.enabled || ''}
+                  onChange={(e) => setFilters({ ...filters, enabled: e.target.value === '' ? null : e.target.value === 'true' })}
+                >
+                  <option value="">All Statuses</option>
+                  <option value="true">Enabled</option>
+                  <option value="false">Disabled</option>
+                </select>
+              </div>
+              <div>
+                <select
+                  className="form-control"
+                  value={filters.action}
+                  onChange={(e) => setFilters({ ...filters, action: e.target.value })}
+                >
+                  <option value="">All Actions</option>
+                  <option value="ALLOW">ALLOW</option>
+                  <option value="DENY">DENY</option>
+                  <option value="DROP">DROP</option>
+                  <option value="REJECT">REJECT</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Rules Table */}
+        <div className="card">
+          {rulesLoading ? (
+            <div className="p-6">
+              <LoadingSpinner />
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Rule Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    <th>Direction</th>
+                    <th>Protocol</th>
+                    <th>Priority</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rulesData?.data?.map((rule) => (
+                    <tr key={rule.id}>
+                      <td>
+                        <div>
+                          <div className="font-medium text-gray-900">{rule.rule_name}</div>
+                          {rule.description && (
+                            <div className="text-sm text-gray-500 truncate max-w-xs">
+                              {rule.description}
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                      <td>
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                          rule.enabled
+                            ? 'bg-green-100 text-green-800'
+                            : 'bg-gray-100 text-gray-800'
+                        }`}>
+                          {rule.enabled ? 'Enabled' : 'Disabled'}
+                        </span>
+                      </td>
+                      <td>
+                        <span className={`font-medium ${getActionVariant(rule.action)}`}>
+                          {rule.action}
+                        </span>
+                      </td>
+                      <td>{rule.direction}</td>
+                      <td>{rule.protocol}</td>
+                      <td>
+                        <span className="text-sm font-mono">{rule.priority}</span>
+                      </td>
+                      <td>
+                        <div className="flex items-center space-x-2">
+                          <button
+                            onClick={() => handleEditRule(rule)}
+                            className="text-blue-600 hover:text-blue-500"
+                          >
+                            <FiEdit className="h-4 w-4" />
+                          </button>
+                          <button
+                            onClick={() => handleDeleteRule(rule)}
+                            className="text-red-600 hover:text-red-500"
+                          >
+                            <FiTrash2 className="h-4 w-4" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {rulesData?.data?.length === 0 && (
+                <div className="p-6 text-center">
+                  <p className="text-gray-500">No firewall rules found</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Rule Form Modal */}
+        {showModal && (
+          <div className="fixed inset-0 z-50 overflow-y-auto">
+            <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+              <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">
+                      {editingRule ? 'Edit Rule' : 'Add Rule'}
+                    </h3>
+
+                    <div className="space-y-4">
+                      <div>
+                        <label className="form-label">Rule Name</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          {...register('rule_name')}
+                        />
+                        {errors.rule_name && (
+                          <p className="mt-1 text-sm text-red-600">{errors.rule_name.message}</p>
+                        )}
+                      </div>
+
+                      <div>
+                        <label className="form-label">Description</label>
+                        <textarea
+                          className="form-control"
+                          rows={3}
+                          {...register('description')}
+                        />
+                        {errors.description && (
+                          <p className="mt-1 text-sm text-red-600">{errors.description.message}</p>
+                        )}
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label className="form-label">Action</label>
+                          <select className="form-control" {...register('action')}>
+                            <option value="ALLOW">ALLOW</option>
+                            <option value="DENY">DENY</option>
+                            <option value="DROP">DROP</option>
+                            <option value="REJECT">REJECT</option>
+                          </select>
+                          {errors.action && (
+                            <p className="mt-1 text-sm text-red-600">{errors.action.message}</p>
+                          )}
+                        </div>
+
+                        <div>
+                          <label className="form-label">Direction</label>
+                          <select className="form-control" {...register('direction')}>
+                            <option value="IN">Inbound</option>
+                            <option value="OUT">Outbound</option>
+                            <option value="BOTH">Both</option>
+                          </select>
+                          {errors.direction && (
+                            <p className="mt-1 text-sm text-red-600">{errors.direction.message}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label className="form-label">Protocol</label>
+                          <select className="form-control" {...register('protocol')}>
+                            <option value="TCP">TCP</option>
+                            <option value="UDP">UDP</option>
+                            <option value="ICMP">ICMP</option>
+                            <option value="ANY">ANY</option>
+                          </select>
+                          {errors.protocol && (
+                            <p className="mt-1 text-sm text-red-600">{errors.protocol.message}</p>
+                          )}
+                        </div>
+
+                        <div>
+                          <label className="form-label">Priority</label>
+                          <input
+                            type="number"
+                            min={1}
+                            max={1000}
+                            className="form-control"
+                            {...register('priority')}
+                          />
+                          {errors.priority && (
+                            <p className="mt-1 text-sm text-red-600">{errors.priority.message}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="flex items-center">
+                          <input
+                            type="checkbox"
+                            className="form-checkbox"
+                            {...register('enabled')}
+                          />
+                          <span className="ml-2">Enable Rule</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      disabled={isSubmitting || createRuleMutation.isPending || updateRuleMutation.isPending}
+                    >
+                      {editingRule ? 'Update' : 'Create'}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-secondary mr-3"
+                      onClick={() => {
+                        setShowModal(false)
+                        setEditingRule(null)
+                        reset()
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
+  )
 }
 
-export default FirewallRulesPage;
+export default FirewallRulesPage
