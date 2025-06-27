@@ -1,217 +1,50 @@
-# ==================================================================
-# NetGate Firewall - Python Dependencies
-# Version: 2.0.0 - Network Interface Management Support
-# Updated: 2024
-# ==================================================================
-
-# Core FastAPI Framework
-fastapi==0.104.1                    # ✅ Mevcut - Web framework
-starlette==0.27.0                   # ✅ Mevcut - ASGI framework
-uvicorn[standard]==0.24.0           # ✅ Mevcut - ASGI server
-pydantic==2.5.0                     # ✅ Mevcut - Data validation
-pydantic-settings==2.1.0            # ✅ Mevcut - Settings management
-
-# Database Drivers
-motor==3.7.1                        # ✅ Mevcut - MongoDB async driver
-pymongo==4.13.0                     # ✅ Mevcut - MongoDB driver
-
-# Authentication & Security
-bcrypt==4.2.0                       # ✅ Mevcut - Password hashing
-passlib[bcrypt]==1.7.4              # ✅ Mevcut - Password utilities
-PyJWT==2.6.0                        # ✅ Mevcut - JWT tokens
-python-jose[cryptography]==3.3.0    # ✅ Mevcut - JWT handling
-cryptography>=41.0.0                # ✅ YENİ - Enhanced crypto support
-
-# Network Interface Management - YENİ PAKETLER
-netifaces>=0.11.0,<0.12.0          # ✅ YENİ - Network interface discovery
-psutil>=5.9.0,<6.0.0               # ✅ GÜNCELLEME - System and network monitoring
-ipaddress>=1.0.23                   # ✅ YENİ - IP address manipulation
-python-iptables>=1.0.0             # ✅ YENİ - iptables management
-netaddr>=0.8.0,<0.9.0              # ✅ YENİ - Network address manipulation
-scapy>=2.5.0,<2.6.0                # ✅ YENİ - Packet manipulation (optional)
-
-# System Integration
-python-dotenv==1.0.0               # ✅ Mevcut - Environment variables
-python-multipart==0.0.6            # ✅ Mevcut - File uploads
-requests>=2.31.0,<3.0.0            # ✅ GÜNCELLEME - HTTP requests with security updates
-
-# Async Support
-anyio==4.9.0                       # ✅ Mevcut - Async utilities
-asyncio-subprocess>=0.1.0          # ✅ YENİ - Async subprocess management
-
-# Network Utilities
-dnspython>=2.7.0,<3.0.0           # ✅ GÜNCELLEME - DNS operations
-httpcore==0.17.3                   # ✅ Mevcut - HTTP core
-httpx>=0.24.0,<0.25.0             # ✅ GÜNCELLEME - Async HTTP client
-
-# System Monitoring & Logging
-colorama==0.4.6                    # ✅ Mevcut - Colored terminal output
-click>=8.2.0,<9.0.0               # ✅ GÜNCELLEME - CLI utilities
-
-# Data Processing
-typing_extensions==4.13.2          # ✅ Mevcut - Type hints
-six==1.17.0                        # ✅ Mevcut - Python 2/3 compatibility
-
-# Network Security & Validation
-certifi>=2025.4.26                 # ✅ GÜNCELLEME - CA certificates
-charset-normalizer>=3.4.0,<4.0.0   # ✅ GÜNCELLEME - Character encoding
-idna>=3.10,<4.0                    # ✅ GÜNCELLEME - Internationalized domain names
-urllib3>=2.4.0,<3.0.0              # ✅ GÜNCELLEME - HTTP library with security fixes
-
-# Cryptography & Security
-ecdsa>=0.19.0,<0.20.0             # ✅ GÜNCELLEME - Elliptic curve cryptography
-rsa>=4.9.0,<5.0.0                 # ✅ GÜNCELLEME - RSA cryptography
-pyasn1>=0.4.8,<0.5.0              # ✅ GÜNCELLEME - ASN.1 parsing
-
-# Utility Libraries
-itsdangerous>=2.1.0,<3.0.0        # ✅ GÜNCELLEME - Secure token generation
-packaging>=25.0                    # ✅ GÜNCELLEME - Package version handling
-sniffio>=1.3.0,<2.0.0             # ✅ GÜNCELLEME - Async library detection
-exceptiongroup>=1.3.0,<2.0.0      # ✅ GÜNCELLEME - Exception handling
-h11>=0.14.0,<0.15.0               # ✅ GÜNCELLEME - HTTP/1.1 protocol
-
-# Development & Testing (Optional - comment out in production)
-pytest>=7.3.0,<8.0.0              # ✅ GÜNCELLEME - Testing framework
-pytest-asyncio>=0.21.0,<0.22.0    # ✅ GÜNCELLEME - Async testing
-iniconfig>=2.1.0,<3.0.0           # ✅ GÜNCELLEME - Configuration parsing
-pluggy>=1.6.0,<2.0.0              # ✅ GÜNCELLEME - Plugin system
-tomli>=2.2.0,<3.0.0               # ✅ GÜNCELLEME - TOML parsing
-
-# Platform-specific packages (Linux network management)
-# These will be installed automatically on Linux systems
-pyroute2>=0.7.0,<0.8.0            # ✅ YENİ - Linux networking (netlink)
-netlink>=1.0.0,<2.0.0             # ✅ YENİ - Linux netlink interface (fallback)
-
-# Optional Network Analysis Tools
-python-nmap>=0.7.1                # ✅ YENİ - Network scanning (optional)
-ping3>=4.0.0,<5.0.0              # ✅ YENİ - Pure Python ping implementation
-
-# Configuration Management
-toml>=0.10.0,<0.11.0             # ✅ YENİ - TOML configuration files
-PyYAML>=6.0.0,<7.0.0             # ✅ YENİ - YAML configuration support
-
-# Performance & Monitoring
-memory-profiler>=0.60.0           # ✅ YENİ - Memory usage monitoring (optional)
-python-dateutil>=2.8.0,<3.0.0    # ✅ YENİ - Date/time utilities
-
-# Network Protocol Support
-dpkt>=1.9.8,<2.0.0               # ✅ YENİ - Packet creation and parsing (optional)
-
-# ==================================================================
-# PLATFORM-SPECIFIC REQUIREMENTS
-# ==================================================================
-
-# Linux-specific network management (automatically detected)
-# These packages require system-level network tools to be installed first
-# Run: sudo ./scripts/install_system_requirements.sh
-
-# Windows compatibility (future support)
-# wmi>=1.5.1; sys_platform == "win32"                    # Windows WMI
-# pywin32>=305; sys_platform == "win32"                  # Windows API
-
-# macOS compatibility (future support)  
-# pyobjc-core>=9.0; sys_platform == "darwin"             # macOS system integration
-
-# ==================================================================
-# INSTALLATION NOTES
-# ==================================================================
-
-# To install all dependencies:
-# pip install -r requirements.txt
-
-# For production deployment (skip testing packages):
-# pip install -r requirements.txt --no-deps
-# pip install fastapi uvicorn motor pymongo bcrypt netifaces psutil python-jose
-
-# For development environment:
-# pip install -r requirements.txt
-# pip install -e .
-
-# System requirements (run first):
-# sudo ./scripts/install_system_requirements.sh
-
-# Network capabilities verification:
-# python -c "import netifaces; print('Network interfaces:', netifaces.interfaces())"
-# python -c "import psutil; print('Network stats:', psutil.net_if_stats())"
-
-# ==================================================================
-# VERSION COMPATIBILITY
-# ==================================================================
-
-# Python version requirement: >=3.8,<4.0
-# Tested on: Python 3.8, 3.9, 3.10, 3.11, 3.12
-# Operating Systems: Ubuntu 20.04+, Debian 10+, CentOS 7+, Alpine 3.12+
-
-# ==================================================================
-# SECURITY UPDATES
-# ==================================================================
-
-# This requirements.txt includes security-focused version pinning
-# Regular updates recommended for security patches
-# Last security review: 2024
-
-# Critical packages for security updates:
-# - cryptography (CVE monitoring)
-# - requests (HTTP security)
-# - urllib3 (HTTP security) 
-# - certifi (CA certificates)
-# - PyJWT (token security)
-
-# ==================================================================
-# PERFORMANCE OPTIMIZATIONS
-# ==================================================================
-
-# For high-performance deployments, consider:
-# uvloop>=0.17.0              # Fast event loop (Linux/macOS)
-# ujson>=5.7.0               # Fast JSON parsing
-# orjson>=3.8.0              # Fastest JSON library
-# httptools>=0.5.0           # Fast HTTP parsing
-
-# Uncomment for production performance boost:
-# uvloop>=0.17.0; sys_platform != "win32"
-# ujson>=5.7.0
-# httptools>=0.5.0
-
-# ==================================================================
-# TROUBLESHOOTING
-# ==================================================================
-
-# Common installation issues:
-
-# 1. python-iptables requires iptables-dev:
-#    sudo apt-get install iptables-dev  # Debian/Ubuntu
-#    sudo yum install iptables-devel    # RHEL/CentOS
-
-# 2. netifaces compilation issues:
-#    sudo apt-get install python3-dev  # Debian/Ubuntu
-#    sudo yum install python3-devel    # RHEL/CentOS
-
-# 3. cryptography compilation issues:
-#    sudo apt-get install libffi-dev libssl-dev  # Debian/Ubuntu
-#    sudo yum install libffi-devel openssl-devel # RHEL/CentOS
-
-# 4. psutil compilation issues:
-#    sudo apt-get install gcc python3-dev       # Debian/Ubuntu
-#    sudo yum install gcc python3-devel         # RHEL/CentOS
-
-# 5. Permission errors for network operations:
-#    Run as root or use sudo for network configuration
-#    Ensure user is in netdev group: sudo usermod -a -G netdev $USER
-
-# ==================================================================
-# OPTIONAL DEVELOPMENT TOOLS
-# ==================================================================
-
-# Uncomment for development environment:
-# black>=23.0.0                      # Code formatting
-# isort>=5.12.0                      # Import sorting  
-# flake8>=6.0.0                      # Code linting
-# mypy>=1.0.0                        # Type checking
-# pre-commit>=3.0.0                  # Git hooks
-# pytest-cov>=4.0.0                  # Test coverage
-# pytest-mock>=3.10.0                # Mocking for tests
-# factory-boy>=3.2.0                 # Test data generation
-# faker>=18.0.0                      # Fake data generation
-# httpx>=0.24.0                      # Testing HTTP client
-# pytest-xdist>=3.2.0                # Parallel testing
-# coverage>=7.2.0                    # Code coverage
+annotated-types==0.7.0
+anyio==3.7.1
+bcrypt==4.3.0
+certifi==2025.6.15
+cffi==1.17.1
+charset-normalizer==3.4.2
+click==8.2.1
+colorama==0.4.6
+cryptography==45.0.4
+Deprecated==1.2.18
+dnslib==0.9.26
+dnspython==2.4.2
+ecdsa==0.19.1
+exceptiongroup==1.3.0
+fastapi==0.104.1
+h11==0.16.0
+httptools==0.6.4
+idna==3.10
+limits==5.4.0
+markdown-it-py==3.0.0
+mdurl==0.1.2
+motor==3.3.2
+packaging==25.0
+passlib==1.7.4
+psutil==5.9.6
+pyasn1==0.6.1
+pycparser==2.22
+pydantic==2.5.0
+pydantic-settings==2.1.0
+pydantic_core==2.14.1
+Pygments==2.19.2
+pymongo==4.6.0
+python-dotenv==1.0.0
+python-jose==3.3.0
+python-multipart==0.0.6
+PyYAML==6.0.2
+requests==2.31.0
+rich==13.7.0
+rsa==4.9.1
+six==1.17.0
+slowapi==0.1.9
+sniffio==1.3.1
+starlette==0.27.0
+structlog==23.2.0
+typing_extensions==4.14.0
+urllib3==2.5.0
+uvicorn==0.24.0
+watchfiles==1.1.0
+websockets==15.0.1
+wrapt==1.17.2

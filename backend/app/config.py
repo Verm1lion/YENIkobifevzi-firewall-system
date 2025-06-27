@@ -25,8 +25,8 @@ class Settings:
         self.FRONTEND_URL: str = "http://localhost:3000"
 
         # Database Configuration
-        self.MONGODB_URL: str = "mongodb://localhost:27017"
-        self.MONGODB_URI: str = "mongodb://localhost:27017/kobi_firewall_db"
+        self.MONGODB_URL: str = "mongodb://admin:secretpassword@localhost:27017"
+        self.MONGODB_URI: str = "mongodb://admin:secretpassword@localhost:27017/?authSource=admin"
         self.DATABASE_NAME: str = "kobi_firewall_db"
         self.DB_NAME: str = "kobi_firewall_db"
 

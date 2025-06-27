@@ -1,47 +1,39 @@
-# Multi-stage build for optimized production bundle
-FROM node:18-alpine as builder
+FROM node:22.16.0-alpine as build-stage
 
-# Set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --legacy-peer-deps
 
-# Copy source code
 COPY . .
 
-# Build arguments
-ARG VITE_API_URL=http://localhost:8000/api/v1
-ENV VITE_API_URL=$VITE_API_URL
-
-# Build application
 RUN npm run build
 
-# Production stage with Nginx
-FROM nginx:alpine as production
+FROM nginx:alpine
 
-# Install curl for health checks
-RUN apk add --no-cache curl
+COPY --from=build-stage /usr/src/app/dist /usr/share/nginx/html
 
-# Copy built application
-COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy nginx configuration
-COPY docker/nginx-frontend.conf /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf
+COPY <<EOF /etc/nginx/conf.d/default.conf
+server {
+    listen       3000;
+    server_name  localhost;
 
-# Create nginx user and set permissions
-RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+        try_files \$uri \$uri/ /index.html;
+    }
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
-    CMD curl -f http://localhost:80 || exit 1
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+EOF
 
-# Expose port
-EXPOSE 80
+EXPOSE 3000
 
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]

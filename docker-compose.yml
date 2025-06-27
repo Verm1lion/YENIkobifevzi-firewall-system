@@ -1,149 +1,69 @@
 version: '3.8'
 
 services:
-  # MongoDB Database
   mongodb:
     image: mongo:7.0
-    container_name: kobi-firewall-mongo
+    container_name: kobi-mongodb
     restart: unless-stopped
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password123
-      MONGO_INITDB_DATABASE: kobi_firewall_db
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secretpassword
+      - MONGO_INITDB_DATABASE=kobi_firewall_db
     ports:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
       - mongodb_config:/data/configdb
-      - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     networks:
-      - kobi-network
-    healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 30s
+      - app-network
 
-  # Backend API
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: kobi-firewall-backend
-    restart: unless-stopped
-    environment:
-      - MONGODB_URL=mongodb://admin:password123@mongodb:27017/kobi_firewall_db?authSource=admin
-      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-      - ENVIRONMENT=production
-      - DEBUG=false
-      - CORS_ORIGINS=http://localhost:3000,http://localhost:80
+    container_name: app-backend
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend/logs:/app/logs
-      - /etc/localtime:/etc/localtime:ro
-    networks:
-      - kobi-network
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MONGODB_URL=mongodb://admin:secretpassword@mongodb:27017
+      - MONGODB_URI=mongodb://admin:secretpassword@mongodb:27017/kobi_firewall_db?authSource=admin
+      - DATABASE_NAME=kobi_firewall_db
+      - NODE_ENV=development
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+      - FRONTEND_URL=http://frontend:3000
+      - CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,http://frontend:3000
     depends_on:
-      mongodb:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
+      - mongodb
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/.env:/app/.env
+    networks:
+      - app-network
+    restart: unless-stopped
 
-  # Frontend
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      args:
-        - VITE_API_URL=http://localhost:8000/api/v1
-    container_name: kobi-firewall-frontend
-    restart: unless-stopped
+    container_name: app-frontend
     ports:
-      - "3000:80"
-    networks:
-      - kobi-network
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+      - VITE_API_BASE_URL=http://localhost:8000
     depends_on:
       - backend
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
-  # Nginx Reverse Proxy
-  nginx:
-    image: nginx:alpine
-    container_name: kobi-firewall-nginx
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./docker/ssl:/etc/nginx/ssl:ro
-      - nginx_logs:/var/log/nginx
     networks:
-      - kobi-network
-    depends_on:
-      - frontend
-      - backend
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
-  # Redis for caching (optional)
-  redis:
-    image: redis:7-alpine
-    container_name: kobi-firewall-redis
+      - app-network
     restart: unless-stopped
-    command: redis-server --appendonly yes --requirepass redis123
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-    networks:
-      - kobi-network
-    healthcheck:
-      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
 
-  # Log aggregation (optional)
-  fluentd:
-    image: fluent/fluentd:edge-debian
-    container_name: kobi-firewall-logs
-    restart: unless-stopped
-    volumes:
-      - ./docker/fluentd.conf:/fluentd/etc/fluent.conf:ro
-      - ./backend/logs:/var/log/backend:ro
-      - nginx_logs:/var/log/nginx:ro
-    networks:
-      - kobi-network
-    depends_on:
-      - backend
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   mongodb_data:
     driver: local
   mongodb_config:
     driver: local
-  redis_data:
-    driver: local
-  nginx_logs:
-    driver: local
-
-networks:
-  kobi-network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
