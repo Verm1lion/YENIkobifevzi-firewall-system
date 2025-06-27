@@ -1,0 +1,1797 @@
+2025-06-22 16:52:14,046 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 16:52:14,047 - app.main - INFO - 🔧 Environment: development
+2025-06-22 16:52:14,047 - app.main - INFO - 🔧 Environment: development
+2025-06-22 16:52:14,047 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 16:52:14,047 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 16:52:14,077 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 16:52:14,077 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 16:52:14,077 - app.main - WARNING - ⚠️  [ROUTER] Logs router not available: module 'app.routers.logs' has no attribute 'logs_router'
+2025-06-22 16:52:14,077 - app.main - WARNING - ⚠️  [ROUTER] Logs router not available: module 'app.routers.logs' has no attribute 'logs_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Status router not available: module 'app.routers.status' has no attribute 'status_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Status router not available: module 'app.routers.status' has no attribute 'status_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Network router not available: module 'app.routers.network' has no attribute 'network_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Network router not available: module 'app.routers.network' has no attribute 'network_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Nat router not available: module 'app.routers.nat' has no attribute 'nat_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Firewall router not available: module 'app.routers.firewall' has no attribute 'firewall_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Nat router not available: module 'app.routers.nat' has no attribute 'nat_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Firewall router not available: module 'app.routers.firewall' has no attribute 'firewall_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Routes router not available: module 'app.routers.routes' has no attribute 'route_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Backup router not available: module 'app.routers.backup' has no attribute 'backup_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Routes router not available: module 'app.routers.routes' has no attribute 'route_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Firewall_Groups router not available: module 'app.routers.firewall_groups' has no attribute 'firewall_groups_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Firewall_Groups router not available: module 'app.routers.firewall_groups' has no attribute 'firewall_groups_router'
+2025-06-22 16:52:14,078 - app.main - WARNING - ⚠️  [ROUTER] Dns router not available: module 'app.routers.dns' has no attribute 'dns_router'
+2025-06-22 16:52:14,079 - app.main - WARNING - ⚠️  [ROUTER] Dns router not available: module 'app.routers.dns' has no attribute 'dns_router'
+2025-06-22 16:52:14,079 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 16:52:14,080 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 16:52:14,087 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 16:52:14,087 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 16:52:14,088 - app.main - INFO - 🔧 Upgrading admin password to bcrypt
+2025-06-22 16:52:14,088 - app.main - INFO - 🔧 Upgrading admin password to bcrypt
+2025-06-22 16:52:14,295 - app.main - INFO - ✅ Admin password upgraded to bcrypt
+2025-06-22 16:52:14,295 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-22 16:52:14,295 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 16:52:14,295 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 16:52:14,295 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 16:52:14,295 - app.main - INFO -    - Input sanitization
+2025-06-22 16:52:14,295 - app.main - INFO -    - Rate limiting ready
+2025-06-22 16:52:14,299 - app.main - INFO - ✅ Admin password upgraded to bcrypt
+2025-06-22 16:52:14,299 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-22 16:52:14,300 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 16:52:14,300 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 16:52:14,300 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 16:52:14,300 - app.main - INFO -    - Input sanitization
+2025-06-22 16:52:14,300 - app.main - INFO -    - Rate limiting ready
+2025-06-22 16:52:26,610 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 16:52:26,610 - app.main - INFO - 🔧 Environment: development
+2025-06-22 16:52:26,610 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 16:52:26,634 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 16:52:26,635 - app.main - WARNING - ⚠️  [ROUTER] Logs router not available: module 'app.routers.logs' has no attribute 'logs_router'
+2025-06-22 16:52:26,635 - app.main - WARNING - ⚠️  [ROUTER] Status router not available: module 'app.routers.status' has no attribute 'status_router'
+2025-06-22 16:52:26,635 - app.main - WARNING - ⚠️  [ROUTER] Network router not available: module 'app.routers.network' has no attribute 'network_router'
+2025-06-22 16:52:26,635 - app.main - WARNING - ⚠️  [ROUTER] Nat router not available: module 'app.routers.nat' has no attribute 'nat_router'
+2025-06-22 16:52:26,635 - app.main - WARNING - ⚠️  [ROUTER] Firewall router not available: module 'app.routers.firewall' has no attribute 'firewall_router'
+2025-06-22 16:52:26,636 - app.main - WARNING - ⚠️  [ROUTER] Backup router not available: module 'app.routers.backup' has no attribute 'backup_router'
+2025-06-22 16:52:26,636 - app.main - WARNING - ⚠️  [ROUTER] Routes router not available: module 'app.routers.routes' has no attribute 'route_router'
+2025-06-22 16:52:26,636 - app.main - WARNING - ⚠️  [ROUTER] Firewall_Groups router not available: module 'app.routers.firewall_groups' has no attribute 'firewall_groups_router'
+2025-06-22 16:52:26,636 - app.main - WARNING - ⚠️  [ROUTER] Dns router not available: module 'app.routers.dns' has no attribute 'dns_router'
+2025-06-22 16:52:26,637 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 16:52:26,643 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 16:52:26,846 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 16:52:26,846 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.21s
+2025-06-22 16:52:26,846 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 16:52:26,846 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 16:52:26,846 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 16:52:26,846 - app.main - INFO -    - Input sanitization
+2025-06-22 16:52:26,847 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:01:52,455 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-22 17:01:52,458 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-22 17:01:52,459 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-22 17:01:54,544 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 17:01:54,545 - app.main - INFO - 🔧 Environment: development
+2025-06-22 17:01:54,545 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 17:01:54,569 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 17:01:54,569 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 17:01:54,569 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 17:01:54,570 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 17:01:54,570 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 17:01:54,570 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 17:01:54,572 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 17:01:54,572 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 17:01:54,572 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 17:01:54,572 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 17:01:54,574 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 17:01:54,584 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 17:01:54,791 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 17:01:54,792 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-22 17:01:54,792 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 17:01:54,792 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 17:01:54,792 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 17:01:54,792 - app.main - INFO -    - Input sanitization
+2025-06-22 17:01:54,792 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:03:12,130 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-22 17:03:12,136 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-22 17:03:12,137 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-22 17:03:13,945 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 17:03:13,946 - app.main - INFO - 🔧 Environment: development
+2025-06-22 17:03:13,947 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 17:03:13,975 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 17:03:13,975 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 17:03:13,975 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 17:03:13,976 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 17:03:13,976 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 17:03:13,977 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 17:03:13,977 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 17:03:13,977 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 17:03:13,978 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 17:03:13,978 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 17:03:13,979 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 17:03:13,989 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 17:03:14,210 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 17:03:14,213 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.23s
+2025-06-22 17:03:14,216 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 17:03:14,219 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 17:03:14,221 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 17:03:14,222 - app.main - INFO -    - Input sanitization
+2025-06-22 17:03:14,226 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:03:19,876 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-22 17:03:19,879 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-22 17:03:19,879 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-22 17:03:22,432 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 17:03:22,432 - app.main - INFO - 🔧 Environment: development
+2025-06-22 17:03:22,433 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 17:03:22,455 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 17:03:22,455 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 17:03:22,456 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 17:03:22,456 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 17:03:22,457 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 17:03:22,457 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 17:03:22,457 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 17:03:22,457 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 17:03:22,458 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 17:03:22,458 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 17:03:22,459 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 17:03:22,467 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 17:03:22,664 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 17:03:22,665 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.21s
+2025-06-22 17:03:22,665 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 17:03:22,665 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 17:03:22,665 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 17:03:22,665 - app.main - INFO -    - Input sanitization
+2025-06-22 17:03:22,665 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:04:22,389 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-22 17:04:22,397 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-22 17:04:22,398 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-22 17:04:32,934 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 17:04:32,935 - app.main - INFO - 🔧 Environment: development
+2025-06-22 17:04:32,935 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 17:04:32,956 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 17:04:32,957 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 17:04:32,957 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 17:04:32,957 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 17:04:32,958 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 17:04:32,958 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 17:04:32,958 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 17:04:32,958 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 17:04:32,958 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 17:04:32,959 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 17:04:32,960 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 17:04:33,004 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 17:04:33,203 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 17:04:33,204 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-22 17:04:33,204 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 17:04:33,204 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 17:04:33,204 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 17:04:33,204 - app.main - INFO -    - Input sanitization
+2025-06-22 17:04:33,204 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:05:17,905 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-22 17:05:17,910 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-22 17:05:17,912 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-22 17:05:21,383 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-22 17:05:21,399 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-22 17:05:21,407 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0243s
+2025-06-22 17:07:10,726 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 17:07:10,726 - app.main - INFO - 🔧 Environment: development
+2025-06-22 17:07:10,726 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 17:07:10,764 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 17:07:10,765 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 17:07:10,765 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 17:07:10,765 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 17:07:10,766 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 17:07:10,767 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 17:07:10,767 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 17:07:10,767 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 17:07:10,768 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 17:07:10,768 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 17:07:10,769 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 17:07:10,798 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 17:07:11,000 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 17:07:11,004 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-22 17:07:11,028 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 17:07:11,029 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 17:07:11,029 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 17:07:11,030 - app.main - INFO -    - Input sanitization
+2025-06-22 17:07:11,031 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:08:34,445 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-22 17:08:34,449 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-22 17:08:34,450 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0050s
+2025-06-22 17:08:39,026 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/auth/login from 127.0.0.1
+2025-06-22 17:08:39,027 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0010s
+2025-06-22 17:26:06,232 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-22 17:26:06,235 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-22 17:26:06,235 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-22 17:28:09,197 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 17:28:09,198 - app.main - INFO - 🔧 Environment: development
+2025-06-22 17:28:09,198 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 17:28:09,257 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 17:28:09,257 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 17:28:09,258 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 17:28:09,258 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 17:28:09,259 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 17:28:09,260 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 17:28:09,260 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 17:28:09,261 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 17:28:09,261 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 17:28:09,261 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 17:28:09,262 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 17:28:09,274 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 17:28:09,499 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 17:28:09,499 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-22 17:28:09,499 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 17:28:09,499 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 17:28:09,499 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 17:28:09,499 - app.main - INFO -    - Input sanitization
+2025-06-22 17:28:09,500 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:32:52,962 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-22 17:32:52,966 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-22 17:32:52,968 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-22 17:38:48,535 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 17:38:48,536 - app.main - INFO - 🔧 Environment: development
+2025-06-22 17:38:48,536 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 17:38:48,567 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 17:38:48,567 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 17:38:48,568 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 17:38:48,568 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 17:38:48,568 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 17:38:48,569 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 17:38:48,569 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 17:38:48,569 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 17:38:48,569 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 17:38:48,570 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 17:38:48,571 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 17:38:48,578 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 17:38:48,778 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 17:38:48,780 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.21s
+2025-06-22 17:38:48,780 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 17:38:48,780 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 17:38:48,780 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 17:38:48,780 - app.main - INFO -    - Input sanitization
+2025-06-22 17:38:48,780 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:38:57,677 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-22 17:38:57,690 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-22 17:38:57,694 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-22 17:39:10,708 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 17:39:10,708 - app.main - INFO - 🔧 Environment: development
+2025-06-22 17:39:10,708 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 17:39:10,742 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 17:39:10,742 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 17:39:10,742 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 17:39:10,742 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 17:39:10,743 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 17:39:10,743 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 17:39:10,743 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 17:39:10,744 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 17:39:10,744 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 17:39:10,744 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 17:39:10,745 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 17:39:10,752 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 17:39:10,956 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 17:39:10,957 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.21s
+2025-06-22 17:39:10,957 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 17:39:10,957 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 17:39:10,957 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 17:39:10,957 - app.main - INFO -    - Input sanitization
+2025-06-22 17:39:10,957 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:39:15,679 - app.main - INFO - 📥 [REQUEST] GET http://127.0.0.1:8001/health from 127.0.0.1
+2025-06-22 17:39:15,682 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-22 17:39:15,683 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0035s
+2025-06-22 17:57:35,401 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-22 17:57:35,402 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-22 17:57:35,403 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-22 17:57:37,792 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 17:57:37,793 - app.main - INFO - 🔧 Environment: development
+2025-06-22 17:57:37,793 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 17:57:37,825 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 17:57:37,826 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 17:57:37,826 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 17:57:37,827 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 17:57:37,827 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 17:57:37,828 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 17:57:37,828 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 17:57:37,828 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 17:57:37,828 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 17:57:37,829 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 17:57:37,830 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 17:57:37,854 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 17:57:38,053 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 17:57:38,054 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-22 17:57:38,054 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 17:57:38,054 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 17:57:38,054 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 17:57:38,055 - app.main - INFO -    - Input sanitization
+2025-06-22 17:57:38,055 - app.main - INFO -    - Rate limiting ready
+2025-06-22 17:57:52,762 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/health from 127.0.0.1
+2025-06-22 17:57:52,765 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-22 17:57:52,766 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-22 17:57:52,770 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 17:57:52,772 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-22 17:57:53,087 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 17:57:53,093 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-22 17:57:53,097 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-22 17:57:53,341 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-22 17:57:53,342 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.250s
+2025-06-22 17:57:53,343 - app.main - INFO - 📤 [RESPONSE] 200 - 0.2558s
+2025-06-22 18:12:42,970 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/health from 127.0.0.1
+2025-06-22 18:12:42,976 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-22 18:12:42,977 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0064s
+2025-06-22 18:12:42,979 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 18:12:42,979 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0000s
+2025-06-22 18:12:43,299 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 18:12:43,313 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-22 18:12:43,323 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-22 18:12:43,811 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-22 18:12:43,813 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.500s
+2025-06-22 18:12:43,814 - app.main - INFO - 📤 [RESPONSE] 200 - 0.5149s
+2025-06-22 18:12:58,298 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-22 18:12:58,300 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0000s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-22 18:12:58,309 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-22 18:12:58,311 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-22 18:13:32,763 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/health from 127.0.0.1
+2025-06-22 18:13:32,769 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-22 18:13:32,769 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0058s
+2025-06-22 18:13:32,776 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 18:13:32,778 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0000s
+2025-06-22 18:13:33,091 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 18:13:33,095 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-22 18:13:33,100 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-22 18:13:33,511 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-22 18:13:33,511 - app.routers.auth_simple - INFO - 🔄 Remember me enabled for user: admin
+2025-06-22 18:13:33,516 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.422s
+2025-06-22 18:13:33,518 - app.main - INFO - 📤 [RESPONSE] 200 - 0.4272s
+2025-06-22 18:13:53,217 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/health from 127.0.0.1
+2025-06-22 18:13:53,235 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-22 18:13:53,241 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0240s
+2025-06-22 18:13:53,265 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 18:13:53,273 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0080s
+2025-06-22 18:13:53,591 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 18:13:53,602 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-22 18:13:53,610 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-22 18:13:54,110 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-22 18:13:54,112 - app.routers.auth_simple - INFO - 🔄 Remember me enabled for user: admin
+2025-06-22 18:13:54,117 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.516s
+2025-06-22 18:13:54,118 - app.main - INFO - 📤 [RESPONSE] 200 - 0.5271s
+2025-06-22 19:14:42,400 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-22 19:14:42,400 - app.main - INFO - 🔧 Environment: development
+2025-06-22 19:14:42,401 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-22 19:14:42,434 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-22 19:14:42,434 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-22 19:14:42,434 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-22 19:14:42,434 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-22 19:14:42,435 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-22 19:14:42,436 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-22 19:14:42,436 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-22 19:14:42,436 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-22 19:14:42,436 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-22 19:14:42,436 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-22 19:14:42,437 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-22 19:14:42,466 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-22 19:14:42,670 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-22 19:14:42,670 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.23s
+2025-06-22 19:14:42,670 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-22 19:14:42,670 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-22 19:14:42,671 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-22 19:14:42,671 - app.main - INFO -    - Input sanitization
+2025-06-22 19:14:42,671 - app.main - INFO -    - Rate limiting ready
+2025-06-22 19:14:54,465 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/health from 127.0.0.1
+2025-06-22 19:14:54,483 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-22 19:14:54,491 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0276s
+2025-06-22 19:14:54,509 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 19:14:54,518 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0097s
+2025-06-22 19:14:54,840 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-22 19:14:54,843 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-22 19:14:54,850 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-22 19:14:55,243 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-22 19:14:55,246 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.403s
+2025-06-22 19:14:55,247 - app.main - INFO - 📤 [RESPONSE] 200 - 0.4069s
+2025-06-22 19:15:25,439 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-22 19:15:25,440 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-22 19:15:25,449 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-22 19:15:25,451 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-22 19:33:14,637 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-22 19:33:14,639 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-22 19:33:14,644 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-22 19:33:14,644 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0000s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 00:51:56,045 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 00:51:56,047 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 00:51:56,047 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 01:20:52,823 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 01:20:52,823 - app.main - INFO - 🔧 Environment: development
+2025-06-23 01:20:52,824 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 01:20:52,862 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 01:20:52,863 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 01:20:52,863 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 01:20:52,864 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 01:20:52,864 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 01:20:52,865 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 01:20:52,865 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 01:20:52,865 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 01:20:52,866 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 01:20:52,866 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 01:20:52,867 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 01:20:52,876 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 01:20:53,089 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 01:20:53,090 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-23 01:20:53,090 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 01:20:53,090 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 01:20:53,090 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 01:20:53,090 - app.main - INFO -    - Input sanitization
+2025-06-23 01:20:53,090 - app.main - INFO -    - Rate limiting ready
+2025-06-23 01:21:05,692 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/health from 127.0.0.1
+2025-06-23 01:21:05,695 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 01:21:05,696 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-23 01:21:05,700 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-23 01:21:05,700 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0010s
+2025-06-23 01:21:06,011 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-23 01:21:06,016 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-23 01:21:06,021 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-23 01:21:06,231 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-23 01:21:06,233 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.218s
+2025-06-23 01:21:06,234 - app.main - INFO - 📤 [RESPONSE] 200 - 0.2232s
+2025-06-23 01:21:11,963 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:21:11,964 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:21:11,972 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:21:11,973 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:22:12,201 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:22:12,207 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0061s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:23:12,485 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:23:12,486 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0000s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:24:12,197 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:24:12,204 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0070s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:25:12,499 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:25:12,502 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0030s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:26:12,191 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:26:12,192 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:27:12,502 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:27:12,505 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0030s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:28:16,492 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:28:16,493 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:29:12,181 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:29:12,185 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0040s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:30:16,492 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:30:16,493 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0015s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:31:16,196 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:31:16,197 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:32:16,489 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:32:16,493 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0039s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:33:16,187 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:33:16,191 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0040s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:34:12,958 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:34:12,959 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:35:12,183 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:35:12,184 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:36:12,489 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:36:12,490 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:37:16,543 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:37:16,549 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0057s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:38:16,219 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:38:16,225 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0060s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:39:16,523 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:39:16,527 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0040s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:40:16,214 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:40:16,220 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0071s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:41:16,514 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:41:16,517 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0030s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:42:16,206 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:42:16,207 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:43:12,485 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:43:12,488 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0032s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:44:16,514 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:44:16,516 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0018s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:45:12,178 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:45:12,179 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:46:16,515 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:46:16,518 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0021s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:47:16,216 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:47:16,252 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0368s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:48:16,545 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:48:16,546 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0000s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:49:16,210 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:49:16,216 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0060s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:50:16,516 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:50:16,520 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0040s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:51:16,203 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:51:16,208 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0051s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:52:16,503 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:52:16,508 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0051s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:53:16,200 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:53:16,202 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:54:16,519 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:54:16,521 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:55:16,201 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:55:16,203 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:56:16,517 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:56:16,529 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0130s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:57:13,588 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:57:13,591 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0030s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:58:12,490 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:58:12,493 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0040s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 01:59:12,189 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 01:59:12,191 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:00:16,513 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:00:16,514 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0014s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:01:12,187 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:01:12,188 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:02:12,482 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:02:12,483 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:03:12,182 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:03:12,184 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:04:12,482 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:04:12,482 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0000s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:05:16,507 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:05:16,509 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0015s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:06:16,195 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:06:16,196 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:07:16,535 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:07:16,546 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0112s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:08:16,209 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:08:16,210 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:09:12,496 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:09:12,499 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0039s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:10:16,543 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:10:16,545 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:11:16,220 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:11:16,222 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:12:16,499 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:12:16,501 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:13:12,188 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:13:12,190 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0026s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:14:16,491 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:14:16,492 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:15:16,216 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:15:16,223 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0073s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:15:49,946 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 02:15:49,951 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 02:15:49,951 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 02:15:51,530 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 02:15:51,531 - app.main - INFO - 🔧 Environment: development
+2025-06-23 02:15:51,531 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 02:15:51,566 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 02:15:51,567 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 02:15:51,567 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 02:15:51,567 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 02:15:51,568 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 02:15:51,568 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 02:15:51,568 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 02:15:51,568 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 02:15:51,568 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 02:15:51,569 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 02:15:51,570 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 02:15:51,596 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 02:15:51,808 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 02:15:51,808 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-23 02:15:51,809 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 02:15:51,809 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 02:15:51,809 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 02:15:51,809 - app.main - INFO -    - Input sanitization
+2025-06-23 02:15:51,810 - app.main - INFO -    - Rate limiting ready
+2025-06-23 02:16:12,508 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:16:12,512 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0042s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:16:19,012 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 02:16:19,018 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 02:16:19,018 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 02:16:20,668 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 02:16:20,669 - app.main - INFO - 🔧 Environment: development
+2025-06-23 02:16:20,670 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 02:16:20,793 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 02:16:20,794 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 02:16:20,796 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 02:16:20,799 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 02:16:20,802 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 02:16:20,807 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 02:16:20,809 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 02:16:20,810 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 02:16:20,811 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 02:16:20,812 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 02:16:20,818 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 02:16:20,869 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 02:16:21,136 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 02:16:21,137 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.32s
+2025-06-23 02:16:21,139 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 02:16:21,141 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 02:16:21,145 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 02:16:21,148 - app.main - INFO -    - Input sanitization
+2025-06-23 02:16:21,149 - app.main - INFO -    - Rate limiting ready
+2025-06-23 02:17:16,558 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:17:16,560 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:18:12,178 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:18:12,180 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:19:16,517 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:19:16,517 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0000s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:20:16,201 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:20:16,203 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:21:16,510 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:21:16,517 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0070s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:22:12,190 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:22:12,192 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:23:12,485 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:23:12,486 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:24:16,509 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:24:16,511 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0020s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:25:16,182 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:25:16,183 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:26:16,507 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:26:16,508 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0016s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:27:16,193 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:27:16,194 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:28:16,516 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:28:16,519 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0030s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:29:16,185 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:29:16,186 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0011s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:30:16,498 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:30:16,499 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:31:16,201 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:31:16,202 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:31:16,743 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:31:16,744 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:31:16,747 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/api/dashboard/data-status from 127.0.0.1
+2025-06-23 02:31:16,748 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0010s - GET http://localhost:8001/api/dashboard/data-status
+2025-06-23 02:35:22,867 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 02:35:22,868 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 02:35:22,870 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 02:35:25,139 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 02:35:25,140 - app.main - INFO - 🔧 Environment: development
+2025-06-23 02:35:25,140 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 02:35:25,212 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 02:35:25,281 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 02:35:25,283 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 02:35:25,283 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 02:35:25,284 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 02:35:25,284 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 02:35:25,285 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 02:35:25,286 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 02:35:25,286 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 02:35:25,287 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 02:35:25,287 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 02:35:25,287 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 02:35:25,289 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 02:35:25,318 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 02:35:25,533 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 02:35:25,533 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-23 02:35:25,534 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 02:35:25,534 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 02:35:25,535 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 02:35:25,535 - app.main - INFO -    - Input sanitization
+2025-06-23 02:35:25,535 - app.main - INFO -    - Rate limiting ready
+2025-06-23 02:38:21,837 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 02:38:21,839 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 02:38:21,842 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 02:38:22,988 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 02:38:22,989 - app.main - INFO - 🔧 Environment: development
+2025-06-23 02:38:22,989 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 02:38:23,117 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 02:38:23,121 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 02:38:23,123 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 02:38:23,123 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 02:38:23,123 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 02:38:23,123 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 02:38:23,124 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 02:38:23,124 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 02:38:23,124 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 02:38:23,124 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 02:38:23,124 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 02:38:23,125 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 02:38:23,125 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 02:38:23,134 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 02:38:23,344 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 02:38:23,345 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-23 02:38:23,345 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 02:38:23,345 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 02:38:23,345 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 02:38:23,345 - app.main - INFO -    - Input sanitization
+2025-06-23 02:38:23,346 - app.main - INFO -    - Rate limiting ready
+2025-06-23 02:49:44,002 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 02:49:44,003 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 02:49:44,004 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 02:49:45,514 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 02:49:45,514 - app.main - INFO - 🔧 Environment: development
+2025-06-23 02:49:45,515 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 02:49:45,698 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 02:49:45,701 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 02:49:45,703 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 02:49:45,703 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 02:49:45,703 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 02:49:45,704 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 02:49:45,704 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 02:49:45,705 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 02:49:45,705 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 02:49:45,705 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 02:49:45,706 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 02:49:45,706 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 02:49:45,707 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 02:49:45,717 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 02:49:45,932 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 02:49:45,932 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.23s
+2025-06-23 02:49:45,932 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 02:49:45,933 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 02:49:45,933 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 02:49:45,934 - app.main - INFO -    - Input sanitization
+2025-06-23 02:49:45,934 - app.main - INFO -    - Rate limiting ready
+2025-06-23 02:52:20,010 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 02:52:20,011 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 02:52:20,012 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 02:52:21,453 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 02:52:21,453 - app.main - INFO - 🔧 Environment: development
+2025-06-23 02:52:21,454 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 02:52:21,619 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 02:52:21,622 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 02:52:21,624 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 02:52:21,624 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 02:52:21,624 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 02:52:21,624 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 02:52:21,625 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 02:52:21,625 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 02:52:21,626 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 02:52:21,626 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 02:52:21,626 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 02:52:21,627 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 02:52:21,628 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 02:52:21,640 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 02:52:21,850 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 02:52:21,850 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-23 02:52:21,850 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 02:52:21,850 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 02:52:21,850 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 02:52:21,851 - app.main - INFO -    - Input sanitization
+2025-06-23 02:52:21,851 - app.main - INFO -    - Rate limiting ready
+2025-06-23 02:52:50,123 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 02:52:50,127 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 02:52:50,127 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 02:52:52,862 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 02:52:52,863 - app.main - INFO - 🔧 Environment: development
+2025-06-23 02:52:52,863 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 02:52:52,992 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 02:52:52,996 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 02:52:52,997 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 02:52:52,997 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 02:52:52,997 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 02:52:52,998 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 02:52:52,998 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 02:52:52,998 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 02:52:52,999 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 02:52:52,999 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 02:52:52,999 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 02:52:52,999 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 02:52:53,000 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 02:52:53,006 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 02:52:53,217 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 02:52:53,217 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-23 02:52:53,217 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 02:52:53,218 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 02:52:53,218 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 02:52:53,218 - app.main - INFO -    - Input sanitization
+2025-06-23 02:52:53,218 - app.main - INFO -    - Rate limiting ready
+2025-06-23 02:53:08,027 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/health from 127.0.0.1
+2025-06-23 02:53:08,047 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 02:53:08,055 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0281s
+2025-06-23 02:53:08,073 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-23 02:53:08,082 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0090s
+2025-06-23 02:53:08,407 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-23 02:53:08,415 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-23 02:53:08,426 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-23 02:53:09,270 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-23 02:53:09,273 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.858s
+2025-06-23 02:53:09,275 - app.main - INFO - 📤 [RESPONSE] 200 - 0.8684s
+2025-06-23 02:57:38,371 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 02:57:38,372 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 02:57:38,373 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 02:57:43,533 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 02:57:43,533 - app.main - INFO - 🔧 Environment: development
+2025-06-23 02:57:43,533 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 02:57:43,661 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 02:57:43,664 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 02:57:43,665 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 02:57:43,666 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 02:57:43,666 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 02:57:43,666 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 02:57:43,667 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 02:57:43,667 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 02:57:43,667 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 02:57:43,667 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 02:57:43,668 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 02:57:43,668 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 02:57:43,669 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 02:57:43,694 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 02:57:43,892 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 02:57:43,893 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-23 02:57:43,893 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 02:57:43,893 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 02:57:43,893 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 02:57:43,893 - app.main - INFO -    - Input sanitization
+2025-06-23 02:57:43,893 - app.main - INFO -    - Rate limiting ready
+2025-06-23 02:57:59,295 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8001/health from 127.0.0.1
+2025-06-23 02:57:59,298 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 02:57:59,299 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-23 02:57:59,303 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-23 02:57:59,304 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0010s
+2025-06-23 02:57:59,617 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8001/api/v1/auth/login from 127.0.0.1
+2025-06-23 02:57:59,620 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-23 02:57:59,620 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-23 02:57:59,843 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-23 02:57:59,846 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.226s
+2025-06-23 02:57:59,847 - app.main - INFO - 📤 [RESPONSE] 200 - 0.2291s
+2025-06-23 03:05:33,755 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:05:33,774 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:05:33,782 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:05:36,033 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:05:36,033 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:05:36,034 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:05:36,169 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:05:36,172 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:05:36,174 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:05:36,175 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:05:36,175 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:05:36,175 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:05:36,175 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:05:36,176 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:05:36,176 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:05:36,176 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:05:36,176 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:05:36,176 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:05:36,177 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:05:36,187 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:05:36,393 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:05:36,393 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-23 03:05:36,394 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:05:36,394 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:05:36,394 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:05:36,394 - app.main - INFO -    - Input sanitization
+2025-06-23 03:05:36,394 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:05:53,091 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 03:05:53,094 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 03:05:53,095 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-23 03:05:55,913 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 03:05:55,918 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 03:05:55,921 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0080s
+2025-06-23 03:05:55,925 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/auth/login from 127.0.0.1
+2025-06-23 03:05:55,926 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0010s
+2025-06-23 03:05:56,246 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8000/api/v1/auth/login from 127.0.0.1
+2025-06-23 03:05:56,248 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-23 03:05:56,252 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-23 03:05:56,858 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-23 03:05:56,861 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.613s
+2025-06-23 03:05:56,863 - app.main - INFO - 📤 [RESPONSE] 200 - 0.6163s
+2025-06-23 03:05:58,870 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 03:05:58,870 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn from 127.0.0.1
+2025-06-23 03:05:58,872 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0030s
+2025-06-23 03:05:58,873 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0030s
+2025-06-23 03:05:58,876 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 03:05:58,876 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn from 127.0.0.1
+2025-06-23 03:05:58,878 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 03:05:58,880 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-23 03:05:58,883 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 03:05:58,885 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn from 127.0.0.1
+2025-06-23 03:05:58,888 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0050s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 03:05:58,892 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0070s - GET http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn
+2025-06-23 03:05:58,897 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 03:05:58,898 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn from 127.0.0.1
+2025-06-23 03:05:58,902 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0054s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 03:05:58,907 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0094s - GET http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn
+2025-06-23 03:05:59,346 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 03:05:59,350 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 03:05:59,353 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0075s
+2025-06-23 03:05:59,818 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 03:05:59,820 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/settings/system-info from 127.0.0.1
+2025-06-23 03:05:59,820 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/settings from 127.0.0.1
+2025-06-23 03:05:59,821 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/settings/security-status from 127.0.0.1
+2025-06-23 03:05:59,824 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0060s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 03:05:59,825 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0050s
+2025-06-23 03:05:59,826 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0060s
+2025-06-23 03:05:59,829 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0080s
+2025-06-23 03:05:59,833 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 03:05:59,834 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/settings from 127.0.0.1
+2025-06-23 03:05:59,839 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0070s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 03:05:59,841 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Invalid token: Not enough segments from 127.0.0.1
+2025-06-23 03:05:59,841 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/settings/system-info from 127.0.0.1
+2025-06-23 03:05:59,843 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/settings/security-status from 127.0.0.1
+2025-06-23 03:05:59,847 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.0130s - GET http://localhost:8000/api/v1/settings
+2025-06-23 03:05:59,849 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Invalid token: Not enough segments from 127.0.0.1
+2025-06-23 03:05:59,851 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Invalid token: Not enough segments from 127.0.0.1
+2025-06-23 03:05:59,852 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.0110s - GET http://localhost:8000/api/v1/settings/system-info
+2025-06-23 03:05:59,853 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.0100s - GET http://localhost:8000/api/v1/settings/security-status
+2025-06-23 03:06:00,951 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 03:06:00,955 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 03:06:00,958 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0070s
+2025-06-23 03:06:04,413 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 03:06:04,418 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 03:06:04,419 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0060s
+2025-06-23 03:06:04,423 - app.main - INFO - 📥 [REQUEST] POST http://localhost:8000/api/v1/auth/login from 127.0.0.1
+2025-06-23 03:06:04,426 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-23 03:06:04,428 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-23 03:06:04,996 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-23 03:06:04,998 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.572s
+2025-06-23 03:06:04,999 - app.main - INFO - 📤 [RESPONSE] 200 - 0.5761s
+2025-06-23 03:06:06,232 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 03:06:06,235 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0030s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 03:06:06,239 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/settings from 127.0.0.1
+2025-06-23 03:06:06,387 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Invalid token: Not enough segments from 127.0.0.1
+2025-06-23 03:06:06,396 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.1578s - GET http://localhost:8000/api/v1/settings
+2025-06-23 03:06:06,410 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/settings/system-info from 127.0.0.1
+2025-06-23 03:06:06,417 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Invalid token: Not enough segments from 127.0.0.1
+2025-06-23 03:06:06,418 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.0080s - GET http://localhost:8000/api/v1/settings/system-info
+2025-06-23 03:06:06,422 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/settings/security-status from 127.0.0.1
+2025-06-23 03:06:06,425 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Invalid token: Not enough segments from 127.0.0.1
+2025-06-23 03:06:06,426 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.0040s - GET http://localhost:8000/api/v1/settings/security-status
+2025-06-23 03:06:06,431 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 03:06:06,463 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.0325s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 03:06:07,496 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 03:06:07,499 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 03:06:07,500 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-23 03:12:42,972 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:12:42,973 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:12:42,974 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:12:46,162 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:12:46,162 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:12:46,163 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:12:46,334 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:12:46,338 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:12:46,339 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:12:46,340 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:12:46,340 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:12:46,341 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:12:46,345 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:12:46,346 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:12:46,347 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:12:46,348 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:12:46,348 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:12:46,348 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:12:46,350 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:12:46,360 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:12:46,580 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:12:46,580 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.23s
+2025-06-23 03:12:46,581 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:12:46,581 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:12:46,581 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:12:46,581 - app.main - INFO -    - Input sanitization
+2025-06-23 03:12:46,582 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:14:14,756 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:14:14,764 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:14:14,764 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:14:16,718 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:14:16,719 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:14:16,720 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:14:16,867 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:14:16,872 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:14:16,875 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:14:16,877 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:14:16,882 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:14:16,885 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:14:16,887 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:14:16,888 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:14:16,890 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:14:16,891 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:14:16,891 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:14:16,892 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:14:16,893 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:14:16,932 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:14:17,138 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:14:17,138 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.25s
+2025-06-23 03:14:17,138 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:14:17,138 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:14:17,140 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:14:17,140 - app.main - INFO -    - Input sanitization
+2025-06-23 03:14:17,140 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:16:42,548 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:16:42,570 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:16:42,584 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:16:44,713 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:16:44,714 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:16:44,714 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:16:44,848 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:16:44,852 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:16:44,854 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:16:44,856 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:16:44,856 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:16:44,856 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:16:44,858 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:16:44,858 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:16:44,859 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:16:44,859 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:16:44,859 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:16:44,860 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:16:44,861 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:16:44,882 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:16:45,102 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:16:45,102 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-23 03:16:45,103 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:16:45,103 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:16:45,103 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:16:45,103 - app.main - INFO -    - Input sanitization
+2025-06-23 03:16:45,103 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:19:05,105 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:19:05,119 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:19:05,130 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:19:07,220 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:19:07,222 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:19:07,224 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:19:07,346 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:19:07,354 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:19:07,355 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:19:07,357 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:19:07,362 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:19:07,367 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:19:07,371 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:19:07,372 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:19:07,373 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:19:07,373 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:19:07,374 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:19:07,374 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:19:07,381 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:19:07,384 - app.main - ERROR - ❌ [STARTUP] Database connection failed: 'NoneType' object has no attribute 'admin'
+2025-06-23 03:19:07,388 - app.main - ERROR - ❌ [STARTUP] Startup failed: 'NoneType' object has no attribute 'admin'
+2025-06-23 03:19:14,220 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:19:14,221 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:19:14,221 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:19:14,326 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:19:14,329 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:19:14,331 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:19:14,333 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:19:14,333 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:19:14,333 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:19:14,333 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:19:14,333 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:19:14,334 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:19:14,334 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:19:14,334 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:19:14,334 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:19:14,335 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:19:14,335 - app.main - ERROR - ❌ [STARTUP] Database connection failed: 'NoneType' object has no attribute 'admin'
+2025-06-23 03:19:14,336 - app.main - ERROR - ❌ [STARTUP] Startup failed: 'NoneType' object has no attribute 'admin'
+2025-06-23 03:19:28,476 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:19:28,476 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:19:28,476 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:19:28,587 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:19:28,589 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:19:28,591 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:19:28,592 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:19:28,592 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:19:28,593 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:19:28,593 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:19:28,593 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:19:28,593 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:19:28,594 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:19:28,594 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:19:28,594 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:19:28,595 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:19:28,595 - app.main - ERROR - ❌ [STARTUP] Database connection failed: 'NoneType' object has no attribute 'admin'
+2025-06-23 03:19:28,595 - app.main - ERROR - ❌ [STARTUP] Startup failed: 'NoneType' object has no attribute 'admin'
+2025-06-23 03:21:46,885 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:21:46,885 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:21:46,885 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:21:47,103 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:21:47,108 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:21:47,114 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:21:47,117 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:21:47,117 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:21:47,118 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:21:47,119 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:21:47,119 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:21:47,119 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:21:47,120 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:21:47,120 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:21:47,120 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:21:47,123 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:21:47,132 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:21:47,358 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:21:47,359 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-23 03:21:47,359 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:21:47,359 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:21:47,359 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:21:47,359 - app.main - INFO -    - Input sanitization
+2025-06-23 03:21:47,360 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:22:20,797 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:22:20,798 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:22:20,798 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:22:20,900 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:22:20,903 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:22:20,905 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:22:20,906 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:22:20,906 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:22:20,907 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:22:20,908 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:22:20,908 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:22:20,908 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:22:20,908 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:22:20,909 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:22:20,909 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:22:20,911 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:22:20,918 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:22:21,123 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:22:21,123 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.21s
+2025-06-23 03:22:21,123 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:22:21,123 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:22:21,124 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:22:21,124 - app.main - INFO -    - Input sanitization
+2025-06-23 03:22:21,124 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:23:18,756 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/status/database-status from 127.0.0.1
+2025-06-23 03:23:18,764 - app.database - INFO - 🔌 Attempting MongoDB connection (attempt 1/3)
+2025-06-23 03:23:18,766 - app.database - INFO - 📍 MongoDB URL: mongodb://localhost:27017
+2025-06-23 03:23:19,086 - app.database - INFO - ✅ Database connected: kobi_firewall_db (17 collections)
+2025-06-23 03:23:19,087 - app.database - INFO - 🔧 Initializing database schema...
+2025-06-23 03:23:19,087 - app.database - INFO - 📋 Creating database indexes...
+2025-06-23 03:23:19,193 - app.database - INFO - ✅ Created last_login index
+2025-06-23 03:23:19,237 - app.database - INFO - ✅ Created is_active index
+2025-06-23 03:23:19,240 - app.database - WARNING - ⚠️  Firewall rules index warning: An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1", sparse: true }, existing index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1" }, full error: {'ok': 0.0, 'errmsg': 'An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1", sparse: true }, existing index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1" }', 'code': 86, 'codeName': 'IndexKeySpecsConflict'}
+2025-06-23 03:23:19,271 - app.database - INFO - ✅ Created system logs indexes with TTL
+2025-06-23 03:23:19,279 - app.database - INFO - ✅ Created network activity indexes with TTL
+2025-06-23 03:23:19,286 - app.database - INFO - ✅ Created security alerts indexes
+2025-06-23 03:23:19,286 - app.database - INFO - 👤 Initializing admin user...
+2025-06-23 03:23:19,287 - app.database - INFO - 👤 Admin user exists, checking configuration...
+2025-06-23 03:23:19,287 - app.database - ERROR - ❌ Admin user initialization failed: 'Settings' object has no attribute 'admin_email'
+2025-06-23 03:23:19,287 - app.database - ERROR - ❌ Database initialization failed: 'Settings' object has no attribute 'admin_email'
+2025-06-23 03:23:19,287 - app.database - ERROR - ❌ MongoDB connection failed (attempt 1): 'Settings' object has no attribute 'admin_email'
+2025-06-23 03:23:21,294 - app.database - INFO - 🔌 Attempting MongoDB connection (attempt 2/3)
+2025-06-23 03:23:21,295 - app.database - INFO - 📍 MongoDB URL: mongodb://localhost:27017
+2025-06-23 03:23:21,332 - app.database - INFO - ✅ Database connected: kobi_firewall_db (17 collections)
+2025-06-23 03:23:21,332 - app.database - INFO - 🔧 Initializing database schema...
+2025-06-23 03:23:21,332 - app.database - INFO - 📋 Creating database indexes...
+2025-06-23 03:23:21,335 - app.database - WARNING - ⚠️  Firewall rules index warning: An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1", sparse: true }, existing index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1" }, full error: {'ok': 0.0, 'errmsg': 'An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1", sparse: true }, existing index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1" }', 'code': 86, 'codeName': 'IndexKeySpecsConflict'}
+2025-06-23 03:23:21,338 - app.database - INFO - ✅ Created system logs indexes with TTL
+2025-06-23 03:23:21,340 - app.database - INFO - ✅ Created network activity indexes with TTL
+2025-06-23 03:36:30,352 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:36:30,363 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:36:30,364 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:37:26,959 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:37:26,959 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:37:26,959 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:37:27,065 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:37:27,068 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:37:27,069 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:37:27,070 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:37:27,071 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:37:27,071 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:37:27,071 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:37:27,072 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:37:27,072 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:37:27,072 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:37:27,072 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:37:27,073 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:37:27,074 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:37:27,081 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:37:27,286 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:37:27,286 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.21s
+2025-06-23 03:37:27,286 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:37:27,287 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:37:27,287 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:37:27,287 - app.main - INFO -    - Input sanitization
+2025-06-23 03:37:27,287 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:41:39,566 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:41:39,568 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:41:39,568 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:41:42,905 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:41:42,905 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:41:42,906 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:41:43,011 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:41:43,014 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:41:43,016 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:41:43,017 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:41:43,017 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:41:43,017 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:41:43,017 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:41:43,018 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:41:43,018 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:41:43,018 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:41:43,018 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:41:43,019 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:41:43,020 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:41:43,207 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:41:43,414 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:41:43,414 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.39s
+2025-06-23 03:41:43,414 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:41:43,414 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:41:43,414 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:41:43,415 - app.main - INFO -    - Input sanitization
+2025-06-23 03:41:43,415 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:44:13,673 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:44:13,674 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:44:13,674 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:44:15,954 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:44:15,954 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:44:15,954 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173']
+2025-06-23 03:44:16,072 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:44:16,075 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:44:16,077 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:44:16,078 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:44:16,078 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:44:16,078 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:44:16,079 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:44:16,080 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:44:16,080 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:44:16,081 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:44:16,081 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:44:16,081 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:44:16,084 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:44:16,093 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:44:16,292 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:44:16,292 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.21s
+2025-06-23 03:44:16,293 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:44:16,293 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:44:16,293 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:44:16,294 - app.main - INFO -    - Input sanitization
+2025-06-23 03:44:16,294 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:59:14,991 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:59:14,993 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:59:15,001 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:59:17,327 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:59:17,327 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:59:17,327 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 03:59:17,462 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:59:17,466 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:59:17,468 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:59:17,469 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:59:17,470 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:59:17,470 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:59:17,470 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:59:17,471 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:59:17,471 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:59:17,471 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:59:17,471 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:59:17,471 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:59:17,473 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:59:17,495 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:59:17,700 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:59:17,700 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.23s
+2025-06-23 03:59:17,700 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:59:17,701 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:59:17,701 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:59:17,701 - app.main - INFO -    - Input sanitization
+2025-06-23 03:59:17,701 - app.main - INFO -    - Rate limiting ready
+2025-06-23 03:59:27,261 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 03:59:27,261 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 03:59:27,261 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:59:29,334 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 03:59:29,334 - app.main - INFO - 🔧 Environment: development
+2025-06-23 03:59:29,336 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 03:59:29,441 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 03:59:29,445 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 03:59:29,446 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 03:59:29,447 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 03:59:29,447 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 03:59:29,447 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 03:59:29,448 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 03:59:29,448 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 03:59:29,448 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 03:59:29,449 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 03:59:29,449 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 03:59:29,449 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 03:59:29,450 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 03:59:29,487 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 03:59:29,688 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 03:59:29,688 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-23 03:59:29,688 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 03:59:29,688 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 03:59:29,688 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 03:59:29,688 - app.main - INFO -    - Input sanitization
+2025-06-23 03:59:29,688 - app.main - INFO -    - Rate limiting ready
+2025-06-23 04:03:42,276 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 04:03:42,278 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 04:03:42,278 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 04:03:44,760 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 04:03:44,760 - app.main - INFO - 🔧 Environment: development
+2025-06-23 04:03:44,760 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 04:03:44,866 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 04:03:44,870 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 04:03:44,871 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 04:03:44,872 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 04:03:44,872 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 04:03:44,873 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 04:03:44,873 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 04:03:44,873 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 04:03:44,874 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 04:03:44,874 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 04:03:44,874 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 04:03:44,874 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 04:03:44,876 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 04:03:44,894 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 04:03:45,096 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 04:03:45,097 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-23 04:03:45,097 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 04:03:45,097 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 04:03:45,097 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 04:03:45,097 - app.main - INFO -    - Input sanitization
+2025-06-23 04:03:45,097 - app.main - INFO -    - Rate limiting ready
+2025-06-23 04:10:55,844 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 04:10:55,848 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 04:10:55,848 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 04:11:00,034 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 04:11:00,035 - app.main - INFO - 🔧 Environment: development
+2025-06-23 04:11:00,035 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 04:11:00,148 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 04:11:00,151 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 04:11:00,153 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 04:11:00,154 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 04:11:00,155 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 04:11:00,155 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 04:11:00,156 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 04:11:00,157 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 04:11:00,157 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 04:11:00,157 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 04:11:00,158 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 04:11:00,158 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 04:11:00,160 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 04:11:00,169 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 04:11:00,374 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 04:11:00,374 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.21s
+2025-06-23 04:11:00,374 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 04:11:00,374 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 04:11:00,375 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 04:11:00,375 - app.main - INFO -    - Input sanitization
+2025-06-23 04:11:00,375 - app.main - INFO -    - Rate limiting ready
+2025-06-23 04:16:01,965 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 04:16:01,967 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 04:16:01,967 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 04:16:04,202 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 04:16:04,203 - app.main - INFO - 🔧 Environment: development
+2025-06-23 04:16:04,203 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 04:16:04,325 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 04:16:04,328 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 04:16:04,329 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 04:16:04,330 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 04:16:04,331 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 04:16:04,331 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 04:16:04,332 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 04:16:04,332 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 04:16:04,333 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 04:16:04,333 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 04:16:04,333 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 04:16:04,334 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 04:16:04,335 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 04:16:04,357 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 04:16:04,570 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 04:16:04,571 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-23 04:16:04,571 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 04:16:04,571 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 04:16:04,571 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 04:16:04,571 - app.main - INFO -    - Input sanitization
+2025-06-23 04:16:04,572 - app.main - INFO -    - Rate limiting ready
+2025-06-23 04:25:21,908 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 04:25:21,910 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 04:25:21,911 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 04:25:25,733 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 04:25:25,734 - app.main - INFO - 🔧 Environment: development
+2025-06-23 04:25:25,735 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 04:25:25,953 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 04:25:25,956 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 04:25:25,958 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 04:25:25,959 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 04:25:25,959 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 04:25:25,959 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 04:25:25,960 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 04:25:25,960 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 04:25:25,960 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 04:25:25,960 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 04:25:25,960 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 04:25:25,961 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 04:25:25,962 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 04:25:25,970 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 04:25:26,185 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 04:25:26,185 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.22s
+2025-06-23 04:25:26,185 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 04:25:26,185 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 04:25:26,185 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 04:25:26,185 - app.main - INFO -    - Input sanitization
+2025-06-23 04:25:26,185 - app.main - INFO -    - Rate limiting ready
+2025-06-23 04:28:05,337 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 04:28:05,354 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 04:28:05,357 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 03:23:21,342 - app.database - INFO - ✅ Created security alerts indexes
+2025-06-23 05:18:27,026 - app.database - INFO - 👤 Initializing admin user...
+2025-06-23 05:18:27,051 - app.database - INFO - 👤 Admin user exists, checking configuration...
+2025-06-23 05:18:27,052 - app.database - ERROR - ❌ Admin user initialization failed: 'Settings' object has no attribute 'admin_email'
+2025-06-23 05:18:27,052 - app.database - ERROR - ❌ Database initialization failed: 'Settings' object has no attribute 'admin_email'
+2025-06-23 05:18:27,053 - app.database - ERROR - ❌ MongoDB connection failed (attempt 2): 'Settings' object has no attribute 'admin_email'
+2025-06-23 05:18:27,080 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,081 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,082 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 05:18:27,083 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn from 127.0.0.1
+2025-06-23 05:18:27,084 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,085 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,086 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,088 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,090 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,091 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,092 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,093 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,094 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,095 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,096 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,098 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,099 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,100 - app.main - INFO - 📥 [REQUEST] OPTIONS http://127.0.0.1:8000/api/v1/auth/login from 127.0.0.1
+2025-06-23 05:18:27,101 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,102 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,103 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,105 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,105 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 05:18:27,106 - app.main - INFO - 📥 [REQUEST] OPTIONS http://127.0.0.1:8000/api/v1/auth/login from 127.0.0.1
+2025-06-23 05:18:27,108 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,109 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 05:18:27,110 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/security-rules from 127.0.0.1
+2025-06-23 05:18:27,111 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/status/database-status from 127.0.0.1
+2025-06-23 05:18:27,112 - app.main - INFO - 📥 [REQUEST] GET http://127.0.0.1:8000/health from 127.0.0.1
+2025-06-23 05:18:27,113 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,114 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,115 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,117 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,117 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,118 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,119 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,120 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,120 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,122 - app.main - INFO - 📥 [REQUEST] POST http://127.0.0.1:8000/api/v1/auth/login from 127.0.0.1
+2025-06-23 05:18:27,123 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/security-rules from 127.0.0.1
+2025-06-23 05:18:27,124 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,125 - app.main - INFO - 📥 [REQUEST] GET http://127.0.0.1:8000/health from 127.0.0.1
+2025-06-23 05:18:27,126 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 05:18:27,127 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,129 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,130 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/dashboard/data-status from 127.0.0.1
+2025-06-23 05:18:27,131 - app.main - INFO - 📥 [REQUEST] GET http://127.0.0.1:8000/health from 127.0.0.1
+2025-06-23 05:18:27,132 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,133 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,134 - app.main - INFO - 📥 [REQUEST] POST http://127.0.0.1:8000/api/auth/login from 127.0.0.1
+2025-06-23 05:18:27,136 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1
+2025-06-23 05:18:27,137 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/rule-groups from 127.0.0.1
+2025-06-23 05:18:27,138 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/api/v1/status/database-status from 127.0.0.1
+2025-06-23 05:18:27,169 - app.database - INFO - 🔌 Attempting MongoDB connection (attempt 3/3)
+2025-06-23 05:18:27,171 - app.database - INFO - 📍 MongoDB URL: mongodb://localhost:27017
+2025-06-23 05:18:27,215 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Invalid token: Not enough segments from 127.0.0.1
+2025-06-23 05:18:27,219 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Invalid token: Not enough segments from 127.0.0.1
+2025-06-23 05:18:27,222 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Authentication token required from 127.0.0.1
+2025-06-23 05:18:27,241 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Authentication token required from 127.0.0.1
+2025-06-23 05:18:27,247 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Authentication token required from 127.0.0.1
+2025-06-23 05:18:27,254 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Authentication token required from 127.0.0.1
+2025-06-23 05:18:27,316 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,318 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,319 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,320 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,321 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,322 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,323 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,325 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,326 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,326 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,327 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,329 - app.database - INFO - ✅ Database connected: kobi_firewall_db (17 collections)
+2025-06-23 05:18:27,329 - app.database - INFO - 🔧 Initializing database schema...
+2025-06-23 05:18:27,330 - app.database - INFO - 📋 Creating database indexes...
+2025-06-23 05:18:27,331 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,333 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,335 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,336 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,338 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,339 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,340 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,341 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,344 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,344 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,345 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,346 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,348 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,349 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,350 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,351 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,352 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,354 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,355 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,359 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,360 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,361 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,362 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,363 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,364 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,366 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,366 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 05:18:27,372 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.2895s - GET http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn
+2025-06-23 05:18:27,375 - app.main - WARNING - 📤 [RESPONSE] 400 - 0.2746s - OPTIONS http://127.0.0.1:8000/api/v1/auth/login
+2025-06-23 05:18:27,380 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.2754s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 05:18:27,382 - app.main - INFO - 📤 [RESPONSE] 200 - 0.2755s
+2025-06-23 05:18:27,383 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.2745s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 05:18:27,384 - app.main - INFO - 📤 [RESPONSE] 200 - 0.2744s
+2025-06-23 05:18:27,386 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.2755s - GET http://localhost:8000/api/v1/status/database-status
+2025-06-23 05:18:27,388 - app.main - INFO - 📤 [RESPONSE] 200 - 0.2655s
+2025-06-23 05:18:27,395 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.2684s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 05:18:27,396 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.2668s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 05:18:27,399 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.2649s - POST http://127.0.0.1:8000/api/auth/login
+2025-06-23 05:18:27,400 - app.main - WARNING - 📤 [RESPONSE] 404 - 0.2629s - GET http://localhost:8000/api/v1/rule-groups
+2025-06-23 05:18:27,404 - app.main - WARNING - 📤 [RESPONSE] 401 - 0.2659s - GET http://localhost:8000/api/v1/status/database-status
+2025-06-23 05:18:27,424 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3455s
+2025-06-23 05:18:27,426 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3425s
+2025-06-23 05:18:27,428 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3432s
+2025-06-23 05:18:27,430 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3442s
+2025-06-23 05:18:27,432 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3441s
+2025-06-23 05:18:27,433 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3523s
+2025-06-23 05:18:27,434 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3442s
+2025-06-23 05:18:27,435 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3442s
+2025-06-23 05:18:27,436 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3422s
+2025-06-23 05:18:27,437 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3382s
+2025-06-23 05:18:27,438 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3352s
+2025-06-23 05:18:27,439 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3472s
+2025-06-23 05:18:27,442 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3402s
+2025-06-23 05:18:27,443 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3452s
+2025-06-23 05:18:27,444 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3492s
+2025-06-23 05:18:27,445 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3442s
+2025-06-23 05:18:27,446 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3411s
+2025-06-23 05:18:27,447 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3512s
+2025-06-23 05:18:27,449 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3372s
+2025-06-23 05:18:27,450 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3371s
+2025-06-23 05:18:27,451 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3332s
+2025-06-23 05:18:27,452 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3372s
+2025-06-23 05:18:27,453 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3451s
+2025-06-23 05:18:27,454 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3611s
+2025-06-23 05:18:27,455 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3391s
+2025-06-23 05:18:27,456 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3312s
+2025-06-23 05:18:27,457 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3372s
+2025-06-23 05:18:27,458 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3342s
+2025-06-23 05:18:27,459 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3421s
+2025-06-23 05:18:27,462 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3316s
+2025-06-23 05:18:27,465 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3366s
+2025-06-23 05:18:27,466 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3471s
+2025-06-23 05:18:27,467 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3472s
+2025-06-23 05:18:27,469 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3370s
+2025-06-23 05:18:27,471 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3381s
+2025-06-23 05:18:27,472 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3447s
+2025-06-23 05:18:27,473 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3380s
+2025-06-23 05:18:27,474 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3596s
+2025-06-23 05:18:27,478 - app.database - WARNING - ⚠️  Firewall rules index warning: An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1", sparse: true }, existing index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1" }, full error: {'ok': 0.0, 'errmsg': 'An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1", sparse: true }, existing index: { v: 2, unique: true, key: { rule_name: 1 }, name: "rule_name_1" }', 'code': 86, 'codeName': 'IndexKeySpecsConflict'}
+2025-06-23 05:18:27,487 - app.main - WARNING - 📤 [RESPONSE] 400 - 0.3650s - POST http://127.0.0.1:8000/api/v1/auth/login
+2025-06-23 05:18:27,506 - app.database - INFO - ✅ Created system logs indexes with TTL
+2025-06-23 05:18:27,511 - app.database - INFO - ✅ Created network activity indexes with TTL
+2025-06-23 05:18:27,514 - app.database - INFO - ✅ Created security alerts indexes
+2025-06-23 05:18:27,515 - app.database - INFO - 👤 Initializing admin user...
+2025-06-23 05:18:27,516 - app.database - INFO - 👤 Admin user exists, checking configuration...
+2025-06-23 05:18:27,516 - app.database - ERROR - ❌ Admin user initialization failed: 'Settings' object has no attribute 'admin_email'
+2025-06-23 05:18:27,516 - app.database - ERROR - ❌ Database initialization failed: 'Settings' object has no attribute 'admin_email'
+2025-06-23 05:18:27,516 - app.database - ERROR - ❌ MongoDB connection failed (attempt 3): 'Settings' object has no attribute 'admin_email'
+2025-06-23 05:18:27,517 - app.main - ERROR - ❌ [ERROR] Request failed: 'Settings' object has no attribute 'admin_email' - 0.4352s - GET http://localhost:8000/api/dashboard/data-status
+2025-06-23 05:18:27,517 - app.main - ERROR - ❌ [UNEXPECTED_ERROR] 'Settings' object has no attribute 'admin_email' from 127.0.0.1
+2025-06-23 05:18:29,069 - app.main - WARNING - 🚨 [HTTP_ERROR] 401: Authentication token required from 127.0.0.1
+2025-06-23 05:18:29,073 - app.main - WARNING - 📤 [RESPONSE] 401 - 6910.3182s - GET http://localhost:8000/api/v1/status/database-status
+2025-06-23 12:48:15,655 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 12:48:15,655 - app.main - INFO - 🔧 Environment: development
+2025-06-23 12:48:15,656 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 12:48:15,783 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 12:48:15,786 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 12:48:15,787 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 12:48:15,788 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 12:48:15,789 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 12:48:15,789 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 12:48:15,790 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 12:48:15,790 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 12:48:15,790 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 12:48:15,790 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 12:48:15,790 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 12:48:15,791 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 12:48:15,793 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 12:48:15,826 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 12:48:16,037 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 12:48:16,038 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.25s
+2025-06-23 12:48:16,039 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 12:48:16,039 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 12:48:16,039 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 12:48:16,039 - app.main - INFO -    - Input sanitization
+2025-06-23 12:48:16,039 - app.main - INFO -    - Rate limiting ready
+2025-06-23 12:48:38,708 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:38,710 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 12:48:38,711 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0035s
+2025-06-23 12:48:41,915 - app.main - INFO - 📥 [REQUEST] GET http://127.0.0.1:8000/health from 127.0.0.1 | UA: Vite-Proxy-Health-Check...
+2025-06-23 12:48:41,919 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 12:48:41,921 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0061s
+2025-06-23 12:48:41,939 - app.main - INFO - 📥 [REQUEST] POST http://127.0.0.1:8000/api/v1/auth/login from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:41,943 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-23 12:48:41,946 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-23 12:48:42,270 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-23 12:48:42,276 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.333s
+2025-06-23 12:48:42,277 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3377s
+2025-06-23 12:48:43,545 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:43,547 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/system/updates from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:43,549 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-23 12:48:43,551 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-23 12:48:43,555 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:43,556 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/system/updates from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:43,560 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0050s
+2025-06-23 12:48:43,561 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0050s
+2025-06-23 12:48:47,752 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/system/updates from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:47,753 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:47,754 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:47,757 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0050s
+2025-06-23 12:48:47,759 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0060s
+2025-06-23 12:48:47,761 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0070s
+2025-06-23 12:48:49,397 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:49,398 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/dns/config from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:49,400 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/dns/config from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:49,401 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:49,406 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0085s
+2025-06-23 12:48:49,409 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0105s
+2025-06-23 12:48:49,410 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0095s
+2025-06-23 12:48:49,412 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0105s
+2025-06-23 12:48:49,841 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:49,844 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/settings/system-info from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:49,845 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/settings from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:49,846 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/settings/security-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:49,852 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0110s
+2025-06-23 12:48:49,857 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0130s
+2025-06-23 12:48:49,858 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0130s
+2025-06-23 12:48:49,859 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0130s
+2025-06-23 12:48:49,869 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:49,872 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0030s
+2025-06-23 12:48:50,689 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:50,690 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:50,692 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/reports/data?filter=Son%2030%20g%C3%BCn from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:50,692 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:48:50,697 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0080s
+2025-06-23 12:48:50,699 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0090s
+2025-06-23 12:48:50,703 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0120s
+2025-06-23 12:48:50,704 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0120s
+2025-06-23 12:49:51,196 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:49:51,197 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0019s
+2025-06-23 12:50:50,885 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:50:50,887 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 12:51:51,199 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:51:51,203 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-23 12:52:50,892 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 12:52:50,894 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 14:21:51,773 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 14:21:51,774 - app.main - INFO - 🔧 Environment: development
+2025-06-23 14:21:51,774 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 14:21:51,973 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 14:21:51,975 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 14:21:51,977 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 14:21:51,978 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 14:21:51,979 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 14:21:51,979 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 14:21:51,979 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 14:21:51,980 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 14:21:51,980 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 14:21:51,980 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 14:21:51,980 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 14:21:51,981 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 14:21:51,983 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 14:21:51,991 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 14:21:52,195 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 14:21:52,195 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.21s
+2025-06-23 14:21:52,195 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 14:21:52,195 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 14:21:52,195 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 14:21:52,195 - app.main - INFO -    - Input sanitization
+2025-06-23 14:21:52,196 - app.main - INFO -    - Rate limiting ready
+2025-06-23 14:22:02,420 - app.main - INFO - 📥 [REQUEST] GET http://localhost:8000/health from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:02,424 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 14:22:02,426 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0060s
+2025-06-23 14:22:04,769 - app.main - INFO - 📥 [REQUEST] GET http://127.0.0.1:8000/health from 127.0.0.1 | UA: Vite-Proxy-Health-Check...
+2025-06-23 14:22:04,772 - app.main - INFO - ✅ [HEALTH] Health check completed - Status: healthy
+2025-06-23 14:22:04,773 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0050s
+2025-06-23 14:22:04,783 - app.main - INFO - 📥 [REQUEST] POST http://127.0.0.1:8000/api/v1/auth/login from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:04,786 - app.routers.auth_simple - INFO - 🔐 Login attempt from 127.0.0.1: admin
+2025-06-23 14:22:04,789 - app.routers.auth_simple - INFO - ✅ User found: admin
+2025-06-23 14:22:05,133 - app.routers.auth_simple - INFO - ✅ Login successful for user: admin
+2025-06-23 14:22:05,139 - app.routers.auth_simple - INFO - ✅ Login completed for admin in 0.353s
+2025-06-23 14:22:05,143 - app.main - INFO - 📤 [RESPONSE] 200 - 0.3598s
+2025-06-23 14:22:13,820 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:13,822 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0026s
+2025-06-23 14:22:13,825 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/logs?page=1&limit=10&sortBy=timestamp&sortOrder=desc from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:13,827 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 14:22:13,830 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:13,831 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0010s
+2025-06-23 14:22:13,839 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/logs?page=1&limit=10&sortBy=timestamp&sortOrder=desc from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:13,841 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 14:22:15,878 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:15,879 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/settings from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:15,880 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/settings/system-info from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:15,881 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/v1/settings/security-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:15,883 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0050s
+2025-06-23 14:22:15,885 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0060s
+2025-06-23 14:22:15,887 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0070s
+2025-06-23 14:22:15,889 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0080s
+2025-06-23 14:22:15,893 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:22:15,895 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0025s
+2025-06-23 14:23:17,198 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:23:17,200 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 14:24:16,890 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:24:16,895 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0052s
+2025-06-23 14:25:17,191 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:25:17,197 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0061s
+2025-06-23 14:26:16,886 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:26:16,896 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0110s
+2025-06-23 14:27:17,198 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:27:17,199 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0010s
+2025-06-23 14:28:16,886 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:28:16,888 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0021s
+2025-06-23 14:30:13,216 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:30:13,218 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 14:32:13,202 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:32:13,229 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0261s
+2025-06-23 14:34:13,224 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:34:13,227 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0030s
+2025-06-23 14:36:13,199 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:36:13,201 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 14:38:13,206 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:38:13,210 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0040s
+2025-06-23 14:40:13,224 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:40:13,225 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0011s
+2025-06-23 14:42:13,205 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:42:13,208 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0031s
+2025-06-23 14:44:13,208 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:44:13,218 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0101s
+2025-06-23 14:46:13,206 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:46:13,213 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0065s
+2025-06-23 14:48:13,186 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:48:13,188 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0021s
+2025-06-23 14:49:12,934 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:49:12,936 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 14:51:13,265 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:51:13,271 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0071s
+2025-06-23 14:53:13,215 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:53:13,217 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 14:55:13,226 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:55:13,227 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0017s
+2025-06-23 14:57:13,222 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:57:13,231 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0080s
+2025-06-23 14:58:58,402 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 14:58:58,405 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 14:58:58,406 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 14:59:00,203 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 14:59:00,203 - app.main - INFO - 🔧 Environment: development
+2025-06-23 14:59:00,204 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 14:59:00,334 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 14:59:00,337 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 14:59:00,338 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 14:59:00,340 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 14:59:00,340 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 14:59:00,341 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 14:59:00,341 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 14:59:00,341 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 14:59:00,342 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 14:59:00,342 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 14:59:00,342 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 14:59:00,342 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 14:59:00,344 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 14:59:00,367 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 14:59:00,571 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 14:59:00,571 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.23s
+2025-06-23 14:59:00,572 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 14:59:00,572 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 14:59:00,572 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 14:59:00,572 - app.main - INFO -    - Input sanitization
+2025-06-23 14:59:00,572 - app.main - INFO -    - Rate limiting ready
+2025-06-23 14:59:13,264 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 14:59:13,269 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0050s
+2025-06-23 15:01:13,208 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 15:01:13,209 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0013s
+2025-06-23 15:03:13,210 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 15:03:13,215 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0050s
+2025-06-23 15:05:13,200 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 15:05:13,214 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0133s
+2025-06-23 15:06:16,197 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 15:06:16,199 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0020s
+2025-06-23 15:07:38,537 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 15:07:38,539 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 15:07:38,540 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
+2025-06-23 15:07:39,855 - app.main - INFO - 🚀 Starting KOBI Firewall
+2025-06-23 15:07:39,856 - app.main - INFO - 🔧 Environment: development
+2025-06-23 15:07:39,856 - app.main - INFO - 🌐 [CORS] Configured origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-06-23 15:07:39,979 - app.main - INFO - ✅ [ROUTER] Enhanced Auth router included
+2025-06-23 15:07:39,982 - app.main - INFO - ✅ [ROUTER] Settings router included
+2025-06-23 15:07:39,985 - app.main - INFO - ✅ [ROUTER] System router included
+2025-06-23 15:07:39,986 - app.main - INFO - ✅ [ROUTER] Status router included
+2025-06-23 15:07:39,986 - app.main - INFO - ✅ [ROUTER] Logs router included
+2025-06-23 15:07:39,987 - app.main - INFO - ✅ [ROUTER] Network router included
+2025-06-23 15:07:39,987 - app.main - INFO - ✅ [ROUTER] Nat router included
+2025-06-23 15:07:39,988 - app.main - INFO - ✅ [ROUTER] Firewall router included
+2025-06-23 15:07:39,988 - app.main - INFO - ✅ [ROUTER] Backup router included
+2025-06-23 15:07:39,988 - app.main - INFO - ✅ [ROUTER] Routes router included
+2025-06-23 15:07:39,989 - app.main - INFO - ✅ [ROUTER] Firewall_Groups router included
+2025-06-23 15:07:39,989 - app.main - INFO - ✅ [ROUTER] Dns router included
+2025-06-23 15:07:39,990 - app.main - INFO - 🔄 [STARTUP] Initializing KOBI Firewall...
+2025-06-23 15:07:40,012 - app.main - INFO - ✅ [STARTUP] Database connected successfully
+2025-06-23 15:07:40,227 - app.main - INFO - ✅ Admin password already uses bcrypt
+2025-06-23 15:07:40,227 - app.main - INFO - ✅ [STARTUP] KOBI Firewall started successfully in 0.24s
+2025-06-23 15:07:40,227 - app.main - INFO - 🔐 [SECURITY] Security features:
+2025-06-23 15:07:40,228 - app.main - INFO -    - BCrypt password hashing (12 rounds)
+2025-06-23 15:07:40,228 - app.main - INFO -    - Enhanced authentication endpoints
+2025-06-23 15:07:40,228 - app.main - INFO -    - Input sanitization
+2025-06-23 15:07:40,228 - app.main - INFO -    - Rate limiting ready
+2025-06-23 15:07:44,830 - app.main - INFO - 📥 [REQUEST] OPTIONS http://localhost:8000/api/dashboard/data-status from 127.0.0.1 | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...
+2025-06-23 15:07:44,830 - app.main - INFO - 📤 [RESPONSE] 200 - 0.0000s
+2025-06-23 15:07:56,896 - app.main - INFO - 🔄 [SHUTDOWN] Shutting down KOBI Firewall...
+2025-06-23 15:07:56,898 - app.main - INFO - ✅ [SHUTDOWN] Database disconnected
+2025-06-23 15:07:56,898 - app.main - INFO - ✅ [SHUTDOWN] KOBI Firewall shutdown completed
