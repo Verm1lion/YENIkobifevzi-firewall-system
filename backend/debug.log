@@ -133,3 +133,381 @@
 2025-06-18 00:59:14,288 - app.main - INFO - [PROC] Starting KOBI Firewall...
 2025-06-18 00:59:14,321 - app.main - INFO - [OK] Database connected
 2025-06-18 00:59:18,091 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-19 06:54:41,896 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-19 06:54:41,896 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001']
+2025-06-19 06:54:42,226 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-19 06:54:42,226 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-19 06:54:42,226 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-19 06:54:42,230 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-19 06:54:42,304 - app.main - INFO - [OK] Auth router imported
+2025-06-19 06:54:42,334 - app.main - INFO - [OK] Firewall router imported
+2025-06-19 06:54:42,346 - app.main - INFO - [OK] Logs router imported
+2025-06-19 06:54:42,476 - app.main - INFO - [OK] System router imported
+2025-06-19 06:54:42,483 - app.main - INFO - [OK] Network router imported
+2025-06-19 06:54:42,490 - app.main - INFO - [OK] Routes router imported
+2025-06-19 06:54:42,740 - app.main - INFO - [OK] DNS router imported
+2025-06-19 06:54:42,745 - app.main - INFO - [OK] NAT router imported
+2025-06-19 06:54:42,752 - app.main - INFO - [OK] Backup router imported
+2025-06-19 06:54:42,758 - app.main - INFO - [OK] Firewall groups router imported
+2025-06-19 06:54:42,760 - app.main - INFO - [OK] Status router imported
+2025-06-19 06:54:42,762 - app.main - ERROR - [ERROR] Reports router import failed: No module named 'reportlab'
+2025-06-19 06:54:42,769 - app.main - INFO - [OK] Settings router imported
+2025-06-19 06:54:42,778 - app.main - INFO - [OK] Auth router included
+2025-06-19 06:54:42,790 - app.main - INFO - [OK] Firewall router included
+2025-06-19 06:54:42,798 - app.main - INFO - [OK] Logs router included
+2025-06-19 06:54:42,801 - app.main - INFO - [OK] System router included - Updates functionality available
+2025-06-19 06:54:42,803 - app.main - INFO - [OK] Network router included
+2025-06-19 06:54:42,805 - app.main - INFO - [OK] Routes router included
+2025-06-19 06:54:42,808 - app.main - INFO - [OK] DNS router included
+2025-06-19 06:54:42,809 - app.main - INFO - [OK] NAT router included
+2025-06-19 06:54:42,813 - app.main - INFO - [OK] Backup router included
+2025-06-19 06:54:42,816 - app.main - INFO - [OK] Firewall groups router included
+2025-06-19 06:54:42,817 - app.main - INFO - [OK] Status router included
+2025-06-19 06:54:42,817 - app.main - INFO - [OK] Reports router included
+2025-06-19 06:54:42,819 - app.main - INFO - [OK] Settings router included
+2025-06-19 06:54:42,821 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-19 06:54:42,909 - app.main - INFO - [OK] Database connected
+2025-06-19 07:01:13,536 - app.main - INFO - [REQUEST] GET http://localhost:8000/health
+2025-06-19 07:01:13,537 - app.main - INFO - Health check successful: {'status': 'healthy', 'service': 'KOBI Firewall', 'version': '2.0.0', 'timestamp': '2025-06-19T04:01:13.537880', 'message': 'KOBI Firewall is running', 'routers': {'auth': True, 'firewall': True, 'logs': True, 'system': True, 'network': True, 'routes': True, 'dns': True, 'nat': True, 'backup': True, 'firewall_groups': True, 'status': True, 'reports': True, 'settings': True}}
+2025-06-19 07:01:13,537 - app.main - INFO - [RESPONSE] 200 - 0.0010s
+2025-06-19 07:01:13,539 - app.main - INFO - [REQUEST] GET http://localhost:8000/health
+2025-06-19 07:01:13,539 - app.main - INFO - Health check successful: {'status': 'healthy', 'service': 'KOBI Firewall', 'version': '2.0.0', 'timestamp': '2025-06-19T04:01:13.539912', 'message': 'KOBI Firewall is running', 'routers': {'auth': True, 'firewall': True, 'logs': True, 'system': True, 'network': True, 'routes': True, 'dns': True, 'nat': True, 'backup': True, 'firewall_groups': True, 'status': True, 'reports': True, 'settings': True}}
+2025-06-19 07:01:13,540 - app.main - INFO - [RESPONSE] 200 - 0.0010s
+2025-06-19 07:01:17,708 - app.main - INFO - [REQUEST] OPTIONS http://localhost:8000/api/v1/auth/login
+2025-06-19 07:01:17,709 - app.main - INFO - [RESPONSE] 200 - 0.0010s
+2025-06-19 07:01:17,712 - app.main - INFO - [REQUEST] POST http://localhost:8000/api/v1/auth/login
+2025-06-19 07:01:17,714 - app.main - ERROR - [ERROR] Request failed: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None - 0.0030s
+2025-06-19 07:05:57,657 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-19 07:05:58,849 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-19 07:05:58,849 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', '*']
+2025-06-19 07:05:59,117 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-19 07:05:59,117 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-19 07:05:59,117 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-19 07:05:59,121 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-19 07:05:59,197 - app.main - INFO - [OK] Auth router imported
+2025-06-19 07:05:59,218 - app.main - INFO - [OK] Firewall router imported
+2025-06-19 07:05:59,228 - app.main - INFO - [OK] Logs router imported
+2025-06-19 07:05:59,242 - app.main - INFO - [OK] System router imported
+2025-06-19 07:05:59,247 - app.main - INFO - [OK] Network router imported
+2025-06-19 07:05:59,251 - app.main - INFO - [OK] Routes router imported
+2025-06-19 07:05:59,311 - app.main - INFO - [OK] DNS router imported
+2025-06-19 07:05:59,314 - app.main - INFO - [OK] NAT router imported
+2025-06-19 07:05:59,319 - app.main - INFO - [OK] Backup router imported
+2025-06-19 07:05:59,325 - app.main - INFO - [OK] Firewall groups router imported
+2025-06-19 07:05:59,326 - app.main - INFO - [OK] Status router imported
+2025-06-19 07:05:59,327 - app.main - ERROR - [ERROR] Reports router import failed: No module named 'reportlab'
+2025-06-19 07:05:59,332 - app.main - INFO - [OK] Settings router imported
+2025-06-19 07:05:59,341 - app.main - INFO - [OK] Auth router included
+2025-06-19 07:05:59,352 - app.main - INFO - [OK] Firewall router included
+2025-06-19 07:05:59,360 - app.main - INFO - [OK] Logs router included
+2025-06-19 07:05:59,363 - app.main - INFO - [OK] System router included - Updates functionality available
+2025-06-19 07:05:59,365 - app.main - INFO - [OK] Network router included
+2025-06-19 07:05:59,368 - app.main - INFO - [OK] Routes router included
+2025-06-19 07:05:59,371 - app.main - INFO - [OK] DNS router included
+2025-06-19 07:05:59,372 - app.main - INFO - [OK] NAT router included
+2025-06-19 07:05:59,377 - app.main - INFO - [OK] Backup router included
+2025-06-19 07:05:59,380 - app.main - INFO - [OK] Firewall groups router included
+2025-06-19 07:05:59,381 - app.main - INFO - [OK] Status router included
+2025-06-19 07:05:59,381 - app.main - INFO - [OK] Reports router included
+2025-06-19 07:05:59,383 - app.main - INFO - [OK] Settings router included
+2025-06-19 07:05:59,384 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-19 07:05:59,433 - app.main - INFO - [OK] Database connected
+2025-06-19 07:06:04,331 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-19 07:06:06,240 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-19 07:06:06,241 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', '*']
+2025-06-19 07:06:06,518 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-19 07:06:06,519 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-19 07:06:06,519 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-19 07:06:06,523 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-19 07:06:06,593 - app.main - INFO - [OK] Auth router imported
+2025-06-19 07:06:06,609 - app.main - INFO - [OK] Firewall router imported
+2025-06-19 07:06:06,617 - app.main - INFO - [OK] Logs router imported
+2025-06-19 07:06:06,629 - app.main - INFO - [OK] System router imported
+2025-06-19 07:06:06,634 - app.main - INFO - [OK] Network router imported
+2025-06-19 07:06:06,639 - app.main - INFO - [OK] Routes router imported
+2025-06-19 07:06:06,682 - app.main - INFO - [OK] DNS router imported
+2025-06-19 07:06:06,684 - app.main - INFO - [OK] NAT router imported
+2025-06-19 07:06:06,689 - app.main - INFO - [OK] Backup router imported
+2025-06-19 07:06:06,694 - app.main - INFO - [OK] Firewall groups router imported
+2025-06-19 07:06:06,695 - app.main - INFO - [OK] Status router imported
+2025-06-19 07:06:06,696 - app.main - ERROR - [ERROR] Reports router import failed: No module named 'reportlab'
+2025-06-19 07:06:06,701 - app.main - INFO - [OK] Settings router imported
+2025-06-19 07:06:06,709 - app.main - INFO - [OK] Auth router included
+2025-06-19 07:06:06,721 - app.main - INFO - [OK] Firewall router included
+2025-06-19 07:06:06,728 - app.main - INFO - [OK] Logs router included
+2025-06-19 07:06:06,731 - app.main - INFO - [OK] System router included - Updates functionality available
+2025-06-19 07:06:06,733 - app.main - INFO - [OK] Network router included
+2025-06-19 07:06:06,736 - app.main - INFO - [OK] Routes router included
+2025-06-19 07:06:06,739 - app.main - INFO - [OK] DNS router included
+2025-06-19 07:06:06,739 - app.main - INFO - [OK] NAT router included
+2025-06-19 07:06:06,743 - app.main - INFO - [OK] Backup router included
+2025-06-19 07:06:06,746 - app.main - INFO - [OK] Firewall groups router included
+2025-06-19 07:06:06,746 - app.main - INFO - [OK] Status router included
+2025-06-19 07:06:06,746 - app.main - INFO - [OK] Reports router included
+2025-06-19 07:06:06,748 - app.main - INFO - [OK] Settings router included
+2025-06-19 07:06:06,750 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-19 07:06:06,765 - app.main - INFO - [OK] Database connected
+2025-06-19 07:06:22,777 - app.main - INFO - [REQUEST] GET http://localhost:8000/health
+2025-06-19 07:06:22,778 - app.main - INFO - Health check successful: {'status': 'healthy', 'service': 'KOBI Firewall', 'version': '2.0.0', 'timestamp': '2025-06-19T04:06:22.778091', 'message': 'KOBI Firewall is running', 'routers': {'auth': True, 'firewall': True, 'logs': True, 'system': True, 'network': True, 'routes': True, 'dns': True, 'nat': True, 'backup': True, 'firewall_groups': True, 'status': True, 'reports': True, 'settings': True}}
+2025-06-19 07:06:22,778 - app.main - INFO - [RESPONSE] 200 - 0.0009s
+2025-06-19 07:06:22,781 - app.main - INFO - [REQUEST] GET http://localhost:8000/health
+2025-06-19 07:06:22,781 - app.main - INFO - Health check successful: {'status': 'healthy', 'service': 'KOBI Firewall', 'version': '2.0.0', 'timestamp': '2025-06-19T04:06:22.781112', 'message': 'KOBI Firewall is running', 'routers': {'auth': True, 'firewall': True, 'logs': True, 'system': True, 'network': True, 'routes': True, 'dns': True, 'nat': True, 'backup': True, 'firewall_groups': True, 'status': True, 'reports': True, 'settings': True}}
+2025-06-19 07:06:22,782 - app.main - INFO - [RESPONSE] 200 - 0.0010s
+2025-06-19 07:06:27,212 - app.main - INFO - [REQUEST] OPTIONS http://localhost:8000/api/v1/auth/login
+2025-06-19 07:06:27,213 - app.main - INFO - [RESPONSE] 200 - 0.0020s
+2025-06-19 07:06:27,215 - app.main - INFO - [REQUEST] POST http://localhost:8000/api/v1/auth/login
+2025-06-19 07:06:27,216 - app.main - ERROR - [ERROR] Request failed: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None - 0.0010s
+2025-06-19 07:07:05,852 - app.main - INFO - [REQUEST] POST http://localhost:8000/api/v1/auth/login
+2025-06-19 07:07:05,854 - app.main - ERROR - [ERROR] Request failed: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None - 0.0020s
+2025-06-19 07:08:49,529 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-19 07:08:51,292 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-19 07:08:51,293 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', '*']
+2025-06-19 07:08:51,628 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-19 07:08:51,629 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-19 07:08:51,631 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-19 07:08:51,638 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-19 07:08:51,711 - app.main - INFO - [OK] Auth router imported
+2025-06-19 07:08:51,731 - app.main - INFO - [OK] Firewall router imported
+2025-06-19 07:08:51,740 - app.main - INFO - [OK] Logs router imported
+2025-06-19 07:08:51,753 - app.main - INFO - [OK] System router imported
+2025-06-19 07:08:51,759 - app.main - INFO - [OK] Network router imported
+2025-06-19 07:08:51,765 - app.main - INFO - [OK] Routes router imported
+2025-06-19 07:08:51,817 - app.main - INFO - [OK] DNS router imported
+2025-06-19 07:08:51,822 - app.main - INFO - [OK] NAT router imported
+2025-06-19 07:08:51,829 - app.main - INFO - [OK] Backup router imported
+2025-06-19 07:08:51,834 - app.main - INFO - [OK] Firewall groups router imported
+2025-06-19 07:08:51,836 - app.main - INFO - [OK] Status router imported
+2025-06-19 07:08:51,838 - app.main - ERROR - [ERROR] Reports router import failed: No module named 'reportlab'
+2025-06-19 07:08:51,843 - app.main - INFO - [OK] Settings router imported
+2025-06-19 07:08:51,852 - app.main - INFO - [OK] Auth router included
+2025-06-19 07:08:51,865 - app.main - INFO - [OK] Firewall router included
+2025-06-19 07:08:51,872 - app.main - INFO - [OK] Logs router included
+2025-06-19 07:08:51,875 - app.main - INFO - [OK] System router included - Updates functionality available
+2025-06-19 07:08:51,877 - app.main - INFO - [OK] Network router included
+2025-06-19 07:08:51,880 - app.main - INFO - [OK] Routes router included
+2025-06-19 07:08:51,883 - app.main - INFO - [OK] DNS router included
+2025-06-19 07:08:51,885 - app.main - INFO - [OK] NAT router included
+2025-06-19 07:08:51,889 - app.main - INFO - [OK] Backup router included
+2025-06-19 07:08:51,892 - app.main - INFO - [OK] Firewall groups router included
+2025-06-19 07:08:51,892 - app.main - INFO - [OK] Status router included
+2025-06-19 07:08:51,893 - app.main - INFO - [OK] Reports router included
+2025-06-19 07:08:51,895 - app.main - INFO - [OK] Settings router included
+2025-06-19 07:08:51,896 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-19 07:08:51,896 - app.database - INFO - Attempting to connect to MongoDB: mongodb://localhost:27017
+2025-06-19 07:08:51,941 - app.database - INFO - Database connected successfully. Collections: 16
+2025-06-19 07:08:51,943 - app.database - ERROR - Error initializing collections: An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }, full error: {'ok': 0.0, 'errmsg': 'An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }', 'code': 86, 'codeName': 'IndexKeySpecsConflict'}
+2025-06-19 07:08:51,963 - app.database - ERROR - Traceback (most recent call last):
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\database.py", line 145, in _initialize_collections
+    await users_collection.create_index("email", unique=True)
+  File "C:\Users\MSI\AppData\Local\Programs\Python\Python310\lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\collection.py", line 2136, in create_index
+    return self.__create_indexes([index], session, **cmd_options)[0]
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\_csot.py", line 107, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\collection.py", line 2009, in __create_indexes
+    self._command(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\collection.py", line 308, in _command
+    return conn.command(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\helpers.py", line 322, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\pool.py", line 968, in command
+    return command(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\network.py", line 192, in command
+    helpers._check_command_response(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\helpers.py", line 230, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }, full error: {'ok': 0.0, 'errmsg': 'An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }', 'code': 86, 'codeName': 'IndexKeySpecsConflict'}
+
+2025-06-19 07:08:51,964 - app.database - INFO - ✅ Connected to MongoDB: kobi_firewall_db
+2025-06-19 07:08:51,964 - app.main - INFO - [OK] Database connected
+2025-06-19 07:08:57,965 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-19 07:08:57,970 - app.database - INFO - Disconnected from MongoDB
+2025-06-19 07:09:00,065 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-19 07:09:00,066 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', '*']
+2025-06-19 07:09:00,372 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-19 07:09:00,373 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-19 07:09:00,373 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-19 07:09:00,377 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-19 07:09:00,440 - app.main - INFO - [OK] Auth router imported
+2025-06-19 07:09:00,461 - app.main - INFO - [OK] Firewall router imported
+2025-06-19 07:09:00,469 - app.main - INFO - [OK] Logs router imported
+2025-06-19 07:09:00,481 - app.main - INFO - [OK] System router imported
+2025-06-19 07:09:00,487 - app.main - INFO - [OK] Network router imported
+2025-06-19 07:09:00,492 - app.main - INFO - [OK] Routes router imported
+2025-06-19 07:09:00,536 - app.main - INFO - [OK] DNS router imported
+2025-06-19 07:09:00,538 - app.main - INFO - [OK] NAT router imported
+2025-06-19 07:09:00,544 - app.main - INFO - [OK] Backup router imported
+2025-06-19 07:09:00,548 - app.main - INFO - [OK] Firewall groups router imported
+2025-06-19 07:09:00,549 - app.main - INFO - [OK] Status router imported
+2025-06-19 07:09:00,550 - app.main - ERROR - [ERROR] Reports router import failed: No module named 'reportlab'
+2025-06-19 07:09:00,556 - app.main - INFO - [OK] Settings router imported
+2025-06-19 07:09:00,568 - app.main - INFO - [OK] Auth router included
+2025-06-19 07:09:00,582 - app.main - INFO - [OK] Firewall router included
+2025-06-19 07:09:00,591 - app.main - INFO - [OK] Logs router included
+2025-06-19 07:09:00,593 - app.main - INFO - [OK] System router included - Updates functionality available
+2025-06-19 07:09:00,596 - app.main - INFO - [OK] Network router included
+2025-06-19 07:09:00,599 - app.main - INFO - [OK] Routes router included
+2025-06-19 07:09:00,602 - app.main - INFO - [OK] DNS router included
+2025-06-19 07:09:00,602 - app.main - INFO - [OK] NAT router included
+2025-06-19 07:09:00,606 - app.main - INFO - [OK] Backup router included
+2025-06-19 07:09:00,610 - app.main - INFO - [OK] Firewall groups router included
+2025-06-19 07:09:00,611 - app.main - INFO - [OK] Status router included
+2025-06-19 07:09:00,611 - app.main - INFO - [OK] Reports router included
+2025-06-19 07:09:00,613 - app.main - INFO - [OK] Settings router included
+2025-06-19 07:09:00,614 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-19 07:09:00,614 - app.database - INFO - Attempting to connect to MongoDB: mongodb://localhost:27017
+2025-06-19 07:09:00,650 - app.database - INFO - Database connected successfully. Collections: 16
+2025-06-19 07:09:00,652 - app.database - ERROR - Error initializing collections: An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }, full error: {'ok': 0.0, 'errmsg': 'An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }', 'code': 86, 'codeName': 'IndexKeySpecsConflict'}
+2025-06-19 07:09:00,653 - app.database - ERROR - Traceback (most recent call last):
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\database.py", line 145, in _initialize_collections
+    await users_collection.create_index("email", unique=True)
+  File "C:\Users\MSI\AppData\Local\Programs\Python\Python310\lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\collection.py", line 2136, in create_index
+    return self.__create_indexes([index], session, **cmd_options)[0]
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\_csot.py", line 107, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\collection.py", line 2009, in __create_indexes
+    self._command(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\collection.py", line 308, in _command
+    return conn.command(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\helpers.py", line 322, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\pool.py", line 968, in command
+    return command(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\network.py", line 192, in command
+    helpers._check_command_response(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\helpers.py", line 230, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }, full error: {'ok': 0.0, 'errmsg': 'An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }', 'code': 86, 'codeName': 'IndexKeySpecsConflict'}
+
+2025-06-19 07:09:00,653 - app.database - INFO - ✅ Connected to MongoDB: kobi_firewall_db
+2025-06-19 07:09:00,655 - app.main - INFO - [OK] Database connected
+2025-06-19 07:09:04,778 - app.main - INFO - [REQUEST] GET http://localhost:8000/health
+2025-06-19 07:09:04,778 - app.main - INFO - Health check successful: {'status': 'healthy', 'service': 'KOBI Firewall', 'version': '2.0.0', 'timestamp': '2025-06-19T04:09:04.778187', 'message': 'KOBI Firewall is running', 'routers': {'auth': True, 'firewall': True, 'logs': True, 'system': True, 'network': True, 'routes': True, 'dns': True, 'nat': True, 'backup': True, 'firewall_groups': True, 'status': True, 'reports': True, 'settings': True}}
+2025-06-19 07:09:04,779 - app.main - INFO - [RESPONSE] 200 - 0.0010s
+2025-06-19 07:09:04,782 - app.main - INFO - [REQUEST] GET http://localhost:8000/health
+2025-06-19 07:09:04,782 - app.main - INFO - Health check successful: {'status': 'healthy', 'service': 'KOBI Firewall', 'version': '2.0.0', 'timestamp': '2025-06-19T04:09:04.782139', 'message': 'KOBI Firewall is running', 'routers': {'auth': True, 'firewall': True, 'logs': True, 'system': True, 'network': True, 'routes': True, 'dns': True, 'nat': True, 'backup': True, 'firewall_groups': True, 'status': True, 'reports': True, 'settings': True}}
+2025-06-19 07:09:04,783 - app.main - INFO - [RESPONSE] 200 - 0.0010s
+2025-06-19 07:09:08,739 - app.main - INFO - [REQUEST] POST http://localhost:8000/api/v1/auth/login
+2025-06-19 07:09:08,748 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-06-19 07:09:08,750 - passlib.handlers.bcrypt - DEBUG - detected 'bcrypt' backend, version '<unknown>'
+2025-06-19 07:09:08,751 - passlib.handlers.bcrypt - DEBUG - 'bcrypt' backend lacks $2$ support, enabling workaround
+2025-06-19 07:09:09,010 - app.main - ERROR - [ERROR] Request failed: 'is_active' - 0.2715s
+2025-06-19 07:09:12,858 - app.main - INFO - [REQUEST] GET http://localhost:8000/health
+2025-06-19 07:09:12,859 - app.main - INFO - Health check successful: {'status': 'healthy', 'service': 'KOBI Firewall', 'version': '2.0.0', 'timestamp': '2025-06-19T04:09:12.859622', 'message': 'KOBI Firewall is running', 'routers': {'auth': True, 'firewall': True, 'logs': True, 'system': True, 'network': True, 'routes': True, 'dns': True, 'nat': True, 'backup': True, 'firewall_groups': True, 'status': True, 'reports': True, 'settings': True}}
+2025-06-19 07:09:12,862 - app.main - INFO - [RESPONSE] 200 - 0.0040s
+2025-06-19 07:09:12,866 - app.main - INFO - [REQUEST] GET http://localhost:8000/health
+2025-06-19 07:09:12,867 - app.main - INFO - Health check successful: {'status': 'healthy', 'service': 'KOBI Firewall', 'version': '2.0.0', 'timestamp': '2025-06-19T04:09:12.867636', 'message': 'KOBI Firewall is running', 'routers': {'auth': True, 'firewall': True, 'logs': True, 'system': True, 'network': True, 'routes': True, 'dns': True, 'nat': True, 'backup': True, 'firewall_groups': True, 'status': True, 'reports': True, 'settings': True}}
+2025-06-19 07:09:12,870 - app.main - INFO - [RESPONSE] 200 - 0.0040s
+2025-06-19 07:09:17,704 - app.main - INFO - [REQUEST] POST http://localhost:8000/api/v1/auth/login
+2025-06-19 07:09:18,093 - app.main - ERROR - [ERROR] Request failed: 'is_active' - 0.3873s
+2025-06-19 07:10:32,923 - app.main - INFO - [REQUEST] POST http://localhost:8000/api/v1/auth/login
+2025-06-19 07:10:33,145 - app.main - ERROR - [ERROR] Request failed: 'is_active' - 0.2218s
+2025-06-19 07:17:52,589 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-19 07:17:52,590 - app.database - INFO - Disconnected from MongoDB
+2025-06-19 07:17:54,054 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-19 07:17:54,054 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', '*']
+2025-06-19 07:17:54,058 - app.main - ERROR - [ERROR] Auth router import failed: No module named 'jwt'
+2025-06-19 07:17:55,333 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-19 07:17:55,333 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-19 07:17:55,333 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-19 07:17:55,338 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-19 07:17:55,423 - app.main - INFO - [OK] Firewall router imported
+2025-06-19 07:17:55,436 - app.main - INFO - [OK] Logs router imported
+2025-06-19 07:17:55,508 - app.main - INFO - [OK] System router imported
+2025-06-19 07:17:55,514 - app.main - INFO - [OK] Network router imported
+2025-06-19 07:17:55,519 - app.main - INFO - [OK] Routes router imported
+2025-06-19 07:17:55,701 - app.main - INFO - [OK] DNS router imported
+2025-06-19 07:17:55,704 - app.main - INFO - [OK] NAT router imported
+2025-06-19 07:17:55,710 - app.main - INFO - [OK] Backup router imported
+2025-06-19 07:17:55,717 - app.main - INFO - [OK] Firewall groups router imported
+2025-06-19 07:17:55,719 - app.main - INFO - [OK] Status router imported
+2025-06-19 07:17:55,721 - app.main - ERROR - [ERROR] Reports router import failed: No module named 'reportlab'
+2025-06-19 07:17:55,728 - app.main - INFO - [OK] Settings router imported
+2025-06-19 07:17:55,729 - app.main - INFO - [OK] Auth router included
+2025-06-19 07:17:55,746 - app.main - INFO - [OK] Firewall router included
+2025-06-19 07:17:55,757 - app.main - INFO - [OK] Logs router included
+2025-06-19 07:17:55,761 - app.main - INFO - [OK] System router included - Updates functionality available
+2025-06-19 07:17:55,765 - app.main - INFO - [OK] Network router included
+2025-06-19 07:17:55,770 - app.main - INFO - [OK] Routes router included
+2025-06-19 07:17:55,774 - app.main - INFO - [OK] DNS router included
+2025-06-19 07:17:55,778 - app.main - INFO - [OK] NAT router included
+2025-06-19 07:17:55,784 - app.main - INFO - [OK] Backup router included
+2025-06-19 07:17:55,788 - app.main - INFO - [OK] Firewall groups router included
+2025-06-19 07:17:55,788 - app.main - INFO - [OK] Status router included
+2025-06-19 07:17:55,789 - app.main - INFO - [OK] Reports router included
+2025-06-19 07:17:55,792 - app.main - INFO - [OK] Settings router included
+2025-06-19 07:17:55,794 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-19 07:17:55,794 - app.database - INFO - Attempting to connect to MongoDB: mongodb://localhost:27017
+2025-06-19 07:17:56,408 - app.database - INFO - Database connected successfully. Collections: 16
+2025-06-19 07:17:56,410 - app.database - ERROR - Error initializing collections: An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }, full error: {'ok': 0.0, 'errmsg': 'An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }', 'code': 86, 'codeName': 'IndexKeySpecsConflict'}
+2025-06-19 07:17:56,467 - app.database - ERROR - Traceback (most recent call last):
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\database.py", line 145, in _initialize_collections
+    await users_collection.create_index("email", unique=True)
+  File "C:\Users\MSI\AppData\Local\Programs\Python\Python310\lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\collection.py", line 2136, in create_index
+    return self.__create_indexes([index], session, **cmd_options)[0]
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\_csot.py", line 107, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\collection.py", line 2009, in __create_indexes
+    self._command(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\collection.py", line 308, in _command
+    return conn.command(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\helpers.py", line 322, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\pool.py", line 968, in command
+    return command(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\network.py", line 192, in command
+    helpers._check_command_response(
+  File "C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\venv\lib\site-packages\pymongo\helpers.py", line 230, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }, full error: {'ok': 0.0, 'errmsg': 'An existing index has the same name as the requested index. When index names are not specified, they are auto generated and can cause conflicts. Please refer to our documentation. Requested index: { v: 2, unique: true, key: { email: 1 }, name: "email_1" }, existing index: { v: 2, unique: true, key: { email: 1 }, name: "email_1", sparse: true }', 'code': 86, 'codeName': 'IndexKeySpecsConflict'}
+
+2025-06-19 07:17:56,467 - app.database - INFO - ✅ Connected to MongoDB: kobi_firewall_db
+2025-06-19 07:17:56,468 - app.main - INFO - [OK] Database connected
+2025-06-19 07:18:07,304 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-19 07:18:07,305 - app.database - INFO - Disconnected from MongoDB
+2025-06-19 07:18:08,335 - app.main - INFO - [OK] Settings loaded: KOBI Firewall
+2025-06-19 07:18:08,335 - app.main - INFO - [OK] CORS configured with origins: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5173', 'http://127.0.0.1:5173', '*']
+2025-06-19 07:18:08,337 - app.main - ERROR - [ERROR] Auth router import failed: No module named 'jwt'
+2025-06-19 07:18:08,684 - app.main - ERROR - [ERROR] Firewall router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,710 - passlib.utils.compat - DEBUG - loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+2025-06-19 07:18:08,711 - passlib.utils.compat - DEBUG - loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+2025-06-19 07:18:08,711 - passlib.utils.compat - DEBUG - loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+2025-06-19 07:18:08,714 - passlib.registry - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2025-06-19 07:18:08,716 - app.main - ERROR - [ERROR] Logs router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,725 - app.main - ERROR - [ERROR] System router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,727 - app.main - ERROR - [ERROR] Network router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,727 - app.main - ERROR - [ERROR] Routes router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,798 - app.main - ERROR - [ERROR] DNS router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,799 - app.main - ERROR - [ERROR] NAT router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,800 - app.main - ERROR - [ERROR] Backup router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,802 - app.main - ERROR - [ERROR] Firewall groups router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,803 - app.main - INFO - [OK] Status router imported
+2025-06-19 07:18:08,804 - app.main - ERROR - [ERROR] Reports router import failed: No module named 'reportlab'
+2025-06-19 07:18:08,806 - app.main - ERROR - [ERROR] Settings router import failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,808 - app.main - INFO - [OK] Auth router included
+2025-06-19 07:18:08,808 - app.main - INFO - [OK] Firewall router included
+2025-06-19 07:18:08,808 - app.main - INFO - [OK] Logs router included
+2025-06-19 07:18:08,809 - app.main - INFO - [OK] System router included - Updates functionality available
+2025-06-19 07:18:08,809 - app.main - INFO - [OK] Network router included
+2025-06-19 07:18:08,809 - app.main - INFO - [OK] Routes router included
+2025-06-19 07:18:08,809 - app.main - INFO - [OK] DNS router included
+2025-06-19 07:18:08,809 - app.main - INFO - [OK] NAT router included
+2025-06-19 07:18:08,810 - app.main - INFO - [OK] Backup router included
+2025-06-19 07:18:08,810 - app.main - INFO - [OK] Firewall groups router included
+2025-06-19 07:18:08,810 - app.main - INFO - [OK] Status router included
+2025-06-19 07:18:08,810 - app.main - INFO - [OK] Reports router included
+2025-06-19 07:18:08,810 - app.main - INFO - [OK] Settings router included
+2025-06-19 07:18:08,812 - app.main - INFO - [PROC] Starting KOBI Firewall...
+2025-06-19 07:18:08,813 - app.main - ERROR - [ERROR] Database connection failed: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)
+2025-06-19 07:18:08,813 - app.main - INFO - [WARN] Starting without database connection
+2025-06-19 07:20:19,621 - app.main - INFO - [PROC] Shutting down KOBI Firewall...
+2025-06-19 07:20:19,623 - app.main - ERROR - [ERROR] Database disconnect error: cannot import name 'get_settings' from 'app.config' (C:\Users\MSI\PycharmProjects\YENIkobi-firewall-system\backend\app\config.py)

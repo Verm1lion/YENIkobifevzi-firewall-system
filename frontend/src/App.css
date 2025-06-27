@@ -1,143 +1,202 @@
-/* ==============================
-   Global reset / body
-============================== */
-
-body, html {
-  margin: 0; padding: 0;
-  background-color: #2B3339; /* Koyu gri-mavi ton arka plan */
-  color: #ECECEC; /* Metinler */
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  height: 100%;
+/* App.css */
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
 }
 
-/* Bootstrap vars override (opsiyonel) */
-.btn {
-  border-radius: 4px;
+/* Global app styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ==============================
-   Top Navbar
-============================== */
-.top-navbar {
-  background-color: #2F393F;
-  height: 70px;
+/* Loading states */
+.loading {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  color: #ECECEC;
-}
-
-.top-navbar .navbar-brand {
-  color: #ECECEC !important;
-}
-.top-navbar .navbar-subtitle {
-  font-size: 0.85rem;
-  color: #CFCFCF;
-}
-
-/* ==============================
-   Sidebar
-============================== */
-.sidebar {
-  width: 220px;
-  background-color: #2F393F;
-  min-height: calc(100vh - 70px);
-}
-
-.sidebar-title {
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-}
-
-.custom-navlink {
-  color: #ECECEC;
-  padding: 6px 8px;
-  border-radius: 4px;
-  display: block;
-}
-.custom-navlink:hover {
-  background-color: #3d464d;
-  text-decoration: none;
-}
-
-/* ==============================
-   Main Content
-============================== */
-.main-content {
-  background-color: transparent;
-  /* Zemin arka planı body ile aynı, isterseniz farklı color da yapabilirsiniz */
-}
-
-.section-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-/* ==============================
-   Card (custom)
-============================== */
-.custom-card {
-  background-color: #353F45; /* Kart gövdesi rengi */
-  border-radius: 5px;
-  padding: 0; /* Varsayılan padding yok, alt kısımda .custom-card-body var */
-  margin-bottom: 1rem;
-}
-.custom-card-header {
-  background-color: #2F393F;
-  padding: 0.75rem 1rem;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  font-weight: 600;
-}
-.custom-card-body {
-  padding: 1rem;
-}
-
-/* ==============================
-   Accent Colors (Buttons, etc.)
-============================== */
-.btn-accent {
-  background-color: #0EA5E9;
-  border-color: #0EA5E9;
-  color: #fff;
-}
-.btn-accent:hover {
-  background-color: #139edf;
-  border-color: #139edf;
-}
-
-.btn-outline-accent {
-  border-color: #0EA5E9;
-  color: #0EA5E9;
-}
-.btn-outline-accent:hover {
-  background-color: #0EA5E9;
-  color: #fff;
-}
-
-/* ==============================
-   Table
-============================== */
-.table-dark thead th {
-  background-color: #2F393F;
-  color: #ECECEC;
-  border-color: #454e54;
-}
-
-.table-dark tbody tr {
-  background-color: #353F45;
-  border-color: #454e54;
-}
-
-.table-dark tbody tr:hover {
-  background-color: #3f494f;
-}
-
-/* ==============================
-   Utility
-============================== */
-.app-container {
+  justify-content: center;
   min-height: 100vh;
+}
+
+/* Animation utilities */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toast notification overrides */
+.toast-container {
+  z-index: 9999;
+}
+
+/* Error boundary styles */
+.error-boundary {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.error-boundary h2 {
+  color: #ef4444;
+  margin-bottom: 1rem;
+}
+
+.error-boundary p {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+/* Login specific styles */
+.login-container {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  min-height: 100vh;
+}
+
+.login-form {
+  backdrop-filter: blur(16px);
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+.login-logo {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+}
+
+.login-input {
+  background: rgba(51, 65, 85, 0.5);
+  border: 1px solid rgba(71, 85, 105, 0.6);
+  transition: all 0.3s ease;
+}
+
+.login-input:focus {
+  background: rgba(51, 65, 85, 0.8);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.login-button {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  transform: translateY(0);
+  transition: all 0.2s ease;
+}
+
+.login-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.login-button:disabled {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .App {
+    padding: 0 1rem;
+  }
+
+  .login-container {
+    padding: 1rem;
+  }
+}
+
+/* Dark theme consistency */
+.dark {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+/* Component overrides for consistency */
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(71, 85, 105, 0.5);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(71, 85, 105, 0.7);
+  border-color: rgba(71, 85, 105, 0.5);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Remember me checkbox styling */
+.remember-me-checkbox {
+  accent-color: #3b82f6;
+}
+
+.remember-me-checkbox:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+/* Loading spinner improvements */
+.login-spinner {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

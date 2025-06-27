@@ -1,0 +1,630 @@
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:03:03"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:03:03"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:03:03"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:03:03"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:04"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:18"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:18"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:25"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:25"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:29"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:30"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:31"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:03:32"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:04:11"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:04:11"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:04:11"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:04:11"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:04:17"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:04:17"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:04:17"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:04:17"}
+{"level":"info","message":"SIGINT sinyali alındı. Sunucu kapatılıyor...","service":"netgate-backend","timestamp":"2025-06-18 08:04:30"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:04:49"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:04:49"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:04:49"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:04:49"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:04:56"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:04:56"}
+{"level":"info","message":"POST /api/auth/logout - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:04"}
+{"level":"info","message":"Kullanıcı çıkış yaptı: 685226312af072c2c630be0f - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:04"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:04"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:05"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:07"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:08"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:10"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:10"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:10"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:10"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:10"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:10"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:11"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:05:12"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:06:25"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:06:25"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:06:25"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:06:25"}
+{"level":"info","message":"SIGINT sinyali alındı. Sunucu kapatılıyor...","service":"netgate-backend","timestamp":"2025-06-18 08:06:34"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:06:37"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:06:37"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:06:37"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:06:37"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:47"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:47"}
+{"level":"info","message":"POST /api/auth/logout - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:49"}
+{"level":"info","message":"Kullanıcı çıkış yaptı: 685226312af072c2c630be0f - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:49"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:50"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:50"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:52"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:53"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:54"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"GET /api/system/status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:06:55"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:08:05"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:08:05"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:08:05"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:08:05"}
+{"level":"info","message":"SIGINT sinyali alındı. Sunucu kapatılıyor...","service":"netgate-backend","timestamp":"2025-06-18 08:08:13"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:08:18"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:08:18"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:08:18"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:08:18"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:08:25"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:08:25"}
+{"level":"info","message":"POST /api/auth/logout - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:08:27"}
+{"level":"info","message":"Kullanıcı çıkış yaptı: 685226312af072c2c630be0f - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:08:27"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:08:29"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:08:30"}
+{"level":"info","message":"SIGINT sinyali alındı. Sunucu kapatılıyor...","service":"netgate-backend","timestamp":"2025-06-18 08:09:36"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:09:38"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:09:38"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:09:38"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:09:38"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:49"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:49"}
+{"level":"info","message":"POST /api/auth/logout - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:50"}
+{"level":"info","message":"Kullanıcı çıkış yaptı: 685226312af072c2c630be0f - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:50"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:53"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:53"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:55"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:55"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:56"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:56"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:57"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:57"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:57"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:57"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:57"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:57"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:57"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:09:57"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:10:00"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:10:00"}
+{"level":"info","message":"SIGINT sinyali alındı. Sunucu kapatılıyor...","service":"netgate-backend","timestamp":"2025-06-18 08:10:17"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:11:11"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:11:11"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:11:11"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:11:11"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:11:19"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:11:19"}
+{"level":"info","message":"POST /api/auth/logout - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:11:21"}
+{"level":"info","message":"Kullanıcı çıkış yaptı: 685226312af072c2c630be0f - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:11:21"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:11:24"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:11:26"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:11:27"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:11:27"}
+{"level":"info","message":"SIGINT sinyali alındı. Sunucu kapatılıyor...","service":"netgate-backend","timestamp":"2025-06-18 08:13:19"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:13:42"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:13:42"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:13:42"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:13:42"}
+{"level":"info","message":"SIGINT sinyali alındı. Sunucu kapatılıyor...","service":"netgate-backend","timestamp":"2025-06-18 08:15:01"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:15:03"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:15:03"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:15:03"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:15:03"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:15:09"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:15:09"}
+{"level":"info","message":"POST /api/auth/logout - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:15:10"}
+{"level":"info","message":"Kullanıcı çıkış yaptı: 685226312af072c2c630be0f - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:15:10"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:15:12"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:15:13"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:15:14"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:15:14"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:16:20"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:16:20"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:16:20"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:16:20"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:16:24"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:16:24"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:16:24"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:16:24"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:16:37"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:16:37"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:16:37"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:16:37"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:16:40"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:16:40"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:16:40"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:16:40"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:16:46"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:16:46"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:16:46"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:16:46"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:16:50"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:16:50"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:16:50"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:16:50"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:17:03"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:17:03"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:17:03"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:17:03"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:17:07"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:17:07"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:17:07"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:17:07"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:17:24"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:17:24"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:17:24"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:17:24"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:17:33"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:17:33"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:17:33"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:17:33"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:17:47"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:17:47"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:17:47"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:17:47"}
+{"level":"info","message":"SIGINT sinyali alındı. Sunucu kapatılıyor...","service":"netgate-backend","timestamp":"2025-06-18 08:18:46"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:19:00"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:19:00"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:19:00"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:19:00"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"POST /api/firewall/initialize-rules - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"POST /api/firewall/initialize-rules - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"code":11000,"insertedDocs":[],"level":"error","message":"Initialize rules error: E11000 duplicate key error collection: netgate-firewall.firewallrules index: name_1 dup key: { name: \"Allow HTTP\" }","result":{"deletedCount":0,"insertedCount":0,"insertedIds":{},"matchedCount":0,"modifiedCount":0,"upsertedCount":0,"upsertedIds":{}},"service":"netgate-backend","stack":"MongoBulkWriteError: E11000 duplicate key error collection: netgate-firewall.firewallrules index: name_1 dup key: { name: \"Allow HTTP\" }\n    at OrderedBulkOperation.handleWriteError (C:\\Users\\MSI\\PycharmProjects\\YENIkobi-firewall-system\\backend\\node_modules\\mongodb\\lib\\bulk\\common.js:860:22)\n    at resultHandler (C:\\Users\\MSI\\PycharmProjects\\YENIkobi-firewall-system\\backend\\node_modules\\mongodb\\lib\\bulk\\common.js:350:27)\n    at C:\\Users\\MSI\\PycharmProjects\\YENIkobi-firewall-system\\backend\\node_modules\\mongodb\\lib\\utils.js:297:28\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-18 08:19:14","writeErrors":[{"err":{"code":11000,"errmsg":"E11000 duplicate key error collection: netgate-firewall.firewallrules index: name_1 dup key: { name: \"Allow HTTP\" }","index":0,"op":{"__v":0,"_id":"68524c52b4e521c3015d91db","action":"allow","createdAt":"2025-06-18T05:19:14.608Z","createdBy":"685226312af072c2c630be0f","description":"HTTP trafiğine izin ver","destination":{"port":"80"},"isActive":true,"lastModified":"2025-06-18T05:19:14.606Z","name":"Allow HTTP","priority":10,"protocol":"TCP","schedule":{"days":[],"enabled":false},"updatedAt":"2025-06-18T05:19:14.608Z"}},"index":0}]}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:14"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:24"}
+{"level":"info","message":"POST /api/auth/logout - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:26"}
+{"level":"info","message":"Kullanıcı çıkış yaptı: 685226312af072c2c630be0f - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:26"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:29"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:29"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"POST /api/firewall/initialize-rules - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"POST /api/firewall/initialize-rules - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:30"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:32"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:33"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:33"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:33"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:33"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:35"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:36"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:36"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:36"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:36"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:36"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:36"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:37"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:37"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:37"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:37"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:37"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:37"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:37"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:37"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:40"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:19:50"}
+{"level":"info","message":"SIGINT sinyali alındı. Sunucu kapatılıyor...","service":"netgate-backend","timestamp":"2025-06-18 08:19:54"}
+{"level":"info","message":"MongoDB bağlantısı başarılı: localhost","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"🔄 Kalıcı veri toplama sistemi başlatıldı","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"📊 Sistem istatistikleri kaydedildi: 80 bağlantı, 21 engelleme","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"📅 Veri saklama politikaları başlatıldı","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"💾 Kalıcı veri toplama sistemi başlatıldı","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"🚀 NetGate Backend sunucusu http://localhost:5000 adresinde çalışıyor","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"📊 Environment: development","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"🛡️  CORS Origins: http://localhost:3000,http://127.0.0.1:3000","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"💾 Kalıcı veri sistemi: AKTİF","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"📅 Veri saklama politikaları: AKTİF","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"GET /api/dashboard/stats - ::ffff:127.0.0.1","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::ffff:127.0.0.1","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::ffff:127.0.0.1","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::ffff:127.0.0.1","service":"netgate-backend","timestamp":"2025-06-18 08:26:41"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/data-status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"POST /api/firewall/initialize-rules - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"POST /api/firewall/initialize-rules - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/data-status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:51"}
+{"level":"info","message":"POST /api/auth/logout - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:54"}
+{"level":"info","message":"Kullanıcı çıkış yaptı: 685226312af072c2c630be0f - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:54"}
+{"level":"info","message":"POST /api/auth/login - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:58"}
+{"level":"info","message":"Başarılı giriş: admin - IP: ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:58"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/auth/verify - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/data-status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"POST /api/firewall/initialize-rules - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"POST /api/firewall/initialize-rules - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/data-status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/chart-data - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:26:59"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:05"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:07"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:08"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:09"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:11"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:11"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:12"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:19"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:29"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:39"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:49"}
+{"level":"info","message":"GET /api/dashboard/data-status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:59"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:59"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:27:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:09"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:19"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:29"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:39"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:49"}
+{"level":"info","message":"GET /api/dashboard/data-status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:59"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:59"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:28:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:09"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:19"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:29"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:39"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:49"}
+{"level":"info","message":"GET /api/dashboard/data-status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:59"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:59"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:29:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:00"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:09"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:19"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:37"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:37"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:37"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:37"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:39"}
+{"level":"info","message":"POST /api/dashboard/simulate-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:44"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:49"}
+{"level":"info","message":"GET /api/dashboard/data-status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:59"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:59"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:30:59"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:31:09"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:31:19"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:31:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:31:29"}
+{"level":"info","message":"GET /api/dashboard/connected-devices - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:31:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:31:29"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:31:39"}
+{"level":"info","message":"📊 Sistem istatistikleri kaydedildi: 86 bağlantı, 26 engelleme","service":"netgate-backend","timestamp":"2025-06-18 08:31:41"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:31:49"}
+{"level":"info","message":"GET /api/dashboard/data-status - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:31:59"}
+{"level":"info","message":"GET /api/dashboard/stats - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:32:36"}
+{"level":"info","message":"GET /api/dashboard/recent-activity - ::1","service":"netgate-backend","timestamp":"2025-06-18 08:32:36"}
+{"level":"info","message":"📊 Sistem istatistikleri kaydedildi: 93 bağlantı, 30 engelleme","service":"netgate-backend","timestamp":"2025-06-18 08:36:41"}
+{"level":"info","message":"📊 Sistem istatistikleri kaydedildi: 101 bağlantı, 33 engelleme","service":"netgate-backend","timestamp":"2025-06-18 08:41:41"}
+{"level":"info","message":"📊 Sistem istatistikleri kaydedildi: 107 bağlantı, 37 engelleme","service":"netgate-backend","timestamp":"2025-06-18 08:46:41"}
+{"level":"info","message":"📊 Sistem istatistikleri kaydedildi: 116 bağlantı, 45 engelleme","service":"netgate-backend","timestamp":"2025-06-18 08:51:41"}
+{"level":"info","message":"📊 Sistem istatistikleri kaydedildi: 121 bağlantı, 48 engelleme","service":"netgate-backend","timestamp":"2025-06-18 08:56:41"}
+{"level":"warn","message":"🚨 Kritik tehdit tespit edildi: suspicious-activity.org -> 192.168.1.10","service":"netgate-backend","timestamp":"2025-06-18 08:56:41"}
+{"level":"info","message":"💚 Sistem sağlık kontrolü tamamlandı - Memory: %83.4, DB: 0.1 MB","service":"netgate-backend","timestamp":"2025-06-18 09:00:00"}
+{"level":"info","message":"📊 Sistem istatistikleri kaydedildi: 127 bağlantı, 51 engelleme","service":"netgate-backend","timestamp":"2025-06-18 09:01:41"}
+{"level":"info","message":"📊 Sistem istatistikleri kaydedildi: 135 bağlantı, 57 engelleme","service":"netgate-backend","timestamp":"2025-06-18 09:06:41"}

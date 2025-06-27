@@ -1,158 +1,99 @@
-import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
-import {
-  FiHome,
-  FiShield,
-  FiUsers,
-  FiGlobe,
-  FiFileText,
-  FiSettings,
-  FiX,
-  FiChevronLeft,
-  FiChevronRight,
-} from 'react-icons/fi'
+import React, { useState } from 'react';
+import { FaShieldAlt, FaHome, FaChartBar, FaShield, FaCogs, FaNetworkWired, FaRoute, FaServer, FaDns, FaWrench, FaFileAlt, FaSync, FaSignOutAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useAuth } from '../contexts/AuthContext';
+import { toast } from 'react-hot-toast';
 
-const Sidebar = ({ open, onClose, collapsed, onToggleCollapse }) => {
-  const location = useLocation()
+const Sidebar = ({ activeMenu, setActiveMenu }) => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const { logout } = useAuth();
 
-  const navigationItems = [
-    {
-      name: 'Dashboard',
-      href: '/dashboard',
-      icon: FiHome,
-    },
-    {
-      name: 'Firewall Rules',
-      href: '/firewall/rules',
-      icon: FiShield,
-    },
-    {
-      name: 'Network',
-      href: '/network',
-      icon: FiGlobe,
-    },
-    {
-      name: 'Logs',
-      href: '/logs',
-      icon: FiFileText,
-    },
-    {
-      name: 'Settings',
-      href: '/settings',
-      icon: FiSettings,
-    },
-  ]
+  const menuItems = [
+    { id: 'home', label: 'Ana Sayfa', icon: FaHome },
+    { id: 'logs', label: 'Loglar', icon: FaChartBar },
+    { id: 'security-rules', label: 'Güvenlik Kuralları', icon: FaShield },
+    { id: 'rule-groups', label: 'Kural Grupları', icon: FaCogs },
+    { id: 'interface-settings', label: 'İnterface Ayarları', icon: FaNetworkWired },
+    { id: 'nat-settings', label: 'NAT Ayarları', icon: FaRoute },
+    { id: 'routes', label: 'Rotalar', icon: FaRoute },
+    { id: 'dns-management', label: 'DNS Yönetimi', icon: FaDns },
+    { id: 'settings', label: 'Ayarlar', icon: FaWrench },
+    { id: 'reports', label: 'Raporlar', icon: FaFileAlt },
+    { id: 'updates', label: 'Güncellemeler', icon: FaSync }
+  ];
 
-  const isActive = (href) => {
-    return location.pathname === href || location.pathname.startsWith(href + '/')
-  }
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast.success('Başarıyla çıkış yapıldı');
+    } catch (error) {
+      toast.error('Çıkış yapılırken hata oluştu');
+    }
+  };
 
   return (
-    <>
-      {/* Desktop sidebar */}
-      <div className={`hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 lg:bg-gray-800 lg:transition-all lg:duration-300 ${
-        collapsed ? 'lg:w-16' : 'lg:w-64'
-      }`}>
-        <div className="flex flex-col flex-1 min-h-0">
-          {/* Logo */}
-          <div className="flex items-center h-16 flex-shrink-0 px-4 bg-gray-900">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                  <FiShield className="w-5 h-5 text-white" />
-                </div>
+    <div className={`${isCollapsed ? 'w-16' : 'w-64'} h-screen bg-slate-900/95 backdrop-blur-xl border-r border-slate-700/50 flex flex-col transition-all duration-300 fixed left-0 top-0 z-40`}>
+      {/* Header */}
+      <div className="p-4 border-b border-slate-700/50">
+        <div className="flex items-center justify-between">
+          {!isCollapsed && (
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                <FaShieldAlt className="text-white text-sm" />
               </div>
-              {!collapsed && (
-                <div className="ml-3">
-                  <h1 className="text-white text-lg font-semibold">
-                    KOBI Firewall
-                  </h1>
-                </div>
-              )}
+              <span className="text-white font-bold text-lg">NetGate</span>
             </div>
-            <button
-              onClick={onToggleCollapse}
-              className="ml-auto p-1 rounded-md text-gray-400 hover:text-white hover:bg-gray-700"
-            >
-              {collapsed ? (
-                <FiChevronRight className="w-4 h-4" />
-              ) : (
-                <FiChevronLeft className="w-4 h-4" />
-              )}
-            </button>
-          </div>
-
-          {/* Navigation */}
-          <nav className="flex-1 px-2 py-4 space-y-1">
-            {navigationItems.map((item) => {
-              const Icon = item.icon
-              return (
-                <NavLink
-                  key={item.href}
-                  to={item.href}
-                  className={`flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors ${
-                    isActive(item.href)
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                  }`}
-                >
-                  <Icon className="mr-3 flex-shrink-0 h-5 w-5" />
-                  {!collapsed && <span>{item.name}</span>}
-                </NavLink>
-              )
-            })}
-          </nav>
+          )}
+          <button
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="text-gray-400 hover:text-white transition-colors p-1"
+          >
+            {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile sidebar */}
-      <div className={`fixed inset-y-0 left-0 z-30 w-64 bg-gray-800 transform transition-transform duration-300 lg:hidden ${
-        open ? 'translate-x-0' : '-translate-x-full'
-      }`}>
-        <div className="flex flex-col h-full">
-          {/* Header */}
-          <div className="flex items-center justify-between h-16 px-4 bg-gray-900">
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                <FiShield className="w-5 h-5 text-white" />
-              </div>
-              <h1 className="ml-3 text-white text-lg font-semibold">
-                KOBI Firewall
-              </h1>
-            </div>
-            <button
-              onClick={onClose}
-              className="p-1 rounded-md text-gray-400 hover:text-white hover:bg-gray-700"
-            >
-              <FiX className="w-5 h-5" />
-            </button>
-          </div>
+      {/* Navigation Menu */}
+      <nav className="flex-1 overflow-y-auto py-4">
+        <ul className="space-y-1 px-2">
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeMenu === item.id;
 
-          {/* Navigation */}
-          <nav className="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
-            {navigationItems.map((item) => {
-              const Icon = item.icon
-              return (
-                <NavLink
-                  key={item.href}
-                  to={item.href}
-                  onClick={onClose}
-                  className={`flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors ${
-                    isActive(item.href)
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+            return (
+              <li key={item.id}>
+                <button
+                  onClick={() => setActiveMenu(item.id)}
+                  className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-all duration-200 ${
+                    isActive
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'text-gray-400 hover:text-white hover:bg-slate-800/50'
                   }`}
+                  title={isCollapsed ? item.label : ''}
                 >
-                  <Icon className="mr-3 flex-shrink-0 h-5 w-5" />
-                  <span>{item.name}</span>
-                </NavLink>
-              )
-            })}
-          </nav>
-        </div>
-      </div>
-    </>
-  )
-}
+                  <Icon className={`text-lg ${isActive ? 'text-white' : ''}`} />
+                  {!isCollapsed && (
+                    <span className="font-medium">{item.label}</span>
+                  )}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
-export default Sidebar
+      {/* Logout Button */}
+      <div className="p-4 border-t border-slate-700/50">
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center space-x-3 px-3 py-2.5 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-all duration-200"
+          title={isCollapsed ? 'Çıkış Yap' : ''}
+        >
+          <FaSignOutAlt className="text-lg" />
+          {!isCollapsed && <span className="font-medium">Çıkış Yap</span>}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;

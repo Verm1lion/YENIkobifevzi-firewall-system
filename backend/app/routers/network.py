@@ -1,232 +1,374 @@
-# File: app/routers/network.py
-import subprocess
-import platform
-import ctypes
-from datetime import datetime, timezone
-from fastapi import APIRouter, HTTPException, Depends
-from pydantic import BaseModel
-from typing import Optional
+from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks
+from typing import List, Dict, Optional
+import logging
+from datetime import datetime
 from bson import ObjectId
-from ..dependencies import require_admin
+
+from ..schemas import (
+    NetworkInterfaceCreate, NetworkInterfaceUpdate, NetworkInterfaceResponse,
+    PhysicalInterfacesResponse, InterfaceToggleRequest, ICSSetupRequest,
+    InterfaceStatsResponse, ResponseModel, NetworkInterfaceListResponse
+)
 from ..database import get_database
+from ..dependencies import get_current_user, require_admin
+from ..services.network_service import network_service
 
-network_router = APIRouter()  # prefix kaldırıldı
-
-
-# ----------------------------- MODELS --------------------------------- #
-class InterfaceConfig(BaseModel):
-    interface_name: str
-    ip_mode: str = "static"  # "static" | "dhcp"
-    ip_address: Optional[str] = None
-    subnet_mask: Optional[str] = None
-    gateway: Optional[str] = None
-    dns_primary: Optional[str] = None
-    dns_secondary: Optional[str] = None
-    admin_enabled: bool = True
-    mtu: Optional[int] = None
-    vlan_id: Optional[int] = None
+router = APIRouter(prefix="/api/v1/network", tags=["Network"])
+logger = logging.getLogger(__name__)
 
 
-# ---------------------------------------------------------------------- #
-# ----------------------------- HELPERS -------------------------------- #
-def is_windows_admin() -> bool:
-    if platform.system().lower() != "windows":
-        return True  # Linux'ta sudo ile çalıştırıldığı varsay.
+@router.get("/interfaces/physical", response_model=PhysicalInterfacesResponse)
+async def get_physical_interfaces():
+    """Fiziksel network interface'lerini listele"""
     try:
-        return ctypes.windll.shell32.IsUserAnAdmin() != 0
-    except Exception:  # noqa: S110
-        return False
-
-
-def run(cmd: list[str]) -> subprocess.CompletedProcess:  # küçük yardımcı
-    return subprocess.run(cmd, capture_output=True, text=True)
-
-
-def get_interface_admin_state(name: str) -> str:
-    """
-    netsh ile arayüzün Enabled/Disabled bilgisini getirir.
-    "" dönerse bilinmiyor.
-    """
-    res = run(["netsh", "interface", "show", "interface", f"name={name}"])
-    if res.returncode != 0:
-        return ""
-    for line in res.stdout.splitlines():
-        parts = line.split(None, 3)
-        # Expected format: Admin  State  Type  Interface Name
-        if len(parts) >= 4 and parts[3].strip() == name:
-            return parts[0].strip()  # Enabled | Disabled
-    return ""
-
-
-def parse_netsh_error(stderr_text: str) -> str:
-    msg_lower = (stderr_text or "").lower()
-    if "access is denied" in msg_lower:
-        return "Yönetici izni gerekli (Run as Administrator)."
-    if "not found" in msg_lower or "no matching interface" in msg_lower:
-        return "Arayüz ismi bulunamadı ('netsh interface show interface' ile kontrol edin)."
-    if "media disconnected" in msg_lower:
-        return "Arayüz bağlantısız (kablo/Wi-Fi kapalı?)."
-    if "object is already in use" in msg_lower or "duplicate" in msg_lower:
-        return "IP adresi başka bir cihazda kullanımda (IP çakışması)."
-    if "dhcp" in msg_lower and "fail" in msg_lower:
-        return "DHCP sunucusuna ulaşılamadı veya zaman aşımı."
-    if msg_lower.strip() == "":
-        # netsh bazen stderr'i boş, exit code'u 1 döndürür
-        return "Netsh komutu başarısız; ayrıntı yok – büyük olasılıkla Yönetici izni gerekir."
-    return stderr_text.strip()
-
-
-# ---------------------------------------------------------------------- #
-# ============================= ENDPOINTS ============================== #
-@network_router.get("/interfaces")
-async def list_interfaces(admin=Depends(require_admin), db=Depends(get_database)):
-    docs = await db.interfaces.find({}).to_list(None)
-    for d in docs:
-        d["_id"] = str(d["_id"])
-
-    if platform.system().lower().startswith("win"):
-        res = run(["netsh", "interface", "show", "interface"])
-        lines = res.stdout.splitlines()
-        for doc in docs:
-            doc["link_state"] = "unknown"
-            doc["admin_state"] = "unknown"
-            for line in lines:
-                parts = line.split(None, 3)
-                if len(parts) >= 4 and parts[3] == doc["interface_name"]:
-                    doc["admin_state"] = parts[0]
-                    doc["link_state"] = parts[1]
-                    break
-    else:
-        for d in docs:
-            d["link_state"] = "unknown"
-            d["admin_state"] = "unknown"
-    return docs
-
-
-@network_router.post("/interfaces")
-async def create_interface(config: InterfaceConfig, admin=Depends(require_admin), db=Depends(get_database)):
-    if platform.system().lower() != "windows":
-        raise HTTPException(400, "Bu endpoint yalnızca Windows altında kullanılabilir.")
-
-    if not is_windows_admin():
-        raise HTTPException(
-            400,
-            "Bu işlemi yapmak için uygulamayı **Yönetici (Run as Administrator)** olarak çalıştırın."
+        interfaces = await network_service.get_physical_interfaces()
+        return PhysicalInterfacesResponse(
+            success=True,
+            data=interfaces,
+            message="Physical interfaces retrieved successfully"
         )
+    except Exception as e:
+        logger.error(f"Failed to get physical interfaces: {e}")
+        raise HTTPException(status_code=500, detail="Failed to retrieve physical interfaces")
 
+
+@router.get("/interfaces")
+async def get_interfaces(db=Depends(get_database), current_user=Depends(get_current_user)):
+    """Yapılandırılmış interface'leri listele"""
     try:
-        # -------- 1) admin up/down (yalnızca gerekliyse) -------- #
-        current_state = get_interface_admin_state(config.interface_name)
-        desired_state = "Enabled" if config.admin_enabled else "Disabled"
+        collection = db.network_interfaces
+        interfaces = list(collection.find({}))
 
-        if current_state and current_state.lower() == desired_state.lower():
-            pass  # zaten istenen durumda, netsh çağırmaya gerek yok
-        else:
-            adm_cmd = [
-                "netsh", "interface", "set", "interface",
-                f"name={config.interface_name}",
-                f"admin={'enabled' if config.admin_enabled else 'disabled'}"
-            ]
-            res_adm = run(adm_cmd)
-            if res_adm.returncode != 0:
-                raise HTTPException(400, f"Admin up/down hatası: {parse_netsh_error(res_adm.stderr)}")
+        # Her interface için ObjectId'yi string'e çevir
+        for interface in interfaces:
+            interface['id'] = str(interface['_id'])
+            del interface['_id']
 
-        # -------- 2) IP MODE -------- #
-        if config.ip_mode.lower() == "dhcp":
-            res_ip = run([
-                "netsh", "interface", "ip", "set", "address",
-                f"name={config.interface_name}", "source=dhcp"
-            ])
-            if res_ip.returncode != 0:
-                raise HTTPException(400, f"DHCP hatası: {parse_netsh_error(res_ip.stderr)}")
+            # Gerçek zamanlı durum bilgilerini al
+            physical_device = interface.get('physical_device', interface.get('interface_name'))
+            if physical_device:
+                stats = await network_service.get_interface_statistics(physical_device)
+                interface.update(stats)
 
-            res_dns = run([
-                "netsh", "interface", "ip", "set", "dns",
-                f"name={config.interface_name}", "source=dhcp"
-            ])
-            if res_dns.returncode != 0:
-                raise HTTPException(400, f"DHCP-DNS hatası: {parse_netsh_error(res_dns.stderr)}")
-        else:  # STATIC
-            if not config.ip_address or not config.subnet_mask:
-                raise HTTPException(400, "Statik modda IP ve Subnet zorunludur.")
+        return {
+            "success": True,
+            "data": interfaces,
+            "message": "Interfaces retrieved successfully"
+        }
+    except Exception as e:
+        logger.error(f"Failed to get interfaces: {e}")
+        raise HTTPException(status_code=500, detail="Failed to retrieve interfaces")
 
-            res_static = run([
-                "netsh", "interface", "ip", "set", "address",
-                f"name={config.interface_name}", "static",
-                config.ip_address, config.subnet_mask,
-                config.gateway if config.gateway else "none"
-            ])
-            if res_static.returncode != 0:
-                raise HTTPException(400, f"IP ayarı hatası: {parse_netsh_error(res_static.stderr)}")
 
-            # DNS birincil / ikincil
-            if config.dns_primary:
-                res_dns1 = run([
-                    "netsh", "interface", "ip", "set", "dns",
-                    f"name={config.interface_name}", "static", config.dns_primary
-                ])
-                if res_dns1.returncode != 0:
-                    raise HTTPException(400, f"DNS-1 hatası: {parse_netsh_error(res_dns1.stderr)}")
+@router.post("/interfaces")
+async def create_interface(
+        interface_data: NetworkInterfaceCreate,
+        background_tasks: BackgroundTasks,
+        db=Depends(get_database),
+        current_user=Depends(require_admin)
+):
+    """Yeni interface yapılandırması oluştur"""
+    try:
+        # Fiziksel interface kontrolü
+        physical_interfaces = await network_service.get_physical_interfaces()
 
-            if config.dns_secondary:
-                res_dns2 = run([
-                    "netsh", "interface", "ip", "add", "dns",
-                    f"name={config.interface_name}", config.dns_secondary, "index=2"
-                ])
-                if res_dns2.returncode != 0:
-                    raise HTTPException(400, f"DNS-2 hatası: {parse_netsh_error(res_dns2.stderr)}")
+        # Physical device'ı belirle
+        physical_device = None
+        for p_iface in physical_interfaces:
+            if (p_iface['name'] == interface_data.interface_name or
+                    p_iface['display_name'] == interface_data.interface_name):
+                physical_device = p_iface['name']
+                break
 
-        # -------- 3) MTU -------- #
-        if config.mtu:
-            res_mtu = run([
-                "netsh", "interface", "ipv4", "set", "subinterface",
-                config.interface_name, f"mtu={config.mtu}", "store=persistent"
-            ])
-            if res_mtu.returncode != 0:
-                raise HTTPException(400, f"MTU hatası: {parse_netsh_error(res_mtu.stderr)}")
+        if not physical_device:
+            # Fallback - interface name'i physical device olarak kullan
+            physical_device = interface_data.interface_name
 
-        # -------- 4) DB kayıt / response -------- #
-        doc = {
-            "interface_name": config.interface_name,
-            "ip_mode": config.ip_mode.lower(),
-            "ip_address": config.ip_address,
-            "subnet_mask": config.subnet_mask,
-            "gateway": config.gateway,
-            "dns_primary": config.dns_primary,
-            "dns_secondary": config.dns_secondary,
-            "admin_enabled": config.admin_enabled,
-            "mtu": config.mtu,
-            "vlan_id": config.vlan_id,
-            "updated_at": datetime.now(timezone.utc).isoformat()
+        # Interface document oluştur
+        interface_doc = {
+            "interface_name": interface_data.interface_name,
+            "display_name": interface_data.display_name or interface_data.interface_name,
+            "physical_device": physical_device,
+            "interface_type": interface_data.interface_type,
+            "ip_mode": interface_data.ip_mode,
+            "ip_address": interface_data.ip_address,
+            "subnet_mask": interface_data.subnet_mask,
+            "gateway": interface_data.gateway,
+            "dns_primary": interface_data.dns_primary,
+            "dns_secondary": interface_data.dns_secondary,
+            "admin_enabled": interface_data.admin_enabled,
+            "mtu": interface_data.mtu or 1500,
+            "vlan_id": interface_data.vlan_id,
+            "metric": interface_data.metric,
+            "description": interface_data.description,
+            # ICS Settings
+            "ics_enabled": interface_data.ics_enabled,
+            "ics_source_interface": interface_data.ics_source_interface,
+            "ics_dhcp_range_start": interface_data.ics_dhcp_range_start,
+            "ics_dhcp_range_end": interface_data.ics_dhcp_range_end,
+            # Status
+            "operational_status": "down",
+            "link_state": None,
+            "admin_state": None,
+            "mac_address": None,
+            "speed": None,
+            "duplex": None,
+            # Statistics
+            "bytes_received": 0,
+            "bytes_transmitted": 0,
+            "packets_received": 0,
+            "packets_transmitted": 0,
+            "errors": 0,
+            "drops": 0,
+            "created_at": datetime.utcnow(),
+            "updated_at": datetime.utcnow()
         }
 
-        await db.interfaces.update_one(
-            {"interface_name": config.interface_name},
-            {"$set": doc},
-            upsert=True
+        # Database'e kaydet
+        collection = db.network_interfaces
+        result = collection.insert_one(interface_doc)
+        interface_doc['id'] = str(result.inserted_id)
+        del interface_doc['_id']
+
+        # Background task olarak network yapılandırmasını uygula
+        background_tasks.add_task(apply_interface_configuration, interface_doc)
+
+        return {
+            "success": True,
+            "data": interface_doc,
+            "message": "Interface configuration created successfully"
+        }
+
+    except Exception as e:
+        logger.error(f"Failed to create interface: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.put("/interfaces/{interface_id}")
+async def update_interface(
+        interface_id: str,
+        interface_data: NetworkInterfaceUpdate,
+        background_tasks: BackgroundTasks,
+        db=Depends(get_database),
+        current_user=Depends(require_admin)
+):
+    """Interface yapılandırmasını güncelle"""
+    try:
+        collection = db.network_interfaces
+
+        # Mevcut interface'i bul
+        existing = collection.find_one({"_id": ObjectId(interface_id)})
+        if not existing:
+            raise HTTPException(status_code=404, detail="Interface not found")
+
+        # Güncelleme verilerini hazırla
+        update_data = {k: v for k, v in interface_data.dict().items() if v is not None}
+        update_data['updated_at'] = datetime.utcnow()
+
+        # Database'de güncelle
+        collection.update_one(
+            {"_id": ObjectId(interface_id)},
+            {"$set": update_data}
         )
 
-        return {"message": "Interface kaydedildi", "data": doc}
+        # Güncellenmiş kaydı al
+        updated_interface = collection.find_one({"_id": ObjectId(interface_id)})
+        updated_interface['id'] = str(updated_interface['_id'])
+        del updated_interface['_id']
 
-    except HTTPException:
-        raise
-    except Exception as exc:
-        raise HTTPException(500, str(exc)) from exc
+        # Background task olarak yeni yapılandırmayı uygula
+        background_tasks.add_task(apply_interface_configuration, updated_interface)
+
+        return {
+            "success": True,
+            "data": updated_interface,
+            "message": "Interface configuration updated successfully"
+        }
+
+    except Exception as e:
+        logger.error(f"Failed to update interface: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
-@network_router.put("/interfaces/{iface_name}")
-async def update_interface(iface_name: str, config: InterfaceConfig, admin=Depends(require_admin),
-                           db=Depends(get_database)):
-    # PUT endpoint mantığı POST ile neredeyse aynı; tekrar yazmamak için
-    # küçük farklarla aynı fonksiyonu kullanmak da mümkündür.
-    return await create_interface(config, admin, db)  # noqa: WPS331
+@router.delete("/interfaces/{interface_id}")
+async def delete_interface(
+        interface_id: str,
+        db=Depends(get_database),
+        current_user=Depends(require_admin)
+):
+    """Interface yapılandırmasını sil"""
+    try:
+        collection = db.network_interfaces
+
+        # Interface'i bul
+        interface = collection.find_one({"_id": ObjectId(interface_id)})
+        if not interface:
+            raise HTTPException(status_code=404, detail="Interface not found")
+
+        # Interface'i disable et
+        physical_device = interface.get('physical_device', interface.get('interface_name'))
+        if physical_device:
+            await network_service.disable_interface(physical_device)
+
+        # Database'den sil
+        collection.delete_one({"_id": ObjectId(interface_id)})
+
+        return {
+            "success": True,
+            "message": "Interface configuration deleted successfully"
+        }
+
+    except Exception as e:
+        logger.error(f"Failed to delete interface: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
-@network_router.delete("/interfaces/{iface_name}")
-async def delete_interface(iface_name: str, admin=Depends(require_admin), db=Depends(get_database)):
-    doc = await db.interfaces.find_one({"interface_name": iface_name})
-    if not doc:
-        raise HTTPException(404, "Arayüz kaydı bulunamadı")
+@router.patch("/interfaces/{interface_id}/toggle")
+async def toggle_interface(
+        interface_id: str,
+        toggle_data: InterfaceToggleRequest,
+        background_tasks: BackgroundTasks,
+        db=Depends(get_database),
+        current_user=Depends(require_admin)
+):
+    """Interface'i aktif/deaktif et"""
+    try:
+        collection = db.network_interfaces
 
-    await db.interfaces.delete_one({"interface_name": iface_name})
-    return {"message": f"{iface_name} arayüzü DB kaydından silindi."}
+        # Interface'i bul
+        interface = collection.find_one({"_id": ObjectId(interface_id)})
+        if not interface:
+            raise HTTPException(status_code=404, detail="Interface not found")
+
+        # Database'de güncelle
+        collection.update_one(
+            {"_id": ObjectId(interface_id)},
+            {"$set": {
+                "admin_enabled": toggle_data.enabled,
+                "updated_at": datetime.utcnow()
+            }}
+        )
+
+        # Background task olarak interface durumunu değiştir
+        physical_device = interface.get('physical_device', interface.get('interface_name'))
+        background_tasks.add_task(toggle_interface_status, physical_device, toggle_data.enabled)
+
+        return {
+            "success": True,
+            "message": f"Interface {'enabled' if toggle_data.enabled else 'disabled'} successfully"
+        }
+
+    except Exception as e:
+        logger.error(f"Failed to toggle interface: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/interfaces/{interface_id}/stats")
+async def get_interface_stats(
+        interface_id: str,
+        db=Depends(get_database),
+        current_user=Depends(get_current_user)
+):
+    """Interface istatistiklerini al"""
+    try:
+        collection = db.network_interfaces
+        interface = collection.find_one({"_id": ObjectId(interface_id)})
+
+        if not interface:
+            raise HTTPException(status_code=404, detail="Interface not found")
+
+        # Gerçek zamanlı istatistikleri al
+        physical_device = interface.get('physical_device', interface.get('interface_name'))
+        stats = await network_service.get_interface_statistics(physical_device)
+
+        return {
+            "success": True,
+            "data": stats,
+            "message": "Interface statistics retrieved successfully"
+        }
+
+    except Exception as e:
+        logger.error(f"Failed to get interface stats: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/interfaces/ics/setup")
+async def setup_internet_sharing(
+        ics_data: ICSSetupRequest,
+        current_user=Depends(require_admin)
+):
+    """Internet Connection Sharing kurulumu"""
+    try:
+        success = await network_service.setup_internet_sharing(
+            ics_data.source_interface,
+            ics_data.target_interface,
+            ics_data.dhcp_range_start,
+            ics_data.dhcp_range_end
+        )
+
+        if success:
+            return {
+                "success": True,
+                "message": "Internet sharing configured successfully"
+            }
+        else:
+            raise HTTPException(status_code=500, detail="Failed to setup internet sharing")
+
+    except Exception as e:
+        logger.error(f"Failed to setup ICS: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Background Tasks
+async def apply_interface_configuration(interface_config: dict):
+    """Interface yapılandırmasını sisteme uygula"""
+    try:
+        physical_device = interface_config.get('physical_device', interface_config.get('interface_name'))
+
+        if not interface_config.get('admin_enabled', True):
+            await network_service.disable_interface(physical_device)
+            return
+
+        # IP yapılandırması
+        if interface_config['ip_mode'] == 'static':
+            config = {
+                'ip_address': interface_config.get('ip_address'),
+                'subnet_mask': interface_config.get('subnet_mask'),
+                'gateway': interface_config.get('gateway'),
+                'dns_primary': interface_config.get('dns_primary'),
+                'dns_secondary': interface_config.get('dns_secondary'),
+                'mtu_size': interface_config.get('mtu', 1500)
+            }
+            await network_service.configure_static_ip(physical_device, config)
+
+        elif interface_config['ip_mode'] == 'dhcp':
+            await network_service.configure_dhcp(physical_device)
+
+        # ICS yapılandırması
+        if (interface_config.get('ics_enabled') and
+                interface_config.get('ics_source_interface')):
+            await network_service.setup_internet_sharing(
+                interface_config['ics_source_interface'],
+                physical_device,
+                interface_config.get('ics_dhcp_range_start', '192.168.100.100'),
+                interface_config.get('ics_dhcp_range_end', '192.168.100.200')
+            )
+
+        logger.info(f"Interface configuration applied: {physical_device}")
+
+    except Exception as e:
+        logger.error(f"Failed to apply interface configuration: {e}")
+
+
+async def toggle_interface_status(physical_device: str, enabled: bool):
+    """Interface durumunu değiştir"""
+    try:
+        if enabled:
+            await network_service.enable_interface(physical_device)
+        else:
+            await network_service.disable_interface(physical_device)
+
+        logger.info(f"Interface {physical_device} {'enabled' if enabled else 'disabled'}")
+
+    except Exception as e:
+        logger.error(f"Failed to toggle interface status: {e}")
